@@ -11,6 +11,7 @@ export class VfApplicationStage extends Stage {
     const adminProps: Omit<AdminStackProps, 'assets'> = {
       ...props.config,
       stage: props.stage,
+      stackName: `${props.config.getPrefix(props.stage)}-admin`,
       connectInstanceId: props.connectInstanceId,
       loggingLevel: props.config.packages.admin.loggingLevel ?? 'debug',
       adminUserEmail: props.config.packages.admin?.adminUserEmail || 'test@adminemail.com',
@@ -22,6 +23,6 @@ export class VfApplicationStage extends Stage {
       features: {}
     };
 
-    new AdminStack(this, `connect-admin`, adminProps);
+    new AdminStack(this, `ConnectAdminStack`, adminProps);
   }
 }
