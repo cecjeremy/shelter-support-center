@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "codezombiech.gitignore",
+    "oderwat.indent-rainbow",
+    "eg2.vscode-npm-script",
+    "kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "donjayamanne.githistory",
+    "eamodio.gitlens",
+    "gruntfuggly.todo-tree"
+  ]
+}

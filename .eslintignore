@@ -1,0 +1,21 @@
+# don't ever lint node_modules
+node_modules
+
+# don't lint build output (make sure it's set to your correct build folder name)
+dist
+build
+cdk.out 
+
+# don't lint coverage output
+coverage
+
+# don't lint docs
+docs
+
+# ignore scripts
+scripts
+
+.eslintrc.js
+
+# ignore package.json
+package.json
