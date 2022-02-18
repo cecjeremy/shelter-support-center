@@ -15,7 +15,11 @@ export class VfApplicationStage extends Stage {
       loggingLevel: props.config.packages.admin.loggingLevel ?? 'debug',
       adminUserEmail: props.config.packages.admin?.adminUserEmail || 'test@adminemail.com',
       retain: props.config.packages.admin.retain ?? false,
-      useLayer: props.config.packages.admin.useLayer ?? true
+      useLayer: props.config.packages.admin.useLayer ?? true,
+      aggregatedAgentMetricsTableName: 'agent-metrics',
+      concurrency: 0,
+      metricsLambdaTimeout: '',
+      features: {}
     };
 
     new AdminStack(this, `connect-admin`, adminProps);
