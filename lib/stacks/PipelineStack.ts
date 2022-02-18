@@ -111,7 +111,7 @@ export class PipelineStack extends Stack {
 
       if (approval) {
         pipeline.addStage(`${toPascal(stage)}Approval`).addManualApprovalAction({
-          actionName: `coonect-core-${stage}-manual-approval`
+          actionName: `connect-core-${stage}-manual-approval`
         });
       }
 
