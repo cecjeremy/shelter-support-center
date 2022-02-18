@@ -15,7 +15,7 @@
     "pub": "npm run ts scripts/publishToCodeArtifact"
   },
   "devDependencies": {
-    "@aws-cdk/aws-codebuild": "^1.108.1",
+    "@aws-cdk/aws-codebuild": "1.108.1",
     "@aws-cdk/aws-codecommit": "1.108.1",
     "@aws-cdk/aws-codepipeline": "1.108.1",
     "@aws-cdk/aws-codepipeline-actions": "1.108.1",
