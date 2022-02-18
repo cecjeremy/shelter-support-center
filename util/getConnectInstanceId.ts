@@ -19,6 +19,7 @@ export async function getConnectInstanceId(alias: string) {
 
 if (require.main === module) {
   getConnectInstanceId(process.argv[2]).then(id => {
+    // eslint-disable-next-line no-console
     console.log(id);
   });
 }

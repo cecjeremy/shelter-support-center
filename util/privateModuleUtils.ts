@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { writeFile } from 'fs/promises';
-import { CodeArtifact, config, SharedIniFileCredentials } from 'aws-sdk';
+import { CodeArtifact } from 'aws-sdk';
 import { exec } from './exec';
 import { getAWSAccounts } from './getAWSAccounts';
 import { ROOT_DIR, getPackageDirectories } from './directoryUtils';
