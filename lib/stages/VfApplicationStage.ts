@@ -9,9 +9,9 @@ export class VfApplicationStage extends Stage {
     new ConnectCore(this, 'ConnectStack', props);
 
     const adminProps: Omit<AdminStackProps, 'assets'> = {
-      ...props.config,
-      stage: props.stage,
       stackName: `${props.config.getPrefix(props.stage)}-admin`,
+      client: props.config.getPrefix(),
+      stage: props.stage,
       connectInstanceId: props.connectInstanceId,
       loggingLevel: props.config.packages.admin.loggingLevel ?? 'debug',
       adminUserEmail: props.config.packages.admin?.adminUserEmail || 'test@adminemail.com',
