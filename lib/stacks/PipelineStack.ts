@@ -6,8 +6,7 @@ import { ComputeType, LinuxBuildImage } from '@aws-cdk/aws-codebuild';
 import { toPascal } from '../../util';
 import { Effect, PolicyStatement } from '@aws-cdk/aws-iam';
 import { Artifact } from '@aws-cdk/aws-codepipeline';
-import { ConnectCoreStage } from '../stages/ConnectCoreStage';
-import { AdminAppStage } from '../stages/AdminAppStage';
+import { VfApplicationStage } from '../stages/VfApplicationStage';
 import { config } from '../../config';
 
 export class PipelineStack extends Stack {
@@ -110,27 +109,20 @@ export class PipelineStack extends Stack {
     Object.keys(accounts).forEach(stage => {
       const { id, region, approval, connectInstanceId } = config.accounts[stage];
 
-      const application = new ConnectCoreStage(this, `ConnectCore${toPascal(stage)}Stage`, {
+      if (approval) {
+        pipeline.addStage(`${toPascal(stage)}Approval`).addManualApprovalAction({
+          actionName: `coonect-core-${stage}-manual-approval`
+        });
+      }
+
+      const application = new VfApplicationStage(this, `Application${toPascal(stage)}Stage`, {
         env: { account: id, region },
         config,
         stage,
         connectInstanceId
       });
 
-      pipeline.addApplicationStage(application, { manualApprovals: approval });
-    });
-
-    Object.keys(accounts).forEach(stage => {
-      const { id, region, approval, connectInstanceId } = config.accounts[stage];
-
-      const application = new AdminAppStage(this, `${config.getPrefix(stage)}`, {
-        env: { account: id, region },
-        config,
-        stage,
-        connectInstanceId
-      });
-
-      pipeline.addApplicationStage(application, { manualApprovals: approval });
+      pipeline.addApplicationStage(application);
     });
   }
 }

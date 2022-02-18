@@ -1,10 +1,12 @@
 import { Construct, Stage } from '@aws-cdk/core';
 import { AdminStack, AdminStackProps } from '@ttec-dig-vf/vf-connect-admin';
+import { ConnectCore } from '../constructs/ConnectCore';
 import { VfStageProps } from './VfStageProps';
 
-export class AdminAppStage extends Stage {
+export class VfApplicationStage extends Stage {
   constructor(scope: Construct, id: string, props: VfStageProps) {
     super(scope, id, props);
+    new ConnectCore(this, 'ConnectStack', props);
 
     const adminProps: Omit<AdminStackProps, 'assets'> = {
       ...props.config,
