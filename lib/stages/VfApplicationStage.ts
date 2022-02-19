@@ -10,7 +10,7 @@ export class VfApplicationStage extends Stage {
 
     const adminProps: Omit<AdminStackProps, 'assets'> = {
       stackName: `${props.config.getPrefix(props.stage)}-admin`,
-      client: props.config.getPrefix(),
+      client: props.config.client,
       stage: props.stage,
       connectInstanceId: props.connectInstanceId,
       loggingLevel: props.config.packages.admin.loggingLevel ?? 'debug',
