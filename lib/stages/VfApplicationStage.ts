@@ -20,7 +20,17 @@ export class VfApplicationStage extends Stage {
       aggregatedAgentMetricsTableName: 'agent-metrics',
       concurrency: 0,
       metricsLambdaTimeout: '',
-      features: {}
+      features: {
+        configSetManagement: true,
+        permissionsManagementEnabled: true,
+        syncManagementEnabled: true,
+        connectUserManagementEnabled: true,
+        calendarManagementEnabled: true,
+        tenancyEnabled: false,
+        flowEngineManagementEnabled: false,
+        metricsEnabled: false,
+        contactSearchEnabled: false
+      }
     };
 
     new AdminStack(this, `ConnectAdminStack`, adminProps);
