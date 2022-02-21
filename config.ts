@@ -45,21 +45,21 @@ export const config: Configuration = {
       profile: 'shelter-dev',
       region: 'us-east-1',
       id: '564741965342',
-      connectInstanceId: ''
+      connectInstanceId: 'e2391d8c-3f63-431d-bb9c-53a8c4a0838a'
     },
     test: {
       profile: 'shelter-test',
       region: 'us-east-1',
       id: '824188805183',
-      approval: false,
-      connectInstanceId: ''
+      approval: true,
+      connectInstanceId: '8277b115-0271-44ff-858a-37718e5c1f0f'
     },
     prod: {
       profile: 'shelter-prod',
       region: 'us-east-1',
       id: '110716305825',
-      approval: false,
-      connectInstanceId: ''
+      approval: true,
+      connectInstanceId: 'c2ec5e7f-d5b4-49e3-8b99-44359dd1ee9d'
     }
   },
   packages: {
