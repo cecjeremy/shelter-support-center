@@ -69,7 +69,9 @@ export const config: Configuration = {
       retain: false,
       useLayer: true
     },
-    connectCore: {}
+    connectCore: {
+      identityManagementType: 'SAML'
+    }
   },
   getPrefix(stage) {
     return `${this.client}-${this.project}${stage ? `-${stage}` : ''}`;
