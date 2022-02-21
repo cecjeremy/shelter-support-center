@@ -51,14 +51,14 @@ export const config: Configuration = {
       profile: 'shelter-test',
       region: 'us-east-1',
       id: '824188805183',
-      approval: true,
+      approval: false,
       connectInstanceId: '03cd8add-adbf-4a25-938f-4fc3a508566d'
     },
     prod: {
       profile: 'shelter-prod',
       region: 'us-east-1',
       id: '110716305825',
-      approval: true,
+      approval: false,
       connectInstanceId: '373f8a4f-a7fe-48ad-977d-b2e0c55b9e8f'
     }
   },
