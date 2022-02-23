@@ -1,12 +1,18 @@
 import { Construct, Stage } from '@aws-cdk/core';
 import { AdminStack, AdminStackProps } from '@ttec-dig-vf/vf-connect-admin';
 import { ConnectCore } from '../constructs/ConnectCore';
+import { SsoStack } from '../stacks/SsoStack';
 import { VfStageProps } from './VfStageProps';
 
 export class VfApplicationStage extends Stage {
   constructor(scope: Construct, id: string, props: VfStageProps) {
     super(scope, id, props);
+
+    const { stage, config } = props;
+
     new ConnectCore(this, 'ConnectStack', props);
+
+    new SsoStack(this, 'SsoStack', { ...props, prefix: `${config.getPrefix(stage)}-sso` });
 
     const adminProps: Omit<AdminStackProps, 'assets'> = {
       stackName: `${props.config.getPrefix(props.stage)}-admin`,
@@ -30,7 +36,8 @@ export class VfApplicationStage extends Stage {
         flowEngineManagementEnabled: false,
         metricsEnabled: false,
         contactSearchEnabled: false
-      }
+      },
+      hosting: {}
     };
 
     new AdminStack(this, `ConnectAdminStack`, adminProps);
