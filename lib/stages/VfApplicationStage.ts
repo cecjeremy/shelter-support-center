@@ -1,6 +1,7 @@
 import { Construct, Stage } from '@aws-cdk/core';
 import { AdminStack, AdminStackProps } from '@ttec-dig-vf/vf-connect-admin';
 import { ConnectCore } from '../constructs/ConnectCore';
+import { ConnectLambdas } from '../stacks/ConnectLambdas';
 import { SsoStack } from '../stacks/SsoStack';
 import { VfStageProps } from './VfStageProps';
 
@@ -36,9 +37,15 @@ export class VfApplicationStage extends Stage {
         flowEngineManagementEnabled: false,
         metricsEnabled: false,
         contactSearchEnabled: false
-      },
-      hosting: {}
+      }
     };
+
+    new ConnectLambdas(this, 'ConnectLambdasStack', {
+      ...props,
+      client: config.client,
+      loggingLevel: 'debug',
+      prefix: config.getPrefix(stage)
+    });
 
     new AdminStack(this, `ConnectAdminStack`, adminProps);
   }
