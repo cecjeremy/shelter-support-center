@@ -10,10 +10,19 @@ export class VfApplicationStage extends Stage {
     super(scope, id, props);
 
     const { stage, config } = props;
+    const prefix = config.getPrefix(stage);
 
     new ConnectCore(this, 'ConnectStack', props);
 
-    new SsoStack(this, 'SsoStack', { ...props, prefix: `${config.getPrefix(stage)}-sso` });
+    new SsoStack(this, 'SsoStack', { ...props, prefix, stackName: `${prefix}-sso` });
+
+    new ConnectLambdas(this, 'ConnectLambdasStack', {
+      ...props,
+      prefix,
+      client: config.client,
+      loggingLevel: 'debug',
+      stackName: `${prefix}-connect-lambdas`
+    });
 
     const adminProps: Omit<AdminStackProps, 'assets'> = {
       stackName: `${props.config.getPrefix(props.stage)}-admin`,
@@ -39,13 +48,6 @@ export class VfApplicationStage extends Stage {
         contactSearchEnabled: false
       }
     };
-
-    new ConnectLambdas(this, 'ConnectLambdasStack', {
-      ...props,
-      client: config.client,
-      loggingLevel: 'debug',
-      prefix: config.getPrefix(stage)
-    });
 
     new AdminStack(this, `ConnectAdminStack`, adminProps);
   }
