@@ -20,7 +20,7 @@
     "@aws-cdk/aws-codepipeline": "1.108.1",
     "@aws-cdk/aws-codepipeline-actions": "1.108.1",
     "@aws-cdk/aws-iam": "1.108.1",
-    "@aws-cdk/aws-lambda": "^1.108.1",
+    "@aws-cdk/aws-lambda": "1.108.1",
     "@aws-cdk/aws-logs": "1.108.1",
     "@aws-cdk/aws-s3": "1.108.1",
     "@aws-cdk/core": "1.108.1",
