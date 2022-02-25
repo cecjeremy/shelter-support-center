@@ -1,5 +1,5 @@
 import { Bucket } from '@aws-cdk/aws-s3';
-import { Construct, Stack } from '@aws-cdk/core';
+import { Construct, RemovalPolicy, Stack } from '@aws-cdk/core';
 import { CfnInclude } from '@aws-cdk/cloudformation-include';
 import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
 import { StringParameter } from '@aws-cdk/aws-ssm';
@@ -26,7 +26,8 @@ export class ServiceNowStack extends Stack {
     const bucket = new Bucket(this, 'ServiceNowBucket', {
       bucketName: `${config.getPrefix(stage)}-servicenow`,
       versioned: true,
-      publicReadAccess: false
+      publicReadAccess: false,
+      removalPolicy: RemovalPolicy.DESTROY
     });
 
     if (existsSync(path.resolve(__dirname, `../servicenow/${stage}`))) {
@@ -43,7 +44,7 @@ export class ServiceNowStack extends Stack {
           LambdaFileKey: 'lambda.zip',
           CallRecordingBucketName: callRecordingBucket
         }
-      });
+      }).node.addDependency(bucket);
 
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const ssmParams: { params: SsmParam[] } = require(`../servicenow/${stage}/ssm-params.json`);
