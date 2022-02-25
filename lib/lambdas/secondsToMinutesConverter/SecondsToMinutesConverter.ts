@@ -10,10 +10,11 @@ export class SecondsToMinutesConverter {
     // input seconds could potentially be null/undefined
     // so this ternary will default to always reporting at
     // least 1 minute of wait time.
-    const seconds = event.Details.Parameters.seconds ?? 1;
 
     try {
-      const result = { minutes: Math.ceil(parseInt(seconds) / 60) };
+      let seconds = parseInt(event.Details.Parameters.seconds);
+      seconds = isNaN(seconds) || seconds === 0 ? 1 : seconds;
+      const result = { minutes: Math.ceil(seconds / 60) };
       logger.info(result);
       return result;
     } catch (err) {
