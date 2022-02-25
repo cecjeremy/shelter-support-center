@@ -26,14 +26,14 @@ export class ServiceNowStack extends Stack {
     const bucket = new Bucket(this, 'ServiceNowBucket', {
       bucketName: `${config.getPrefix(stage)}-servicenow`,
       versioned: true,
-      publicReadAccess: false,
-      removalPolicy: RemovalPolicy.DESTROY
+      publicReadAccess: false
     });
 
     if (existsSync(path.resolve(__dirname, `../servicenow/${stage}`))) {
       const deployment = new BucketDeployment(this, 'DeployLambda', {
         destinationBucket: bucket,
-        sources: [Source.asset(path.resolve(__dirname, `../servicenow/${stage}/lambda.zip`))]
+        sources: [Source.asset(path.resolve(__dirname, `../servicenow/${stage}/lambda.zip`))],
+        retainOnDelete: true
       });
 
       const snStack = new CfnInclude(this, 'ServiceNowCfnStack', {
