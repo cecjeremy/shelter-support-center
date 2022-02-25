@@ -31,12 +31,12 @@ export class ServiceNowStack extends Stack {
     });
 
     if (existsSync(path.resolve(__dirname, `../servicenow/${stage}`))) {
-      new BucketDeployment(this, 'DeployLambda', {
+      const deployment = new BucketDeployment(this, 'DeployLambda', {
         destinationBucket: bucket,
         sources: [Source.asset(path.resolve(__dirname, `../servicenow/${stage}/lambda.zip`))]
       });
 
-      new CfnInclude(this, 'ServiceNowCfnStack', {
+      const snStack = new CfnInclude(this, 'ServiceNowCfnStack', {
         templateFile: path.resolve(__dirname, `../servicenow/${stage}/template.json`),
         preserveLogicalIds: false,
         parameters: {
@@ -44,8 +44,10 @@ export class ServiceNowStack extends Stack {
           LambdaFileKey: 'lambda.zip',
           CallRecordingBucketName: callRecordingBucket
         }
-      }).node.addDependency(bucket);
+      });
 
+      snStack.node.addDependency(bucket);
+      snStack.node.addDependency(deployment);
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const ssmParams: { params: SsmParam[] } = require(`../servicenow/${stage}/ssm-params.json`);
 
