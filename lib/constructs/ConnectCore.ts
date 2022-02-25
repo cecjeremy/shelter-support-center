@@ -4,6 +4,7 @@ import { ConnectStack } from '../stacks/ConnectStack';
 import { BaseStackProps } from '../stacks/VfStackProps';
 
 export class ConnectCore extends Construct {
+  public readonly callRecordingBucketName: string;
   public readonly connectInstanceAlias: string;
 
   constructor(scope: Construct, id: string, props: BaseStackProps) {
@@ -27,6 +28,7 @@ export class ConnectCore extends Construct {
     });
 
     this.connectInstanceAlias = connectCore?.instanceAlias ?? prefix;
+    this.callRecordingBucketName = storage.buckets.recordings?.bucketName ?? '';
 
     new ConnectStack(this, 'ConnectInstance', {
       ...props,

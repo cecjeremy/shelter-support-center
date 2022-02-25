@@ -2,6 +2,7 @@ import { Construct, Stage } from '@aws-cdk/core';
 import { AdminStack, AdminStackProps } from '@ttec-dig-vf/vf-connect-admin';
 import { ConnectCore } from '../constructs/ConnectCore';
 import { ConnectLambdas } from '../stacks/ConnectLambdas';
+import { ServiceNowStack } from '../stacks/ServiceNowStack';
 import { SsoStack } from '../stacks/SsoStack';
 import { VfStageProps } from './VfStageProps';
 
@@ -12,7 +13,7 @@ export class VfApplicationStage extends Stage {
     const { stage, config } = props;
     const prefix = config.getPrefix(stage);
 
-    new ConnectCore(this, 'ConnectStack', props);
+    const core = new ConnectCore(this, 'ConnectStack', props);
 
     new SsoStack(this, 'SsoStack', { ...props, prefix, stackName: `${prefix}-sso` });
 
@@ -22,6 +23,12 @@ export class VfApplicationStage extends Stage {
       client: config.client,
       loggingLevel: 'debug',
       stackName: `${prefix}-connect-lambdas`
+    });
+
+    new ServiceNowStack(this, 'ServiceNowStack', {
+      ...props,
+      stackName: `${prefix}-servicenow`,
+      callRecordingBucket: core.callRecordingBucketName
     });
 
     const adminProps: Omit<AdminStackProps, 'assets'> = {
