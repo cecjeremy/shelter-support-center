@@ -7,17 +7,23 @@ import { SsoStack } from '../stacks/SsoStack';
 import { VfStageProps } from './VfStageProps';
 
 export class VfApplicationStage extends Stage {
+  public readonly connectCore: ConnectCore;
+  public readonly ssoStack: SsoStack;
+  public readonly connectLambdasStack: ConnectLambdas;
+  public readonly serviceNowStack: ServiceNowStack;
+  public readonly adminStack: AdminStack;
+
   constructor(scope: Construct, id: string, props: VfStageProps) {
     super(scope, id, props);
 
     const { stage, config } = props;
     const prefix = config.getPrefix(stage);
 
-    const core = new ConnectCore(this, 'ConnectStack', props);
+    this.connectCore = new ConnectCore(this, 'ConnectStack', props);
 
-    new SsoStack(this, 'SsoStack', { ...props, prefix, stackName: `${prefix}-sso` });
+    this.ssoStack = new SsoStack(this, 'SsoStack', { ...props, prefix, stackName: `${prefix}-sso` });
 
-    new ConnectLambdas(this, 'ConnectLambdasStack', {
+    this.connectLambdasStack = new ConnectLambdas(this, 'ConnectLambdasStack', {
       ...props,
       prefix,
       client: config.client,
@@ -25,11 +31,12 @@ export class VfApplicationStage extends Stage {
       stackName: `${prefix}-connect-lambdas`
     });
 
-    new ServiceNowStack(this, 'ServiceNowStack', {
+    this.serviceNowStack = new ServiceNowStack(this, 'ServiceNowStack', {
       ...props,
-      stackName: `${prefix}-servicenow`,
-      callRecordingBucket: core.callRecordingBucketName
+      stackName: `${prefix}-servicenow`
     });
+
+    this.serviceNowStack.addDependency(this.connectCore.storageStack);
 
     const adminProps: Omit<AdminStackProps, 'assets'> = {
       stackName: `${props.config.getPrefix(props.stage)}-admin`,
@@ -56,6 +63,6 @@ export class VfApplicationStage extends Stage {
       }
     };
 
-    new AdminStack(this, `ConnectAdminStack`, adminProps);
+    this.adminStack = new AdminStack(this, `ConnectAdminStack`, adminProps);
   }
 }
