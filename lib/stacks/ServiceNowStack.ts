@@ -1,4 +1,4 @@
-import { Bucket } from '@aws-cdk/aws-s3';
+import { BlockPublicAccess, Bucket } from '@aws-cdk/aws-s3';
 import { Construct, Stack } from '@aws-cdk/core';
 import { BaseStackProps } from './VfStackProps';
 
@@ -13,7 +13,7 @@ export class ServiceNowStack extends Stack {
     this.lambdaBucket = new Bucket(this, 'ServiceNowBucket', {
       bucketName: `${config.getPrefix(stage)}-servicenow`,
       versioned: true,
-      publicReadAccess: false
+      blockPublicAccess: BlockPublicAccess.BLOCK_ALL
     });
   }
 }
