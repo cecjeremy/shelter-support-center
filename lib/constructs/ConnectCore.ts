@@ -26,7 +26,12 @@ export class ConnectCore extends Construct {
       ...props,
       prefix,
       stackName: `${prefix}-streaming`,
-      streamDataBucket: this.storageStack.buckets.streaming
+      streamDataBucket: this.storageStack.buckets.streaming,
+      includeCtrStream: true,
+      includeCtrFirehose: true,
+      includeAgentStream: true,
+      includeAgentFirehose: true,
+      connectEncryptionKeyArn: this.storageStack.keys.shared?.keyArn
     });
 
     this.connectInstanceAlias = connectCore?.instanceAlias ?? prefix;
