@@ -1,9 +1,9 @@
-import { ConnectContactFlowEvent } from 'aws-lambda';
+import { Callback, ConnectContactFlowEvent, Context } from 'aws-lambda';
 
 import logger from '../../services/logger';
 
 export class SecondsToMinutesConverter {
-  public handler(event: ConnectContactFlowEvent) {
+  public handler(event: ConnectContactFlowEvent, ctx: Context, cb: Callback) {
     logger.info(event);
 
     // if the oldest contact in the queue doesn't exist the
@@ -16,9 +16,9 @@ export class SecondsToMinutesConverter {
       seconds = isNaN(seconds) || seconds === 0 ? 1 : seconds;
       const result = { minutes: Math.ceil(seconds / 60) };
       logger.info(result);
-      return result;
+      cb(null, result);
     } catch (err) {
-      logger.error({ err });
+      logger.error(err);
       throw err;
     }
   }
