@@ -62,7 +62,6 @@ export class VfApplicationStage extends Stage {
         contactSearchEnabled: false
       },
       hosting: {
-        createLoggingBucket: true,
         loggingBucketName: `${prefix}-access-logs`,
         s3SecureTransport: true,
         enableCloudfrontLogs: true
