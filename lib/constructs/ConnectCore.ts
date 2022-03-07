@@ -4,6 +4,9 @@ import { ConnectStack } from '../stacks/ConnectStack';
 import { BaseStackProps } from '../stacks/VfStackProps';
 
 export class ConnectCore extends Construct {
+  public readonly storageStack: ConnectDataStorage;
+  public readonly streamingStack: ConnectDataStreamingStack;
+  public readonly connectStack: ConnectStack;
   public readonly connectInstanceAlias: string;
 
   constructor(scope: Construct, id: string, props: BaseStackProps) {
@@ -13,47 +16,52 @@ export class ConnectCore extends Construct {
 
     const { connectCore } = props.config.packages;
 
-    const storage = new ConnectDataStorage(this, 'ConnectStorage', {
+    this.storageStack = new ConnectDataStorage(this, 'ConnectStorage', {
       ...props,
       prefix,
       stackName: `${prefix}-storage`
     });
 
-    const streaming = new ConnectDataStreamingStack(this, 'ConnectDataStreaming', {
+    this.streamingStack = new ConnectDataStreamingStack(this, 'ConnectDataStreaming', {
       ...props,
       prefix,
       stackName: `${prefix}-streaming`,
-      streamDataBucket: storage.buckets.streaming
+      streamDataBucket: this.storageStack.buckets.streaming,
+      includeCtrStream: true,
+      includeCtrFirehose: true,
+      includeAgentStream: true,
+      includeAgentFirehose: true,
+      connectEncryptionKeyArn: this.storageStack.keys.shared?.keyArn
     });
 
     this.connectInstanceAlias = connectCore?.instanceAlias ?? prefix;
 
-    new ConnectStack(this, 'ConnectInstance', {
+    this.connectStack = new ConnectStack(this, 'ConnectInstance', {
       ...props,
       stackName: `${prefix}-connect`,
       instanceAlias: this.connectInstanceAlias,
       identityManagementType: connectCore?.identityManagementType ?? 'CONNECT_MANAGED',
       inboundCallsEnabled: connectCore?.inboundCallsEnabled ?? true,
       outboundCallsEnabled: connectCore?.outboundCallsEnabled ?? true,
-      agentStream: streaming.agentStream?.streamArn,
-      ctrStream: streaming.ctrStream?.streamArn,
+      agentStream: this.streamingStack.agentStream?.streamArn,
+      ctrStream: this.streamingStack.ctrStream?.streamArn,
       callRecordingsStorage: {
-        bucket: storage.buckets.storage!,
-        key: storage.keys.shared,
+        bucket: this.storageStack.buckets.storage!,
+        key: this.storageStack.keys.shared,
         prefix: `${prefix}-recordings`
       },
       chatTranscriptsStorage: {
-        bucket: storage.buckets.storage!,
-        key: storage.keys.shared,
+        bucket: this.storageStack.buckets.storage!,
+        key: this.storageStack.keys.shared,
         prefix: `${prefix}-transcripts`
       },
       reportsStorage: {
-        bucket: storage.buckets.storage!,
-        key: storage.keys.shared,
+        bucket: this.storageStack.buckets.storage!,
+        key: this.storageStack.keys.shared,
         prefix: `${prefix}-reports`
       },
       mediaStorage: {
-        key: storage.keys.shared!,
+        key: this.storageStack.keys.shared!,
         prefix: `${prefix}-media`,
         retentionPeriodInHours: connectCore?.mediaStorage?.retentionPeriodInHours
       }

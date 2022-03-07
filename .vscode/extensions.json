@@ -8,7 +8,6 @@
     "kohler.npm-intellisense",
     "christian-kohler.path-intellisense",
     "donjayamanne.githistory",
-    "eamodio.gitlens",
     "gruntfuggly.todo-tree"
   ]
 }

@@ -1,0 +1,14 @@
+{
+  "params": [
+    {
+      "path": "/com.servicenow.cti/8c0c09749bea07c8a4e16b8af359ff42/TMOIY/default/service_account_user",
+      "description": "ServiceNow API Account User Name",
+      "version": 1
+    },
+    {
+      "path": "/com.servicenow.cti/8c0c09749bea07c8a4e16b8af359ff42/TMOIY/default/service_account_password",
+      "description": "ServiceNow API Account Password",
+      "version": 1
+    }
+  ]
+}

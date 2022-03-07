@@ -1,13 +1,42 @@
 import { Construct, Stage } from '@aws-cdk/core';
 import { AdminStack, AdminStackProps } from '@ttec-dig-vf/vf-connect-admin';
 import { ConnectCore } from '../constructs/ConnectCore';
+import { ConnectLambdas } from '../stacks/ConnectLambdas';
+import { ServiceNowStack } from '../stacks/ServiceNowStack';
+import { SsoStack } from '../stacks/SsoStack';
 import { VfStageProps } from './VfStageProps';
 
 export class VfApplicationStage extends Stage {
+  public readonly connectCore: ConnectCore;
+  public readonly ssoStack: SsoStack;
+  public readonly connectLambdasStack: ConnectLambdas;
+  public readonly serviceNowStack: ServiceNowStack;
+  public readonly adminStack: AdminStack;
+
   constructor(scope: Construct, id: string, props: VfStageProps) {
     super(scope, id, props);
-    new ConnectCore(this, 'ConnectStack', props);
-    const prefix = props.config.getPrefix(props.stage);
+
+    const { stage, config } = props;
+    const prefix = config.getPrefix(stage);
+
+    this.connectCore = new ConnectCore(this, 'ConnectStack', props);
+
+    this.ssoStack = new SsoStack(this, 'SsoStack', { ...props, prefix, stackName: `${prefix}-sso` });
+
+    this.connectLambdasStack = new ConnectLambdas(this, 'ConnectLambdasStack', {
+      ...props,
+      prefix,
+      client: config.client,
+      loggingLevel: 'debug',
+      stackName: `${prefix}-connect-lambdas`
+    });
+
+    this.serviceNowStack = new ServiceNowStack(this, 'ServiceNowStack', {
+      ...props,
+      stackName: `${prefix}-servicenow`
+    });
+
+    this.serviceNowStack.addDependency(this.connectCore.storageStack);
 
     const adminProps: Omit<AdminStackProps, 'assets'> = {
       stackName: `${prefix}-admin`,
@@ -40,6 +69,6 @@ export class VfApplicationStage extends Stage {
       }
     };
 
-    new AdminStack(this, `ConnectAdminStack`, adminProps);
+    this.adminStack = new AdminStack(this, `ConnectAdminStack`, adminProps);
   }
 }
