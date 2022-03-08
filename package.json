@@ -28,7 +28,7 @@
     "@aws-sdk/client-connect": "^3.38.0",
     "@aws-sdk/client-dynamodb": "^3.53.0",
     "@ttec-dig-vf/cdk-resources": "4.0.20",
-    "@ttec-dig-vf/vf-connect-admin": "2.4.5",
+    "@ttec-dig-vf/vf-connect-admin": "2.5.1",
     "@ttec-dig-vf/vf-deploy": "file:../vf-deploy",
     "@ttec-dig-vf/vf-naming": "0.0.17",
     "@types/jest": "^27.4.1",

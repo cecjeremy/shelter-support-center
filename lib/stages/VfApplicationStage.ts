@@ -39,7 +39,7 @@ export class VfApplicationStage extends Stage {
     this.serviceNowStack.addDependency(this.connectCore.storageStack);
 
     const adminProps: Omit<AdminStackProps, 'assets'> = {
-      stackName: `${props.config.getPrefix(props.stage)}-admin`,
+      stackName: `${prefix}-admin`,
       client: props.config.client,
       stage: props.stage,
       connectInstanceId: props.connectInstanceId,
@@ -60,6 +60,10 @@ export class VfApplicationStage extends Stage {
         flowEngineManagementEnabled: false,
         metricsEnabled: false,
         contactSearchEnabled: false
+      },
+      hosting: {
+        s3SecureTransport: true,
+        enableCloudfrontLogs: true
       }
     };
 
