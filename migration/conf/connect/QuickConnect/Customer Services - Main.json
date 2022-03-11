@@ -1,0 +1,18 @@
+{
+  "QuickConnectARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/f7c1f46e-0d36-495e-81db-44899433821b",
+  "QuickConnectId": "f7c1f46e-0d36-495e-81db-44899433821b",
+  "Name": "Customer Services - Main",
+  "Description": null,
+  "QuickConnectConfig": {
+    "QuickConnectType": "PHONE_NUMBER",
+    "PhoneConfig": {
+      "PhoneNumber": "+18007435837"
+    }
+  },
+  "Tags": {},
+  "Supplemental": {
+    "Phone": {
+      "PhoneNumber": "+18007435837"
+    }
+  }
+}

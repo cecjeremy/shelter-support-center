@@ -1,0 +1,113 @@
+{
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/flow-module/dd71fafc-6703-49e0-957f-30f4c3783f1e",
+  "Id": "dd71fafc-6703-49e0-957f-30f4c3783f1e",
+  "Name": "SC - Initialize",
+  "Content": {
+    "Version": "2019-10-30",
+    "StartAction": "0ae59fd6-dd0c-4fc8-9345-6b9b0b0f53b4",
+    "Metadata": {
+      "entryPointPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "snapToGrid": false,
+      "ActionMetadata": {
+        "0ae59fd6-dd0c-4fc8-9345-6b9b0b0f53b4": {
+          "position": {
+            "x": 185,
+            "y": 26
+          }
+        },
+        "ec0b1e39-1b76-45d2-b404-fa4f85117586": {
+          "position": {
+            "x": 902,
+            "y": 101
+          }
+        },
+        "6e07f7a8-1167-4778-a161-28eafb590943": {
+          "position": {
+            "x": 412,
+            "y": 26
+          },
+          "overrideConsoleVoice": false,
+          "defaultVoice": "Standard"
+        },
+        "7602a4d5-b755-44bc-b256-ff77fcc3a65a": {
+          "position": {
+            "x": 636,
+            "y": 27
+          }
+        }
+      }
+    },
+    "Actions": [
+      {
+        "Identifier": "0ae59fd6-dd0c-4fc8-9345-6b9b0b0f53b4",
+        "Parameters": {
+          "FlowLoggingBehavior": "Enabled"
+        },
+        "Transitions": {
+          "NextAction": "6e07f7a8-1167-4778-a161-28eafb590943",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "UpdateFlowLoggingBehavior"
+      },
+      {
+        "Identifier": "ec0b1e39-1b76-45d2-b404-fa4f85117586",
+        "Parameters": {},
+        "Transitions": {},
+        "Type": "EndFlowModuleExecution"
+      },
+      {
+        "Identifier": "6e07f7a8-1167-4778-a161-28eafb590943",
+        "Parameters": {
+          "TextToSpeechVoice": "Matthew"
+        },
+        "Transitions": {
+          "NextAction": "7602a4d5-b755-44bc-b256-ff77fcc3a65a",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "UpdateContactTextToSpeechVoice"
+      },
+      {
+        "Identifier": "7602a4d5-b755-44bc-b256-ff77fcc3a65a",
+        "Parameters": {
+          "RecordingBehavior": {
+            "RecordedParticipants": [
+              "Agent",
+              "Customer"
+            ]
+          }
+        },
+        "Transitions": {
+          "NextAction": "ec0b1e39-1b76-45d2-b404-fa4f85117586",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "UpdateContactRecordingBehavior"
+      }
+    ],
+    "Settings": {
+      "InputParameters": [],
+      "OutputParameters": [],
+      "Transitions": [
+        {
+          "DisplayName": "Success",
+          "ReferenceName": "Success",
+          "Description": ""
+        },
+        {
+          "DisplayName": "Error",
+          "ReferenceName": "Error",
+          "Description": ""
+        }
+      ]
+    }
+  },
+  "Description": "Initializes logging and voice",
+  "State": "active",
+  "Status": "published",
+  "Tags": {}
+}

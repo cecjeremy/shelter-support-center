@@ -1,0 +1,33 @@
+[
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>I’m sorry, there was an issue handling your request and we are unable to process your call at this time. Please try your call again later.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Error"
+    },
+    "id": {
+      "S": "prompt_b4769fd1-de94-4b36-aadd-ede9bd74ad30"
+    },
+    "name": {
+      "S": "Error"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "QuickConnectARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/fdde2835-0c62-482c-a675-c153a87d76d7",
+  "QuickConnectId": "fdde2835-0c62-482c-a675-c153a87d76d7",
+  "Name": "Julie Cunningham",
+  "Description": null,
+  "QuickConnectConfig": {
+    "QuickConnectType": "USER",
+    "UserConfig": {
+      "UserId": "77f41133-26b8-40d8-8c79-27ea726eabf6",
+      "ContactFlowId": "0d6d0a60-25e5-41cd-8273-6af411fc619a"
+    }
+  },
+  "Tags": {},
+  "Supplemental": {
+    "Agent": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent/77f41133-26b8-40d8-8c79-27ea726eabf6",
+      "Id": "77f41133-26b8-40d8-8c79-27ea726eabf6",
+      "Username": "jcunningham@shelterinsurance.com"
+    },
+    "ContactFlow": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/0d6d0a60-25e5-41cd-8273-6af411fc619a",
+      "ContactFlowState": "ACTIVE",
+      "ContactFlowType": "AGENT_TRANSFER",
+      "Id": "0d6d0a60-25e5-41cd-8273-6af411fc619a",
+      "Name": "Default agent transfer"
+    }
+  }
+}

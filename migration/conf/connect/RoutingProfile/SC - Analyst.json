@@ -1,0 +1,149 @@
+{
+  "InstanceId": "e2391d8c-3f63-431d-bb9c-53a8c4a0838a",
+  "Name": "SC - Analyst",
+  "RoutingProfileArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/routing-profile/81d1166d-51f3-4f0f-b112-0fe5c06f03ab",
+  "RoutingProfileId": "81d1166d-51f3-4f0f-b112-0fe5c06f03ab",
+  "Description": "Analyst routing profile",
+  "MediaConcurrencies": [
+    {
+      "Channel": "VOICE",
+      "Concurrency": 1
+    }
+  ],
+  "DefaultOutboundQueueId": "563800e9-3cbb-4293-aa25-d07d52679fec",
+  "Tags": {},
+  "Supplemental": {
+    "Queues": [
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "146d2c8a-9012-4566-bb0b-0753c07694f1",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/146d2c8a-9012-4566-bb0b-0753c07694f1",
+          "QueueName": "SC - Employee Mobile Device"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 1,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "26510dc2-a85a-4f2e-9c2e-313e7667a560",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/26510dc2-a85a-4f2e-9c2e-313e7667a560",
+          "QueueName": "AmShield - Transfer"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "2cea2aed-9dd6-4764-8ee6-12ff1e1a9a7e",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/2cea2aed-9dd6-4764-8ee6-12ff1e1a9a7e",
+          "QueueName": "SC - Agent Ecommerce"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "51a81cee-5893-4bb8-8940-de3d2c60dac9",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/51a81cee-5893-4bb8-8940-de3d2c60dac9",
+          "QueueName": "SC - Employee Hardware"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "52e2936f-b8ca-4c78-ad0b-894e03a2e44d",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/52e2936f-b8ca-4c78-ad0b-894e03a2e44d",
+          "QueueName": "SC - Employee Software/Applications"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "5548e9bf-156c-413d-9327-aa4c0b2013f7",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/5548e9bf-156c-413d-9327-aa4c0b2013f7",
+          "QueueName": "SC - Employee Password Reset"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "563800e9-3cbb-4293-aa25-d07d52679fec",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/563800e9-3cbb-4293-aa25-d07d52679fec",
+          "QueueName": "SC - Agent Other Software"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "78af92ec-6c4d-4108-a3e7-f49061469f11",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/78af92ec-6c4d-4108-a3e7-f49061469f11",
+          "QueueName": "SC - Agent Internet Access"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "9eb7999f-1e08-433a-877c-4def6a835ea7",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/9eb7999f-1e08-433a-877c-4def6a835ea7",
+          "QueueName": "SC - Agent Hardware"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "ab3d821d-30f1-461a-812b-edaa9134af0b",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/ab3d821d-30f1-461a-812b-edaa9134af0b",
+          "QueueName": "SC - Employee Other Software"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "b478e133-85ec-42c8-ba3d-82a91d553340",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/b478e133-85ec-42c8-ba3d-82a91d553340",
+          "QueueName": "SC - Employee Internet and Network"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "b77f0ba7-8c6c-41cc-9d7f-febc9480be3b",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/b77f0ba7-8c6c-41cc-9d7f-febc9480be3b",
+          "QueueName": "SC - Agent Password Reset"
+        }
+      },
+      {
+        "Delay": 0,
+        "Priority": 2,
+        "QueueReference": {
+          "Channel": "VOICE",
+          "QueueId": "e0a4b8f1-47b7-4dc1-bf78-d5029c8f667b",
+          "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/e0a4b8f1-47b7-4dc1-bf78-d5029c8f667b",
+          "QueueName": "SC - Agent Mobile Device"
+        }
+      }
+    ]
+  }
+}

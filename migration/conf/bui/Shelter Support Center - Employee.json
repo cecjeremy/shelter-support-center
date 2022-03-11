@@ -1,0 +1,33 @@
+[
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>For Hardware Problems, press 1. For Assistance with on-line applications such as eCommerce, Claims Pro, BPM, or email, press 2. If you are having issues accessing the internet or other network resources press 3. For assistance with your Shelter issued mobile phone or assistance adding Shelter applications to your personal phone, press 4. To Reset a Password, press 5.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Employee"
+    },
+    "id": {
+      "S": "prompt_34a8d4c4-42df-4e3c-9cd8-410346c51b5e"
+    },
+    "name": {
+      "S": "Employee_001"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  }
+]

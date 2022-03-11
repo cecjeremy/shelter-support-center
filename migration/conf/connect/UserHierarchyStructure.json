@@ -1,0 +1,22 @@
+{
+  "LevelOne": {
+    "Id": "b6af58a8-86ed-4a35-967f-7f2e0f91e19c",
+    "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group-level/1",
+    "Name": "Shelter Mutual"
+  },
+  "LevelTwo": {
+    "Id": "d4e7d4f4-867a-4f3c-8626-4ccbfdd116f6",
+    "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group-level/2",
+    "Name": "Support Center"
+  },
+  "LevelThree": {
+    "Id": "1aff5e6a-76c8-4479-8255-6db6dfc4b1eb",
+    "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group-level/3",
+    "Name": "Home Office"
+  },
+  "LevelFour": {
+    "Id": "e4f0d608-54a3-43f8-bac2-d5ef964d6827",
+    "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group-level/4",
+    "Name": "Angie Pezold"
+  }
+}

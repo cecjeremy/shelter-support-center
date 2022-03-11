@@ -1,0 +1,95 @@
+[
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>Thank you for calling the Shelter Insurance Support Center. We are currently closed.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Main"
+    },
+    "id": {
+      "S": "prompt_0715ccdb-d955-47c8-a00e-61fd55ed71b8"
+    },
+    "name": {
+      "S": "Main_Closed"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  },
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>Welcome to the Shelter Support Center.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Main"
+    },
+    "id": {
+      "S": "prompt_7146e53b-3dee-4003-b749-477a9d63def2"
+    },
+    "name": {
+      "S": "Main_Upfront_Message"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  },
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>Please select from the following options. If you are an Agent, press 1, If you are an Employee, press 2. If you are a Shelter Insurance Policyholder, please call 1-800-743-5837</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Main"
+    },
+    "id": {
+      "S": "prompt_868feb38-0a5b-44e7-bd62-f5d409a83ab3"
+    },
+    "name": {
+      "S": "Main_Menu"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  }
+]

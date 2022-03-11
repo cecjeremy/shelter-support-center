@@ -1,0 +1,28 @@
+{
+  "QuickConnectARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/d2b2f5dd-1fc3-4544-80a1-bfef71d7f971",
+  "QuickConnectId": "d2b2f5dd-1fc3-4544-80a1-bfef71d7f971",
+  "Name": "Seth VanBooven",
+  "Description": null,
+  "QuickConnectConfig": {
+    "QuickConnectType": "USER",
+    "UserConfig": {
+      "UserId": "5f1e9b6a-9762-45ed-bb71-2a3158742fda",
+      "ContactFlowId": "0d6d0a60-25e5-41cd-8273-6af411fc619a"
+    }
+  },
+  "Tags": {},
+  "Supplemental": {
+    "Agent": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent/5f1e9b6a-9762-45ed-bb71-2a3158742fda",
+      "Id": "5f1e9b6a-9762-45ed-bb71-2a3158742fda",
+      "Username": "svbooven@shelterinsurance.com"
+    },
+    "ContactFlow": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/0d6d0a60-25e5-41cd-8273-6af411fc619a",
+      "ContactFlowState": "ACTIVE",
+      "ContactFlowType": "AGENT_TRANSFER",
+      "Id": "0d6d0a60-25e5-41cd-8273-6af411fc619a",
+      "Name": "Default agent transfer"
+    }
+  }
+}

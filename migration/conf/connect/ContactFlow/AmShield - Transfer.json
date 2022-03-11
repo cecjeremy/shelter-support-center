@@ -1,0 +1,176 @@
+{
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/6a2cfa2c-fa41-4c28-be07-fa3aba5f7c61",
+  "Id": "6a2cfa2c-fa41-4c28-be07-fa3aba5f7c61",
+  "Name": "AmShield - Transfer",
+  "Type": "CONTACT_FLOW",
+  "State": "ACTIVE",
+  "Description": null,
+  "Content": {
+    "Version": "2019-10-30",
+    "StartAction": "b9a06117-b1ac-4f68-ae46-e8a4d24be996",
+    "Metadata": {
+      "entryPointPosition": {
+        "x": 20,
+        "y": 18.75
+      },
+      "snapToGrid": false,
+      "ActionMetadata": {
+        "c337884f-2f2d-4a4a-a4c3-877e241c313f": {
+          "position": {
+            "x": 963,
+            "y": 28.75
+          },
+          "useDynamic": false
+        },
+        "ef560858-17cb-49a1-aa8b-9f66b38c68a9": {
+          "position": {
+            "x": 1190,
+            "y": 322.75
+          }
+        },
+        "1f7be2ea-077d-4cf4-81c0-80f1e7b54d68": {
+          "position": {
+            "x": 684.0078125,
+            "y": 39.765628814697266
+          },
+          "useDynamic": false,
+          "queue": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/26510dc2-a85a-4f2e-9c2e-313e7667a560",
+            "text": "AmShield - Transfer"
+          }
+        },
+        "f0503b32-6ca6-4e0b-a243-8d9c037ac520": {
+          "position": {
+            "x": 964,
+            "y": 235.75
+          },
+          "useDynamic": false,
+          "ContactFlow": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/b67723ff-fcf6-4420-911b-a8339398e206",
+            "text": "SC - Error"
+          }
+        },
+        "b9a06117-b1ac-4f68-ae46-e8a4d24be996": {
+          "position": {
+            "x": 168,
+            "y": 34.75
+          },
+          "useDynamic": false,
+          "contactFlowModuleName": "SC - Initialize"
+        },
+        "7712eaaf-5c38-4fd6-85f0-8a4c805fd1ae": {
+          "position": {
+            "x": 420,
+            "y": 36.75
+          },
+          "contactFlow": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/d70f5a16-6e8c-41ca-9596-851213ae1782",
+            "text": "SC - StandardQueueTreatment"
+          },
+          "customerOrAgent": true,
+          "useDynamic": false
+        }
+      }
+    },
+    "Actions": [
+      {
+        "Identifier": "c337884f-2f2d-4a4a-a4c3-877e241c313f",
+        "Transitions": {
+          "NextAction": "ef560858-17cb-49a1-aa8b-9f66b38c68a9",
+          "Errors": [
+            {
+              "NextAction": "ef560858-17cb-49a1-aa8b-9f66b38c68a9",
+              "ErrorType": "NoMatchingError"
+            },
+            {
+              "NextAction": "ef560858-17cb-49a1-aa8b-9f66b38c68a9",
+              "ErrorType": "QueueAtCapacity"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "TransferContactToQueue"
+      },
+      {
+        "Identifier": "ef560858-17cb-49a1-aa8b-9f66b38c68a9",
+        "Type": "DisconnectParticipant",
+        "Parameters": {},
+        "Transitions": {}
+      },
+      {
+        "Identifier": "1f7be2ea-077d-4cf4-81c0-80f1e7b54d68",
+        "Parameters": {
+          "QueueId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/26510dc2-a85a-4f2e-9c2e-313e7667a560",
+          "QueueName": "AmShield - Transfer"
+        },
+        "Transitions": {
+          "NextAction": "c337884f-2f2d-4a4a-a4c3-877e241c313f",
+          "Errors": [
+            {
+              "NextAction": "f0503b32-6ca6-4e0b-a243-8d9c037ac520",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "UpdateContactTargetQueue"
+      },
+      {
+        "Identifier": "f0503b32-6ca6-4e0b-a243-8d9c037ac520",
+        "Parameters": {
+          "ContactFlowId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/b67723ff-fcf6-4420-911b-a8339398e206",
+          "ContactFlowName": "SC - Error"
+        },
+        "Transitions": {
+          "NextAction": "ef560858-17cb-49a1-aa8b-9f66b38c68a9",
+          "Errors": [
+            {
+              "NextAction": "ef560858-17cb-49a1-aa8b-9f66b38c68a9",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "TransferToFlow"
+      },
+      {
+        "Identifier": "b9a06117-b1ac-4f68-ae46-e8a4d24be996",
+        "Parameters": {
+          "FlowModuleId": "dd71fafc-6703-49e0-957f-30f4c3783f1e",
+          "FlowModuleName": "SC - Initialize"
+        },
+        "Transitions": {
+          "NextAction": "7712eaaf-5c38-4fd6-85f0-8a4c805fd1ae",
+          "Errors": [
+            {
+              "NextAction": "7712eaaf-5c38-4fd6-85f0-8a4c805fd1ae",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "InvokeFlowModule"
+      },
+      {
+        "Identifier": "7712eaaf-5c38-4fd6-85f0-8a4c805fd1ae",
+        "Parameters": {
+          "EventHooks": {
+            "CustomerQueue": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/d70f5a16-6e8c-41ca-9596-851213ae1782"
+          }
+        },
+        "Transitions": {
+          "NextAction": "1f7be2ea-077d-4cf4-81c0-80f1e7b54d68",
+          "Errors": [
+            {
+              "NextAction": "f0503b32-6ca6-4e0b-a243-8d9c037ac520",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "UpdateContactEventHooks"
+      }
+    ]
+  },
+  "Tags": {}
+}

@@ -1,0 +1,95 @@
+[
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>All analysts are currently offline. To report a lost or stolen Shelter computer or mobile phone; or to report your Shelter user ID or password has been compromised, press 1.  If you would like to leave a message for the Support Center press 2.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - StandardQueueTreatment"
+    },
+    "id": {
+      "S": "prompt_028827c1-0af3-4509-8fcb-89670a2c99ec"
+    },
+    "name": {
+      "S": "StandardQueueTreatment_003"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  },
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>All analysts are currently busy. If you would like a callback, press 1. If you would like to wait for an analyst, simply stay on the line.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - StandardQueueTreatment"
+    },
+    "id": {
+      "S": "prompt_46c2e245-6588-411f-8dca-3236f8e3f9db"
+    },
+    "name": {
+      "S": "StandardQueueTreatment_001"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  },
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>All analysts are currently busy. Your wait time is approximately $.Attributes.HumanReadableWaitTime. If you would like us to call you back in about $.Attributes.HumanReadableWaitTime, press 1. If you would like to wait for an analyst, simply stay on the line.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - StandardQueueTreatment"
+    },
+    "id": {
+      "S": "prompt_94aec4de-34de-4e66-8243-80946ca26a69"
+    },
+    "name": {
+      "S": "StandardQueueTreatment_002"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  }
+]

@@ -1,0 +1,33 @@
+[
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>Thank you for calling the Shelter Insurance Support Center. We are currently closed.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "HolidayPrompt"
+    },
+    "id": {
+      "S": "prompt_0d5708be-d8e3-46b8-8f7d-782f11988ab5"
+    },
+    "name": {
+      "S": "Holiday_Default"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  }
+]

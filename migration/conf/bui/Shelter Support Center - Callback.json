@@ -1,0 +1,157 @@
+[
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>You entered <say-as interpret-as=\"telephone\">$.Attributes.CallbackNumber</say-as>. If this is correct, press 1. If this is incorrect, press 2.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Callback"
+    },
+    "id": {
+      "S": "prompt_51f0218c-a82a-429f-ac08-5e5c11cd7942"
+    },
+    "name": {
+      "S": "Callback_003"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  },
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>The telephone number format you entered was incorrect.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Callback"
+    },
+    "id": {
+      "S": "prompt_6836b5f4-a463-40c2-a1ce-84b14c7cdaf7"
+    },
+    "name": {
+      "S": "Callback_004"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  },
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>If you would like us to call you back at <say-as interpret-as=\"telephone\">$.CustomerEndpoint.Address</say-as>, press 1. To use a different callback number, press 2.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Callback"
+    },
+    "id": {
+      "S": "prompt_8c2ad9d1-3c0d-4031-a12c-ddb414c470e1"
+    },
+    "name": {
+      "S": "Callback_001"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  },
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>Your callback request has been successfully scheduled. Goodbye.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Callback"
+    },
+    "id": {
+      "S": "prompt_eb91c7e0-54d5-4a8a-9eae-9b58189a3c3b"
+    },
+    "name": {
+      "S": "Callback_005"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  },
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>Please enter your 10 digit callback telephone number followed by the pound key.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Callback"
+    },
+    "id": {
+      "S": "prompt_f2a82c4c-a465-42c3-88b5-462ab55b66a8"
+    },
+    "name": {
+      "S": "Callback_002"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  }
+]

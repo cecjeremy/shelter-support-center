@@ -1,0 +1,20 @@
+{
+  "Id": "e2391d8c-3f63-431d-bb9c-53a8c4a0838a",
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a",
+  "IdentityManagementType": "SAML",
+  "InstanceAlias": "shelter-support-center-dev",
+  "CreatedTime": "2022-02-21T15:30:26.000Z",
+  "ServiceRole": "arn:aws:iam::564741965342:role/aws-service-role/connect.amazonaws.com/AWSServiceRoleForAmazonConnect_Gzvhv8NKSZZQOc2Dmuh7",
+  "InstanceStatus": "ACTIVE",
+  "InboundCallsEnabled": true,
+  "OutboundCallsEnabled": true,
+  "Attributes": {
+    "INBOUND_CALLS": true,
+    "OUTBOUND_CALLS": true,
+    "CONTACTFLOW_LOGS": true,
+    "CONTACT_LENS": true,
+    "AUTO_RESOLVE_BEST_VOICES": true,
+    "USE_CUSTOM_TTS_VOICES": true,
+    "EARLY_MEDIA": true
+  }
+}

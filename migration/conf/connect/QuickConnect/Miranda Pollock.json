@@ -1,0 +1,28 @@
+{
+  "QuickConnectARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/5407ef08-63a6-4493-a9a5-7cbb285818f9",
+  "QuickConnectId": "5407ef08-63a6-4493-a9a5-7cbb285818f9",
+  "Name": "Miranda Pollock",
+  "Description": null,
+  "QuickConnectConfig": {
+    "QuickConnectType": "USER",
+    "UserConfig": {
+      "UserId": "6de507ab-1dd3-476a-84d4-1fd65b554a54",
+      "ContactFlowId": "0d6d0a60-25e5-41cd-8273-6af411fc619a"
+    }
+  },
+  "Tags": {},
+  "Supplemental": {
+    "Agent": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent/6de507ab-1dd3-476a-84d4-1fd65b554a54",
+      "Id": "6de507ab-1dd3-476a-84d4-1fd65b554a54",
+      "Username": "mpollock@shelterinsurance.com"
+    },
+    "ContactFlow": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/0d6d0a60-25e5-41cd-8273-6af411fc619a",
+      "ContactFlowState": "ACTIVE",
+      "ContactFlowType": "AGENT_TRANSFER",
+      "Id": "0d6d0a60-25e5-41cd-8273-6af411fc619a",
+      "Name": "Default agent transfer"
+    }
+  }
+}

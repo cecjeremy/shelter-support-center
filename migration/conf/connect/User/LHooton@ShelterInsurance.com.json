@@ -1,0 +1,40 @@
+{
+  "Id": "e02ba638-aac4-4f07-8179-6e94734cc8e3",
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent/e02ba638-aac4-4f07-8179-6e94734cc8e3",
+  "Username": "lhooton@shelterinsurance.com",
+  "IdentityInfo": {
+    "FirstName": "Luke",
+    "LastName": "Hooton",
+    "Email": null
+  },
+  "PhoneConfig": {
+    "PhoneType": "SOFT_PHONE",
+    "AutoAccept": false,
+    "AfterContactWorkTimeLimit": 0,
+    "DeskPhoneNumber": ""
+  },
+  "DirectoryUserId": null,
+  "SecurityProfileIds": [
+    "1f17786b-a192-40d1-8ada-8ead04e47342"
+  ],
+  "RoutingProfileId": "60a53bec-1c4a-4915-9da9-3630102ad26f",
+  "HierarchyGroupId": null,
+  "Tags": {},
+  "Supplemental": {
+    "SecurityProfiles": [
+      {
+        "Id": "1f17786b-a192-40d1-8ada-8ead04e47342",
+        "OrganizationResourceId": "e2391d8c-3f63-431d-bb9c-53a8c4a0838a",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/security-profile/1f17786b-a192-40d1-8ada-8ead04e47342",
+        "SecurityProfileName": "Admin",
+        "Description": "An administrator can perform all actions available.",
+        "Tags": {}
+      }
+    ],
+    "RoutingProfile": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/routing-profile/60a53bec-1c4a-4915-9da9-3630102ad26f",
+      "Id": "60a53bec-1c4a-4915-9da9-3630102ad26f",
+      "Name": "Basic Routing Profile"
+    }
+  }
+}

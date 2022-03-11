@@ -1,0 +1,33 @@
+[
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>Thank you for calling the Shelter Insurance Support Center. We are currently closed for maintenance.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "ClosurePrompt"
+    },
+    "id": {
+      "S": "prompt_732d6378-7f38-444c-b44c-35205fb28567"
+    },
+    "name": {
+      "S": "Maintenance_Prompt"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  }
+]

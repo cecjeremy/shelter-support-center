@@ -1,0 +1,211 @@
+{
+  "Name": "SC - Employee Mobile Device",
+  "QueueArn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/146d2c8a-9012-4566-bb0b-0753c07694f1",
+  "QueueId": "146d2c8a-9012-4566-bb0b-0753c07694f1",
+  "Description": "Employee Mobile Device/Phone",
+  "OutboundCallerConfig": {
+    "OutboundCallerIdName": null,
+    "OutboundCallerIdNumberId": null,
+    "OutboundFlowId": "273cbeda-8dfe-469f-9505-ee9b5ef02719"
+  },
+  "HoursOfOperationId": "9a8a484a-f0a4-4685-a8fd-a527b2677e8d",
+  "MaxContacts": null,
+  "Status": "ENABLED",
+  "Tags": {},
+  "Supplemental": {
+    "Hours": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/operating-hours/9a8a484a-f0a4-4685-a8fd-a527b2677e8d",
+      "Id": "9a8a484a-f0a4-4685-a8fd-a527b2677e8d",
+      "Name": "Basic Hours"
+    },
+    "ContactFlow": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/273cbeda-8dfe-469f-9505-ee9b5ef02719",
+      "Id": "273cbeda-8dfe-469f-9505-ee9b5ef02719",
+      "Name": "SC - Outbound",
+      "ContactFlowType": "OUTBOUND_WHISPER",
+      "ContactFlowState": "ACTIVE"
+    },
+    "QuickConnects": [
+      {
+        "Id": "0e74f734-31bb-441c-980a-d6786872fd73",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/0e74f734-31bb-441c-980a-d6786872fd73",
+        "Name": "Cale Breedlove",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "19476b40-4800-4ba4-88dc-d45287f28132",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/19476b40-4800-4ba4-88dc-d45287f28132",
+        "Name": "Angie Pezold",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "207ab95d-d7a6-4aa8-ad91-6abf460e5c6b",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/207ab95d-d7a6-4aa8-ad91-6abf460e5c6b",
+        "Name": "SC - Employee Other Software",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "25756b6a-a468-4bb2-bd9e-3d724ba9fd21",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/25756b6a-a468-4bb2-bd9e-3d724ba9fd21",
+        "Name": "Bev Pardoe",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "2a482964-e819-4af1-991d-d600ffb71f6c",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/2a482964-e819-4af1-991d-d600ffb71f6c",
+        "Name": "Colt Wacker",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "2be96c29-0f7c-4e50-94f3-89b07fbe1431",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/2be96c29-0f7c-4e50-94f3-89b07fbe1431",
+        "Name": "Josh Meyers",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "3b4c9452-e407-409e-a868-2c7301d962be",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/3b4c9452-e407-409e-a868-2c7301d962be",
+        "Name": "SC - Agent Password Reset",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "3ed58b7c-5f9e-491e-9b4a-f851d5407e2f",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/3ed58b7c-5f9e-491e-9b4a-f851d5407e2f",
+        "Name": "Stacy Dameron",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "488eeff0-1719-4f7a-bd26-fedba3be82f8",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/488eeff0-1719-4f7a-bd26-fedba3be82f8",
+        "Name": "SC - Agent Ecommerce",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "4e8cc0d5-ea30-4e17-9a26-f6eb832141f4",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/4e8cc0d5-ea30-4e17-9a26-f6eb832141f4",
+        "Name": "SC - Employee Software/Applications",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "5407ef08-63a6-4493-a9a5-7cbb285818f9",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/5407ef08-63a6-4493-a9a5-7cbb285818f9",
+        "Name": "Miranda Pollock",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "5e1e61bc-1ea3-4640-af52-390b2c73b7a9",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/5e1e61bc-1ea3-4640-af52-390b2c73b7a9",
+        "Name": "Dylan Rucker",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "6cefba8e-267f-4712-9e03-cb1f9e05b247",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/6cefba8e-267f-4712-9e03-cb1f9e05b247",
+        "Name": "SC - Employee Mobile Device",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "71036aa4-afdd-4bc7-b837-2f4b4daa5c19",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/71036aa4-afdd-4bc7-b837-2f4b4daa5c19",
+        "Name": "Sofia Jaime",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "71ec6819-2294-4589-923c-c490a28809b2",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/71ec6819-2294-4589-923c-c490a28809b2",
+        "Name": "SC - Employee Hardware",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "91820f19-f1a1-47ed-87e2-726940eea5bb",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/91820f19-f1a1-47ed-87e2-726940eea5bb",
+        "Name": "AmShield - Transfer",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "9260cf61-d61d-4b0b-b589-2aa80168d7b8",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/9260cf61-d61d-4b0b-b589-2aa80168d7b8",
+        "Name": "SC - Agent Mobile Device",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "9af17acd-466a-43aa-840b-537c0c609e36",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/9af17acd-466a-43aa-840b-537c0c609e36",
+        "Name": "Nancy Toalson",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "a7bec90c-0238-48e7-bd8f-b36182135e13",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/a7bec90c-0238-48e7-bd8f-b36182135e13",
+        "Name": "SC - Employee Password Reset",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "a9a1442f-e742-4a8a-a51f-c614f894d44e",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/a9a1442f-e742-4a8a-a51f-c614f894d44e",
+        "Name": "SC - Agent Hardware",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "aa598ba7-6ac4-4431-8206-8af12405a41a",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/aa598ba7-6ac4-4431-8206-8af12405a41a",
+        "Name": "Carol Sutter",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "b6691561-3fc2-4800-a477-96aa1fffa6cc",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/b6691561-3fc2-4800-a477-96aa1fffa6cc",
+        "Name": "Ian Whittington",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "c8846c06-4b03-4d3c-8950-7d8abfe70e93",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/c8846c06-4b03-4d3c-8950-7d8abfe70e93",
+        "Name": "SC - Agent Other Software",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "cd5b220c-72a2-4779-a0ab-270bd21a7009",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/cd5b220c-72a2-4779-a0ab-270bd21a7009",
+        "Name": "SC - Agent Internet Access",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "cff7e806-ed4f-48c3-8df7-91352f37e032",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/cff7e806-ed4f-48c3-8df7-91352f37e032",
+        "Name": "SC - Employee Online Software",
+        "QuickConnectType": "QUEUE"
+      },
+      {
+        "Id": "d2b2f5dd-1fc3-4544-80a1-bfef71d7f971",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/d2b2f5dd-1fc3-4544-80a1-bfef71d7f971",
+        "Name": "Seth VanBooven",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "e10782c5-5e73-4d58-a9c5-2bcbf148a016",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/e10782c5-5e73-4d58-a9c5-2bcbf148a016",
+        "Name": "Jacob Casady",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "f7c1f46e-0d36-495e-81db-44899433821b",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/f7c1f46e-0d36-495e-81db-44899433821b",
+        "Name": "Customer Services - Main",
+        "QuickConnectType": "PHONE_NUMBER"
+      },
+      {
+        "Id": "f8261502-72d6-463d-870b-4ff6e2049617",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/f8261502-72d6-463d-870b-4ff6e2049617",
+        "Name": "Justin Lupardus",
+        "QuickConnectType": "USER"
+      },
+      {
+        "Id": "fdde2835-0c62-482c-a675-c153a87d76d7",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/fdde2835-0c62-482c-a675-c153a87d76d7",
+        "Name": "Julie Cunningham",
+        "QuickConnectType": "USER"
+      }
+    ]
+  }
+}

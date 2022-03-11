@@ -1,0 +1,197 @@
+{
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/273cbeda-8dfe-469f-9505-ee9b5ef02719",
+  "Id": "273cbeda-8dfe-469f-9505-ee9b5ef02719",
+  "Name": "SC - Outbound",
+  "Type": "OUTBOUND_WHISPER",
+  "State": "ACTIVE",
+  "Description": "Shelter Support Center flow for outbound calls.",
+  "Content": {
+    "Version": "2019-10-30",
+    "StartAction": "f3026411-a6b8-4a42-9e62-c970810bc67e",
+    "Metadata": {
+      "entryPointPosition": {
+        "x": 75,
+        "y": 20
+      },
+      "snapToGrid": false,
+      "ActionMetadata": {
+        "f3026411-a6b8-4a42-9e62-c970810bc67e": {
+          "position": {
+            "x": 77,
+            "y": 169
+          }
+        },
+        "374e1382-996d-43b2-b6fa-776599fb3334": {
+          "position": {
+            "x": 65,
+            "y": 355
+          },
+          "overrideConsoleVoice": false,
+          "defaultVoice": "Standard"
+        },
+        "f9b25ba7-927c-441d-a314-cee0a31bbafa": {
+          "position": {
+            "x": 597,
+            "y": 28
+          },
+          "dynamicParams": [
+            "Outbound_001"
+          ]
+        },
+        "d4d054c5-9d70-46e6-8fcc-03127e67c351": {
+          "position": {
+            "x": 66,
+            "y": 534
+          }
+        },
+        "ff443147-bd97-468f-afa9-6ad780ac7266": {
+          "position": {
+            "x": 370.0078125,
+            "y": 27.015626907348633
+          },
+          "dynamicMetadata": {
+            "name": false,
+            "lang": false
+          },
+          "useDynamic": false
+        },
+        "7e89227a-8e96-459d-b243-379815f05ecc": {
+          "position": {
+            "x": 861,
+            "y": 96
+          },
+          "useDynamic": true
+        },
+        "8e150f9f-fab4-48c5-9808-e49ba5e6dff5": {
+          "position": {
+            "x": 866.0078125,
+            "y": 315.015625
+          },
+          "useDynamic": false
+        },
+        "fe0cff31-99e2-4b4a-b1ec-ff7baa711d7b": {
+          "position": {
+            "x": 1130,
+            "y": 237
+          }
+        }
+      }
+    },
+    "Actions": [
+      {
+        "Identifier": "f3026411-a6b8-4a42-9e62-c970810bc67e",
+        "Parameters": {
+          "FlowLoggingBehavior": "Enabled"
+        },
+        "Transitions": {
+          "NextAction": "374e1382-996d-43b2-b6fa-776599fb3334",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "UpdateFlowLoggingBehavior"
+      },
+      {
+        "Identifier": "374e1382-996d-43b2-b6fa-776599fb3334",
+        "Parameters": {
+          "TextToSpeechVoice": "Matthew"
+        },
+        "Transitions": {
+          "NextAction": "d4d054c5-9d70-46e6-8fcc-03127e67c351",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "UpdateContactTextToSpeechVoice"
+      },
+      {
+        "Identifier": "f9b25ba7-927c-441d-a314-cee0a31bbafa",
+        "Parameters": {
+          "Attributes": {
+            "Outbound_001": "$.External.Outbound_001"
+          }
+        },
+        "Transitions": {
+          "NextAction": "7e89227a-8e96-459d-b243-379815f05ecc",
+          "Errors": [
+            {
+              "NextAction": "8e150f9f-fab4-48c5-9808-e49ba5e6dff5",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "UpdateContactAttributes"
+      },
+      {
+        "Identifier": "d4d054c5-9d70-46e6-8fcc-03127e67c351",
+        "Parameters": {
+          "RecordingBehavior": {
+            "RecordedParticipants": [
+              "Agent",
+              "Customer"
+            ]
+          }
+        },
+        "Transitions": {
+          "NextAction": "ff443147-bd97-468f-afa9-6ad780ac7266",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "UpdateContactRecordingBehavior"
+      },
+      {
+        "Identifier": "ff443147-bd97-468f-afa9-6ad780ac7266",
+        "Parameters": {
+          "LambdaFunctionARN": "arn:aws:lambda:us-east-1:564741965342:function:getConfig-shelter-connect-admin-dev",
+          "InvocationTimeLimitSeconds": "3",
+          "LambdaInvocationAttributes": {
+            "name": "Shelter Support Center - Outbound",
+            "lang": "en-US"
+          },
+          "LambdaFunctionName": "getConfig-shelter-connect-admin"
+        },
+        "Transitions": {
+          "NextAction": "f9b25ba7-927c-441d-a314-cee0a31bbafa",
+          "Errors": [
+            {
+              "NextAction": "8e150f9f-fab4-48c5-9808-e49ba5e6dff5",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "InvokeLambdaFunction"
+      },
+      {
+        "Identifier": "7e89227a-8e96-459d-b243-379815f05ecc",
+        "Parameters": {
+          "SSML": "$.Attributes.Outbound_001"
+        },
+        "Transitions": {
+          "NextAction": "fe0cff31-99e2-4b4a-b1ec-ff7baa711d7b",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "MessageParticipant"
+      },
+      {
+        "Identifier": "8e150f9f-fab4-48c5-9808-e49ba5e6dff5",
+        "Parameters": {
+          "Text": "This call may be recorded for quality assurance purposes."
+        },
+        "Transitions": {
+          "NextAction": "fe0cff31-99e2-4b4a-b1ec-ff7baa711d7b",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "MessageParticipant"
+      },
+      {
+        "Identifier": "fe0cff31-99e2-4b4a-b1ec-ff7baa711d7b",
+        "Parameters": {},
+        "Transitions": {},
+        "Type": "EndFlowExecution"
+      }
+    ]
+  },
+  "Tags": {}
+}

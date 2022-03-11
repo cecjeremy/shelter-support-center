@@ -1,0 +1,33 @@
+[
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>This call may be recorded for quality assurance purposes.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Outbound"
+    },
+    "id": {
+      "S": "prompt_af2f70e9-e17b-4785-8c62-4741444ef94c"
+    },
+    "name": {
+      "S": "Outbound_001"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  }
+]

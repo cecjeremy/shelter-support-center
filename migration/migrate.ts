@@ -9,20 +9,20 @@ import {
   StorableNameProps
 } from '@ttec-dig-vf/vf-deploy';
 
-export class DevNameTransformer extends DefaultNameTransformer {
+export class ApplicationNameTransformer extends DefaultNameTransformer {
   public getStorableName = <T extends StorableNameProps>(props: T): string => {
     if (props.transformType !== 'Lambda') {
       return props.deployedName;
     }
 
     if (props.deployedName.includes('getConfig')) {
-      return 'getConfig';
+      return 'getConfig-shelter-connect-admin';
     }
     if (props.deployedName.includes('openCheck')) {
-      return 'openCheck';
+      return 'openCheck-shelter-connect-admin';
     }
     if (props.deployedName.includes('secondsToMinutesConverter')) {
-      return 'secondsToMinutesConverter';
+      return 'secondsToMinutesConverter-shelter-support-center';
     }
 
     return props.deployedName;
@@ -35,11 +35,11 @@ export class DevNameTransformer extends DefaultNameTransformer {
 
     switch (props.deployEnvironment) {
       case DeployEnvironment.Development:
-        return `${props.storableName}-shelter-connect-admin-dev`;
+        return `${props.storableName}-dev`;
       case DeployEnvironment.Test:
-        return `${props.storableName}-shelter-connect-admin-test`;
+        return `${props.storableName}-test`;
       case DeployEnvironment.Production:
-        return `${props.storableName}-shelter-connect-admin-prod`;
+        return `${props.storableName}-prod`;
       default:
         return props.storableName;
     }
@@ -49,7 +49,7 @@ export class DevNameTransformer extends DefaultNameTransformer {
 // Builder class to support customization.
 export class Builder implements CLIBuilder {
   getNameTransformer(): INameTransformer {
-    return new DevNameTransformer();
+    return new ApplicationNameTransformer();
   }
 }
 

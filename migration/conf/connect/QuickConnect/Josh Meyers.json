@@ -1,0 +1,28 @@
+{
+  "QuickConnectARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/2be96c29-0f7c-4e50-94f3-89b07fbe1431",
+  "QuickConnectId": "2be96c29-0f7c-4e50-94f3-89b07fbe1431",
+  "Name": "Josh Meyers",
+  "Description": null,
+  "QuickConnectConfig": {
+    "QuickConnectType": "USER",
+    "UserConfig": {
+      "UserId": "ba4f011c-24f7-4791-9a72-f5bbec05ba32",
+      "ContactFlowId": "0d6d0a60-25e5-41cd-8273-6af411fc619a"
+    }
+  },
+  "Tags": {},
+  "Supplemental": {
+    "Agent": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent/ba4f011c-24f7-4791-9a72-f5bbec05ba32",
+      "Id": "ba4f011c-24f7-4791-9a72-f5bbec05ba32",
+      "Username": "jmeyers@shelterinsurance.com"
+    },
+    "ContactFlow": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/0d6d0a60-25e5-41cd-8273-6af411fc619a",
+      "ContactFlowState": "ACTIVE",
+      "ContactFlowType": "AGENT_TRANSFER",
+      "Id": "0d6d0a60-25e5-41cd-8273-6af411fc619a",
+      "Name": "Default agent transfer"
+    }
+  }
+}

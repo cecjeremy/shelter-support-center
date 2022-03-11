@@ -1,0 +1,64 @@
+[
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>For Hardware Problems, press 1. For Assistance with eCommerce, press 2. If you are having problems with Internet Access, press 3. For assistance with other on-line applications and software such as ABC, Agent Supply ordering, email, or Microsoft Office, press 4. If you need assistance updating your mobile phone to use Shelter applications, press 5. To Reset a Password, press 6.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Agent"
+    },
+    "id": {
+      "S": "prompt_7f94a6bf-0398-469c-8e4f-a8c32910c332"
+    },
+    "name": {
+      "S": "Agent_002"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  },
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>To Speak to Customer Services to report a claim or for policy inquiry, press 1. To speak to the Support Center, press 2. To have this menu repeated, press the star key.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - Agent"
+    },
+    "id": {
+      "S": "prompt_98151df5-e765-4408-8a87-39db234d19fc"
+    },
+    "name": {
+      "S": "Agent_001"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  }
+]

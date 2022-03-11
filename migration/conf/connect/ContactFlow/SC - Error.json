@@ -1,0 +1,55 @@
+{
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/b67723ff-fcf6-4420-911b-a8339398e206",
+  "Id": "b67723ff-fcf6-4420-911b-a8339398e206",
+  "Name": "SC - Error",
+  "Type": "CONTACT_FLOW",
+  "State": "ACTIVE",
+  "Description": "Shelter error call flow",
+  "Content": {
+    "Version": "2019-10-30",
+    "StartAction": "223e22f7-e647-4875-92ac-f1f92d4f50cc",
+    "Metadata": {
+      "entryPointPosition": {
+        "x": 20,
+        "y": 20
+      },
+      "snapToGrid": false,
+      "ActionMetadata": {
+        "223e22f7-e647-4875-92ac-f1f92d4f50cc": {
+          "position": {
+            "x": 189,
+            "y": 59
+          },
+          "useDynamic": false
+        },
+        "69377e89-0d50-49a7-9526-795042b4c7ed": {
+          "position": {
+            "x": 431,
+            "y": 148
+          }
+        }
+      }
+    },
+    "Actions": [
+      {
+        "Identifier": "223e22f7-e647-4875-92ac-f1f92d4f50cc",
+        "Parameters": {
+          "SSML": "<speak>I’m sorry, there was an issue handling your request and we are unable to process your call at this time. Please try your call again later.</speak>"
+        },
+        "Transitions": {
+          "NextAction": "69377e89-0d50-49a7-9526-795042b4c7ed",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "MessageParticipant"
+      },
+      {
+        "Identifier": "69377e89-0d50-49a7-9526-795042b4c7ed",
+        "Type": "DisconnectParticipant",
+        "Parameters": {},
+        "Transitions": {}
+      }
+    ]
+  },
+  "Tags": {}
+}

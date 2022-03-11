@@ -1,0 +1,468 @@
+{
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/caefe57b-a617-4fe9-8855-48cb710d47c4",
+  "Id": "caefe57b-a617-4fe9-8855-48cb710d47c4",
+  "Name": "SC - Employee",
+  "Type": "CONTACT_FLOW",
+  "State": "ACTIVE",
+  "Description": "Shelter employee call flow",
+  "Content": {
+    "Version": "2019-10-30",
+    "StartAction": "4fc0c085-8b3b-4803-8f44-09b4d1b75735",
+    "Metadata": {
+      "entryPointPosition": {
+        "x": 15,
+        "y": 66
+      },
+      "snapToGrid": false,
+      "ActionMetadata": {
+        "018331bf-5008-4ca5-af8d-a2986dc5c87a": {
+          "position": {
+            "x": 158,
+            "y": 303
+          },
+          "dynamicParams": [
+            "Employee_001"
+          ]
+        },
+        "4fc0c085-8b3b-4803-8f44-09b4d1b75735": {
+          "position": {
+            "x": 161,
+            "y": 85
+          },
+          "dynamicMetadata": {
+            "name": false,
+            "lang": false
+          },
+          "useDynamic": false
+        },
+        "a102c3f0-7018-4be2-98af-28f513842f1f": {
+          "position": {
+            "x": 837,
+            "y": 15
+          },
+          "useDynamic": false,
+          "queue": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/ab3d821d-30f1-461a-812b-edaa9134af0b",
+            "text": "SC - Employee Other Software"
+          }
+        },
+        "8ea8f023-880e-4323-bbf7-c761b6e6ae79": {
+          "position": {
+            "x": 843,
+            "y": 207
+          },
+          "useDynamic": false,
+          "queue": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/51a81cee-5893-4bb8-8940-de3d2c60dac9",
+            "text": "SC - Employee Hardware"
+          }
+        },
+        "84445e71-0b4d-4a95-9f0e-7d5685f48f89": {
+          "position": {
+            "x": 842,
+            "y": 401
+          },
+          "useDynamic": false,
+          "queue": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/52e2936f-b8ca-4c78-ad0b-894e03a2e44d",
+            "text": "SC - Employee Software/Applications"
+          }
+        },
+        "e9e66682-8e65-49e1-a32d-b803d837d3af": {
+          "position": {
+            "x": 842,
+            "y": 595
+          },
+          "useDynamic": false,
+          "queue": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/b478e133-85ec-42c8-ba3d-82a91d553340",
+            "text": "SC - Employee Internet and Network"
+          }
+        },
+        "1e5c5d1e-71f4-4728-a432-18276ef91db2": {
+          "position": {
+            "x": 806,
+            "y": 792
+          },
+          "useDynamic": false,
+          "queue": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/146d2c8a-9012-4566-bb0b-0753c07694f1",
+            "text": "SC - Employee Mobile Device"
+          }
+        },
+        "66e546f9-44ee-4bf0-a280-b142e9244ee4": {
+          "position": {
+            "x": 464,
+            "y": 93
+          },
+          "useDynamic": false
+        },
+        "bad38a84-2415-47a7-bf39-f208294cd6a4": {
+          "position": {
+            "x": 463,
+            "y": 306
+          },
+          "conditionMetadata": [
+            {
+              "id": "a9f267b4-b734-4347-8134-a4c104b4647e",
+              "value": "1"
+            },
+            {
+              "id": "9274ce0b-7ceb-479d-be20-ac90c9628d28",
+              "value": "2"
+            },
+            {
+              "id": "331e953f-e70b-46d5-aecd-69f42990a193",
+              "value": "3"
+            },
+            {
+              "id": "484d48d7-43ee-4d12-9d9f-68eebe61755e",
+              "value": "4"
+            },
+            {
+              "id": "d03a0954-da53-4b79-a7fe-dd430120b7f0",
+              "value": "5"
+            }
+          ],
+          "useDynamic": true,
+          "useLexBotDropdown": true,
+          "useDynamicLexBotArn": false
+        },
+        "1fc0d7c2-2806-467b-9fba-21ed7417cec7": {
+          "position": {
+            "x": 1563,
+            "y": 1038
+          }
+        },
+        "2773ef44-f14c-44e9-878a-9b48ce08bb65": {
+          "position": {
+            "x": 1100,
+            "y": 92
+          },
+          "useDynamic": false
+        },
+        "5f8ea823-e466-440d-b42e-4fabafe69cc5": {
+          "position": {
+            "x": 768,
+            "y": 994
+          },
+          "useDynamic": false,
+          "ContactFlow": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/caae3966-5568-4d1a-ba7b-d879f1e2621e",
+            "text": "SC - PasswordReset"
+          }
+        },
+        "ca8b71ce-2b97-4b61-869b-501f83c9030d": {
+          "position": {
+            "x": 1326,
+            "y": 1031
+          },
+          "useDynamic": false,
+          "ContactFlow": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/b67723ff-fcf6-4420-911b-a8339398e206",
+            "text": "SC - Error"
+          }
+        }
+      }
+    },
+    "Actions": [
+      {
+        "Identifier": "018331bf-5008-4ca5-af8d-a2986dc5c87a",
+        "Parameters": {
+          "Attributes": {
+            "Employee_001": "$.External.Employee_001"
+          }
+        },
+        "Transitions": {
+          "NextAction": "66e546f9-44ee-4bf0-a280-b142e9244ee4",
+          "Errors": [
+            {
+              "NextAction": "66e546f9-44ee-4bf0-a280-b142e9244ee4",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "UpdateContactAttributes"
+      },
+      {
+        "Identifier": "4fc0c085-8b3b-4803-8f44-09b4d1b75735",
+        "Parameters": {
+          "LambdaFunctionARN": "arn:aws:lambda:us-east-1:564741965342:function:getConfig-shelter-connect-admin-dev",
+          "InvocationTimeLimitSeconds": "3",
+          "LambdaInvocationAttributes": {
+            "name": "Shelter Support Center - Employee",
+            "lang": "en-US"
+          },
+          "LambdaFunctionName": "getConfig-shelter-connect-admin"
+        },
+        "Transitions": {
+          "NextAction": "018331bf-5008-4ca5-af8d-a2986dc5c87a",
+          "Errors": [
+            {
+              "NextAction": "018331bf-5008-4ca5-af8d-a2986dc5c87a",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "InvokeLambdaFunction"
+      },
+      {
+        "Identifier": "a102c3f0-7018-4be2-98af-28f513842f1f",
+        "Parameters": {
+          "QueueId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/ab3d821d-30f1-461a-812b-edaa9134af0b",
+          "QueueName": "SC - Employee Other Software"
+        },
+        "Transitions": {
+          "NextAction": "2773ef44-f14c-44e9-878a-9b48ce08bb65",
+          "Errors": [
+            {
+              "NextAction": "2773ef44-f14c-44e9-878a-9b48ce08bb65",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "UpdateContactTargetQueue"
+      },
+      {
+        "Identifier": "8ea8f023-880e-4323-bbf7-c761b6e6ae79",
+        "Parameters": {
+          "QueueId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/51a81cee-5893-4bb8-8940-de3d2c60dac9",
+          "QueueName": "SC - Employee Hardware"
+        },
+        "Transitions": {
+          "NextAction": "2773ef44-f14c-44e9-878a-9b48ce08bb65",
+          "Errors": [
+            {
+              "NextAction": "2773ef44-f14c-44e9-878a-9b48ce08bb65",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "UpdateContactTargetQueue"
+      },
+      {
+        "Identifier": "84445e71-0b4d-4a95-9f0e-7d5685f48f89",
+        "Parameters": {
+          "QueueId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/52e2936f-b8ca-4c78-ad0b-894e03a2e44d",
+          "QueueName": "SC - Employee Software/Applications"
+        },
+        "Transitions": {
+          "NextAction": "2773ef44-f14c-44e9-878a-9b48ce08bb65",
+          "Errors": [
+            {
+              "NextAction": "2773ef44-f14c-44e9-878a-9b48ce08bb65",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "UpdateContactTargetQueue"
+      },
+      {
+        "Identifier": "e9e66682-8e65-49e1-a32d-b803d837d3af",
+        "Parameters": {
+          "QueueId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/b478e133-85ec-42c8-ba3d-82a91d553340",
+          "QueueName": "SC - Employee Internet and Network"
+        },
+        "Transitions": {
+          "NextAction": "2773ef44-f14c-44e9-878a-9b48ce08bb65",
+          "Errors": [
+            {
+              "NextAction": "2773ef44-f14c-44e9-878a-9b48ce08bb65",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "UpdateContactTargetQueue"
+      },
+      {
+        "Identifier": "1e5c5d1e-71f4-4728-a432-18276ef91db2",
+        "Parameters": {
+          "QueueId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/146d2c8a-9012-4566-bb0b-0753c07694f1",
+          "QueueName": "SC - Employee Mobile Device"
+        },
+        "Transitions": {
+          "NextAction": "2773ef44-f14c-44e9-878a-9b48ce08bb65",
+          "Errors": [
+            {
+              "NextAction": "2773ef44-f14c-44e9-878a-9b48ce08bb65",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "UpdateContactTargetQueue"
+      },
+      {
+        "Identifier": "66e546f9-44ee-4bf0-a280-b142e9244ee4",
+        "Parameters": {
+          "LoopCount": "3"
+        },
+        "Transitions": {
+          "NextAction": "a102c3f0-7018-4be2-98af-28f513842f1f",
+          "Errors": [],
+          "Conditions": [
+            {
+              "NextAction": "a102c3f0-7018-4be2-98af-28f513842f1f",
+              "Condition": {
+                "Operator": "Equals",
+                "Operands": [
+                  "DoneLooping"
+                ]
+              }
+            },
+            {
+              "NextAction": "bad38a84-2415-47a7-bf39-f208294cd6a4",
+              "Condition": {
+                "Operator": "Equals",
+                "Operands": [
+                  "ContinueLooping"
+                ]
+              }
+            }
+          ]
+        },
+        "Type": "Loop"
+      },
+      {
+        "Identifier": "bad38a84-2415-47a7-bf39-f208294cd6a4",
+        "Parameters": {
+          "SSML": "$.Attributes.Employee_001",
+          "StoreInput": "False",
+          "InputTimeLimitSeconds": "5"
+        },
+        "Transitions": {
+          "NextAction": "66e546f9-44ee-4bf0-a280-b142e9244ee4",
+          "Errors": [
+            {
+              "NextAction": "a102c3f0-7018-4be2-98af-28f513842f1f",
+              "ErrorType": "NoMatchingError"
+            },
+            {
+              "NextAction": "66e546f9-44ee-4bf0-a280-b142e9244ee4",
+              "ErrorType": "NoMatchingCondition"
+            },
+            {
+              "NextAction": "66e546f9-44ee-4bf0-a280-b142e9244ee4",
+              "ErrorType": "InputTimeLimitExceeded"
+            }
+          ],
+          "Conditions": [
+            {
+              "NextAction": "8ea8f023-880e-4323-bbf7-c761b6e6ae79",
+              "Condition": {
+                "Operator": "Equals",
+                "Operands": [
+                  "1"
+                ]
+              }
+            },
+            {
+              "NextAction": "84445e71-0b4d-4a95-9f0e-7d5685f48f89",
+              "Condition": {
+                "Operator": "Equals",
+                "Operands": [
+                  "2"
+                ]
+              }
+            },
+            {
+              "NextAction": "e9e66682-8e65-49e1-a32d-b803d837d3af",
+              "Condition": {
+                "Operator": "Equals",
+                "Operands": [
+                  "3"
+                ]
+              }
+            },
+            {
+              "NextAction": "1e5c5d1e-71f4-4728-a432-18276ef91db2",
+              "Condition": {
+                "Operator": "Equals",
+                "Operands": [
+                  "4"
+                ]
+              }
+            },
+            {
+              "NextAction": "5f8ea823-e466-440d-b42e-4fabafe69cc5",
+              "Condition": {
+                "Operator": "Equals",
+                "Operands": [
+                  "5"
+                ]
+              }
+            }
+          ]
+        },
+        "Type": "GetParticipantInput"
+      },
+      {
+        "Identifier": "1fc0d7c2-2806-467b-9fba-21ed7417cec7",
+        "Type": "DisconnectParticipant",
+        "Parameters": {},
+        "Transitions": {}
+      },
+      {
+        "Identifier": "2773ef44-f14c-44e9-878a-9b48ce08bb65",
+        "Transitions": {
+          "NextAction": "ca8b71ce-2b97-4b61-869b-501f83c9030d",
+          "Errors": [
+            {
+              "NextAction": "ca8b71ce-2b97-4b61-869b-501f83c9030d",
+              "ErrorType": "NoMatchingError"
+            },
+            {
+              "NextAction": "ca8b71ce-2b97-4b61-869b-501f83c9030d",
+              "ErrorType": "QueueAtCapacity"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "TransferContactToQueue"
+      },
+      {
+        "Identifier": "5f8ea823-e466-440d-b42e-4fabafe69cc5",
+        "Parameters": {
+          "ContactFlowId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/caae3966-5568-4d1a-ba7b-d879f1e2621e",
+          "ContactFlowName": "SC - PasswordReset"
+        },
+        "Transitions": {
+          "NextAction": "ca8b71ce-2b97-4b61-869b-501f83c9030d",
+          "Errors": [
+            {
+              "NextAction": "ca8b71ce-2b97-4b61-869b-501f83c9030d",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "TransferToFlow"
+      },
+      {
+        "Identifier": "ca8b71ce-2b97-4b61-869b-501f83c9030d",
+        "Parameters": {
+          "ContactFlowId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/b67723ff-fcf6-4420-911b-a8339398e206",
+          "ContactFlowName": "SC - Error"
+        },
+        "Transitions": {
+          "NextAction": "1fc0d7c2-2806-467b-9fba-21ed7417cec7",
+          "Errors": [
+            {
+              "NextAction": "1fc0d7c2-2806-467b-9fba-21ed7417cec7",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "TransferToFlow"
+      }
+    ]
+  },
+  "Tags": {}
+}

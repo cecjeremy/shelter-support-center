@@ -1,0 +1,28 @@
+{
+  "QuickConnectARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/207ab95d-d7a6-4aa8-ad91-6abf460e5c6b",
+  "QuickConnectId": "207ab95d-d7a6-4aa8-ad91-6abf460e5c6b",
+  "Name": "SC - Employee Other Software",
+  "Description": null,
+  "QuickConnectConfig": {
+    "QuickConnectType": "QUEUE",
+    "QueueConfig": {
+      "QueueId": "ab3d821d-30f1-461a-812b-edaa9134af0b",
+      "ContactFlowId": "dc94205e-e77c-47df-bcf9-ed2ea56063b3"
+    }
+  },
+  "Tags": {},
+  "Supplemental": {
+    "Queue": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/ab3d821d-30f1-461a-812b-edaa9134af0b",
+      "Id": "ab3d821d-30f1-461a-812b-edaa9134af0b",
+      "Name": "SC - Employee Other Software"
+    },
+    "ContactFlow": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/dc94205e-e77c-47df-bcf9-ed2ea56063b3",
+      "ContactFlowState": "ACTIVE",
+      "ContactFlowType": "QUEUE_TRANSFER",
+      "Id": "dc94205e-e77c-47df-bcf9-ed2ea56063b3",
+      "Name": "Default queue transfer"
+    }
+  }
+}

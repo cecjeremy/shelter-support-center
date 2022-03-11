@@ -1,0 +1,28 @@
+{
+  "QuickConnectARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/transfer-destination/a9a1442f-e742-4a8a-a51f-c614f894d44e",
+  "QuickConnectId": "a9a1442f-e742-4a8a-a51f-c614f894d44e",
+  "Name": "SC - Agent Hardware",
+  "Description": null,
+  "QuickConnectConfig": {
+    "QuickConnectType": "QUEUE",
+    "QueueConfig": {
+      "QueueId": "9eb7999f-1e08-433a-877c-4def6a835ea7",
+      "ContactFlowId": "dc94205e-e77c-47df-bcf9-ed2ea56063b3"
+    }
+  },
+  "Tags": {},
+  "Supplemental": {
+    "Queue": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/queue/9eb7999f-1e08-433a-877c-4def6a835ea7",
+      "Id": "9eb7999f-1e08-433a-877c-4def6a835ea7",
+      "Name": "SC - Agent Hardware"
+    },
+    "ContactFlow": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/dc94205e-e77c-47df-bcf9-ed2ea56063b3",
+      "ContactFlowState": "ACTIVE",
+      "ContactFlowType": "QUEUE_TRANSFER",
+      "Id": "dc94205e-e77c-47df-bcf9-ed2ea56063b3",
+      "Name": "Default queue transfer"
+    }
+  }
+}

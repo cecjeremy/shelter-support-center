@@ -1,0 +1,301 @@
+{
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/eb0c438a-a01d-4aea-b5df-6f94fb28943e",
+  "Id": "eb0c438a-a01d-4aea-b5df-6f94fb28943e",
+  "Name": "SC - AfterHours",
+  "Type": "CONTACT_FLOW",
+  "State": "ACTIVE",
+  "Description": "Shelter after hours/holiday/closure flow",
+  "Content": {
+    "Version": "2019-10-30",
+    "StartAction": "2bdd68dd-63d9-468c-951e-f1466f2a4ec1",
+    "Metadata": {
+      "entryPointPosition": {
+        "x": 15,
+        "y": 20
+      },
+      "snapToGrid": false,
+      "ActionMetadata": {
+        "2bdd68dd-63d9-468c-951e-f1466f2a4ec1": {
+          "position": {
+            "x": 172,
+            "y": 38
+          },
+          "dynamicMetadata": {
+            "name": false,
+            "lang": false
+          },
+          "useDynamic": false
+        },
+        "24a92e03-2e49-4b5d-8dd9-66ffbfb7dbac": {
+          "position": {
+            "x": 426,
+            "y": 36
+          },
+          "dynamicParams": [
+            "AfterHours_001"
+          ]
+        },
+        "5a07ea1b-6d6e-4791-a501-26ffb92d0f49": {
+          "position": {
+            "x": 662,
+            "y": 45
+          },
+          "useDynamic": true
+        },
+        "2f5875dc-75fd-4392-a733-9e521cb3b1db": {
+          "position": {
+            "x": 897,
+            "y": 50
+          },
+          "useDynamic": false
+        },
+        "06df65cc-4844-4d73-a697-b5274d8e1e1d": {
+          "position": {
+            "x": 1637,
+            "y": 574
+          }
+        },
+        "54d112ef-5ae8-4a72-9ceb-4699d0ad30ca": {
+          "position": {
+            "x": 1164,
+            "y": 323
+          },
+          "CountryCode": "us"
+        },
+        "839ce02a-c906-44ae-bb0d-87be819f56e5": {
+          "position": {
+            "x": 900,
+            "y": 257
+          },
+          "conditionMetadata": [
+            {
+              "id": "f6ac7504-b267-4b21-a83a-db65fad9839d",
+              "value": "1"
+            },
+            {
+              "id": "b0d70e46-57b4-4f68-a2ce-95a26eaa43b7",
+              "value": "2"
+            }
+          ],
+          "useDynamic": true,
+          "useLexBotDropdown": true,
+          "useDynamicLexBotArn": false
+        },
+        "aeb8db71-04b0-4b0e-9fdc-10770274cfa5": {
+          "position": {
+            "x": 1157,
+            "y": 154
+          },
+          "CountryCode": "us"
+        },
+        "1ae39fa4-81d3-4c56-98b5-e2370c72ba84": {
+          "position": {
+            "x": 1412,
+            "y": 485
+          },
+          "useDynamic": false,
+          "ContactFlow": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/b67723ff-fcf6-4420-911b-a8339398e206",
+            "text": "SC - Error"
+          }
+        }
+      }
+    },
+    "Actions": [
+      {
+        "Identifier": "2bdd68dd-63d9-468c-951e-f1466f2a4ec1",
+        "Parameters": {
+          "LambdaFunctionARN": "arn:aws:lambda:us-east-1:564741965342:function:getConfig-shelter-connect-admin-dev",
+          "InvocationTimeLimitSeconds": "3",
+          "LambdaInvocationAttributes": {
+            "name": "Shelter Support Center - AfterHours",
+            "lang": "en-US"
+          },
+          "LambdaFunctionName": "getConfig-shelter-connect-admin"
+        },
+        "Transitions": {
+          "NextAction": "24a92e03-2e49-4b5d-8dd9-66ffbfb7dbac",
+          "Errors": [
+            {
+              "NextAction": "24a92e03-2e49-4b5d-8dd9-66ffbfb7dbac",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "InvokeLambdaFunction"
+      },
+      {
+        "Identifier": "24a92e03-2e49-4b5d-8dd9-66ffbfb7dbac",
+        "Parameters": {
+          "Attributes": {
+            "AfterHours_001": "$.External.AfterHours_001"
+          }
+        },
+        "Transitions": {
+          "NextAction": "5a07ea1b-6d6e-4791-a501-26ffb92d0f49",
+          "Errors": [
+            {
+              "NextAction": "5a07ea1b-6d6e-4791-a501-26ffb92d0f49",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "UpdateContactAttributes"
+      },
+      {
+        "Identifier": "5a07ea1b-6d6e-4791-a501-26ffb92d0f49",
+        "Parameters": {
+          "SSML": "$.Attributes.UnavailableMessage"
+        },
+        "Transitions": {
+          "NextAction": "2f5875dc-75fd-4392-a733-9e521cb3b1db",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "MessageParticipant"
+      },
+      {
+        "Identifier": "2f5875dc-75fd-4392-a733-9e521cb3b1db",
+        "Parameters": {
+          "LoopCount": "3"
+        },
+        "Transitions": {
+          "NextAction": "aeb8db71-04b0-4b0e-9fdc-10770274cfa5",
+          "Errors": [],
+          "Conditions": [
+            {
+              "NextAction": "aeb8db71-04b0-4b0e-9fdc-10770274cfa5",
+              "Condition": {
+                "Operator": "Equals",
+                "Operands": [
+                  "DoneLooping"
+                ]
+              }
+            },
+            {
+              "NextAction": "839ce02a-c906-44ae-bb0d-87be819f56e5",
+              "Condition": {
+                "Operator": "Equals",
+                "Operands": [
+                  "ContinueLooping"
+                ]
+              }
+            }
+          ]
+        },
+        "Type": "Loop"
+      },
+      {
+        "Identifier": "06df65cc-4844-4d73-a697-b5274d8e1e1d",
+        "Type": "DisconnectParticipant",
+        "Parameters": {},
+        "Transitions": {}
+      },
+      {
+        "Identifier": "54d112ef-5ae8-4a72-9ceb-4699d0ad30ca",
+        "Parameters": {
+          "ThirdPartyPhoneNumber": "+15738187211",
+          "ThirdPartyConnectionTimeLimitSeconds": "30",
+          "ContinueFlowExecution": "False"
+        },
+        "Transitions": {
+          "NextAction": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
+          "Errors": [
+            {
+              "NextAction": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "TransferParticipantToThirdParty"
+      },
+      {
+        "Identifier": "839ce02a-c906-44ae-bb0d-87be819f56e5",
+        "Parameters": {
+          "SSML": "$.Attributes.AfterHours_001",
+          "StoreInput": "False",
+          "InputTimeLimitSeconds": "5"
+        },
+        "Transitions": {
+          "NextAction": "2f5875dc-75fd-4392-a733-9e521cb3b1db",
+          "Errors": [
+            {
+              "NextAction": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
+              "ErrorType": "NoMatchingError"
+            },
+            {
+              "NextAction": "2f5875dc-75fd-4392-a733-9e521cb3b1db",
+              "ErrorType": "NoMatchingCondition"
+            },
+            {
+              "NextAction": "2f5875dc-75fd-4392-a733-9e521cb3b1db",
+              "ErrorType": "InputTimeLimitExceeded"
+            }
+          ],
+          "Conditions": [
+            {
+              "NextAction": "54d112ef-5ae8-4a72-9ceb-4699d0ad30ca",
+              "Condition": {
+                "Operator": "Equals",
+                "Operands": [
+                  "1"
+                ]
+              }
+            },
+            {
+              "NextAction": "aeb8db71-04b0-4b0e-9fdc-10770274cfa5",
+              "Condition": {
+                "Operator": "Equals",
+                "Operands": [
+                  "2"
+                ]
+              }
+            }
+          ]
+        },
+        "Type": "GetParticipantInput"
+      },
+      {
+        "Identifier": "aeb8db71-04b0-4b0e-9fdc-10770274cfa5",
+        "Parameters": {
+          "ThirdPartyPhoneNumber": "+18444069729",
+          "ThirdPartyConnectionTimeLimitSeconds": "30",
+          "ContinueFlowExecution": "False"
+        },
+        "Transitions": {
+          "NextAction": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
+          "Errors": [
+            {
+              "NextAction": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "TransferParticipantToThirdParty"
+      },
+      {
+        "Identifier": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
+        "Parameters": {
+          "ContactFlowId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/b67723ff-fcf6-4420-911b-a8339398e206",
+          "ContactFlowName": "SC - Error"
+        },
+        "Transitions": {
+          "NextAction": "06df65cc-4844-4d73-a697-b5274d8e1e1d",
+          "Errors": [
+            {
+              "NextAction": "06df65cc-4844-4d73-a697-b5274d8e1e1d",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "TransferToFlow"
+      }
+    ]
+  },
+  "Tags": {}
+}

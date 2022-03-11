@@ -1,0 +1,63 @@
+{
+  "Id": "6de507ab-1dd3-476a-84d4-1fd65b554a54",
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent/6de507ab-1dd3-476a-84d4-1fd65b554a54",
+  "Username": "mpollock@shelterinsurance.com",
+  "IdentityInfo": {
+    "FirstName": "Miranda",
+    "LastName": "Pollock",
+    "Email": null
+  },
+  "PhoneConfig": {
+    "PhoneType": "SOFT_PHONE",
+    "AutoAccept": false,
+    "AfterContactWorkTimeLimit": 0,
+    "DeskPhoneNumber": ""
+  },
+  "DirectoryUserId": null,
+  "SecurityProfileIds": [
+    "75270056-425d-4e2b-b643-53dde5e67ce2"
+  ],
+  "RoutingProfileId": "81d1166d-51f3-4f0f-b112-0fe5c06f03ab",
+  "HierarchyGroupId": "96a27a09-2c3b-4b08-b244-927aec002b3c",
+  "Tags": {},
+  "Supplemental": {
+    "HierarchyGroup": {
+      "Id": "96a27a09-2c3b-4b08-b244-927aec002b3c",
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group/96a27a09-2c3b-4b08-b244-927aec002b3c",
+      "Name": "Angie Pezold",
+      "LevelId": "3",
+      "HierarchyPath": {
+        "LevelOne": {
+          "Id": "896a3dc7-0cb0-492e-8321-e86160501314",
+          "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group/896a3dc7-0cb0-492e-8321-e86160501314",
+          "Name": "Support Center"
+        },
+        "LevelTwo": {
+          "Id": "471b4091-8a40-478f-95be-643491de752a",
+          "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group/471b4091-8a40-478f-95be-643491de752a",
+          "Name": "Home Office"
+        },
+        "LevelThree": {
+          "Id": "96a27a09-2c3b-4b08-b244-927aec002b3c",
+          "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group/96a27a09-2c3b-4b08-b244-927aec002b3c",
+          "Name": "Angie Pezold"
+        }
+      }
+    },
+    "SecurityProfiles": [
+      {
+        "Id": "75270056-425d-4e2b-b643-53dde5e67ce2",
+        "OrganizationResourceId": "e2391d8c-3f63-431d-bb9c-53a8c4a0838a",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/security-profile/75270056-425d-4e2b-b643-53dde5e67ce2",
+        "SecurityProfileName": "Agent",
+        "Description": "An agent is a user of the system that is focused on customer care and/or sales.  Their role is unlikely to be technical.",
+        "Tags": {}
+      }
+    ],
+    "RoutingProfile": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/routing-profile/81d1166d-51f3-4f0f-b112-0fe5c06f03ab",
+      "Id": "81d1166d-51f3-4f0f-b112-0fe5c06f03ab",
+      "Name": "SC - Analyst"
+    }
+  }
+}

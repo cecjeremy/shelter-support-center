@@ -1,0 +1,33 @@
+[
+  {
+    "data": {
+      "L": [
+        {
+          "M": {
+            "lang": {
+              "S": "en-US"
+            },
+            "value": {
+              "S": "<speak>To report a lost or stolen Shelter computer or mobile phone; or to report your Shelter user ID or password has been compromised, press 1.  If you would like to leave a message for the Support Center press 2.</speak>"
+            }
+          }
+        }
+      ]
+    },
+    "disabled": {
+      "BOOL": false
+    },
+    "key": {
+      "S": "Shelter Support Center - AfterHours"
+    },
+    "id": {
+      "S": "prompt_28cca305-c3ed-45fd-be39-302e1adf0098"
+    },
+    "name": {
+      "S": "AfterHours_001"
+    },
+    "type": {
+      "S": "prompt"
+    }
+  }
+]

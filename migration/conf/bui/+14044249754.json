@@ -1,0 +1,247 @@
+[
+  {
+    "startTime": {
+      "S": ""
+    },
+    "date": {
+      "S": "2022-12-25"
+    },
+    "endTime": {
+      "S": ""
+    },
+    "openCheckType": {
+      "S": "DNIS"
+    },
+    "timezone": {
+      "S": "US/Central"
+    },
+    "prompt": {
+      "S": "prompt_0d5708be-d8e3-46b8-8f7d-782f11988ab5"
+    },
+    "allDay": {
+      "BOOL": true
+    },
+    "key": {
+      "S": "+14044249754"
+    },
+    "id": {
+      "S": "holiday_3808434f-53e0-4600-991c-02796a457987"
+    },
+    "name": {
+      "S": "Christmas Day"
+    },
+    "type": {
+      "S": "holiday"
+    }
+  },
+  {
+    "startTime": {
+      "S": ""
+    },
+    "date": {
+      "S": "2022-11-25"
+    },
+    "endTime": {
+      "S": ""
+    },
+    "openCheckType": {
+      "S": "DNIS"
+    },
+    "timezone": {
+      "S": "US/Central"
+    },
+    "prompt": {
+      "S": "prompt_0d5708be-d8e3-46b8-8f7d-782f11988ab5"
+    },
+    "allDay": {
+      "BOOL": true
+    },
+    "key": {
+      "S": "+14044249754"
+    },
+    "id": {
+      "S": "holiday_3bc672a6-e1a1-425a-8f5f-4c81747f0558"
+    },
+    "name": {
+      "S": "Day after Thanksgiving"
+    },
+    "type": {
+      "S": "holiday"
+    }
+  },
+  {
+    "startTime": {
+      "S": ""
+    },
+    "date": {
+      "S": "2022-09-05"
+    },
+    "endTime": {
+      "S": ""
+    },
+    "openCheckType": {
+      "S": "DNIS"
+    },
+    "timezone": {
+      "S": "US/Central"
+    },
+    "prompt": {
+      "S": "prompt_0d5708be-d8e3-46b8-8f7d-782f11988ab5"
+    },
+    "allDay": {
+      "BOOL": true
+    },
+    "key": {
+      "S": "+14044249754"
+    },
+    "id": {
+      "S": "holiday_42a8fb7c-2ba1-404b-829a-356313fd0d19"
+    },
+    "name": {
+      "S": "Labor Day"
+    },
+    "type": {
+      "S": "holiday"
+    }
+  },
+  {
+    "startTime": {
+      "S": ""
+    },
+    "date": {
+      "S": "2022-11-24"
+    },
+    "endTime": {
+      "S": ""
+    },
+    "openCheckType": {
+      "S": "DNIS"
+    },
+    "timezone": {
+      "S": "US/Central"
+    },
+    "prompt": {
+      "S": "prompt_0d5708be-d8e3-46b8-8f7d-782f11988ab5"
+    },
+    "allDay": {
+      "BOOL": true
+    },
+    "key": {
+      "S": "+14044249754"
+    },
+    "id": {
+      "S": "holiday_44e21e60-0406-4a6a-bc7b-e21380e3ceac"
+    },
+    "name": {
+      "S": "Thanksgiving Day"
+    },
+    "type": {
+      "S": "holiday"
+    }
+  },
+  {
+    "startTime": {
+      "S": ""
+    },
+    "date": {
+      "S": "2022-05-30"
+    },
+    "endTime": {
+      "S": ""
+    },
+    "openCheckType": {
+      "S": "DNIS"
+    },
+    "timezone": {
+      "S": "US/Central"
+    },
+    "prompt": {
+      "S": "prompt_0d5708be-d8e3-46b8-8f7d-782f11988ab5"
+    },
+    "allDay": {
+      "BOOL": true
+    },
+    "key": {
+      "S": "+14044249754"
+    },
+    "id": {
+      "S": "holiday_4faceb63-a8be-42f0-a8cf-24ed7c25a596"
+    },
+    "name": {
+      "S": "Memorial Day"
+    },
+    "type": {
+      "S": "holiday"
+    }
+  },
+  {
+    "startTime": {
+      "S": ""
+    },
+    "date": {
+      "S": "2022-07-04"
+    },
+    "endTime": {
+      "S": ""
+    },
+    "openCheckType": {
+      "S": "DNIS"
+    },
+    "timezone": {
+      "S": "US/Central"
+    },
+    "prompt": {
+      "S": "prompt_0d5708be-d8e3-46b8-8f7d-782f11988ab5"
+    },
+    "allDay": {
+      "BOOL": true
+    },
+    "key": {
+      "S": "+14044249754"
+    },
+    "id": {
+      "S": "holiday_6bc7cb6c-61aa-4db7-aa30-3336a4f542b8"
+    },
+    "name": {
+      "S": "Independence Day"
+    },
+    "type": {
+      "S": "holiday"
+    }
+  },
+  {
+    "startTime": {
+      "S": ""
+    },
+    "date": {
+      "S": "2023-01-01"
+    },
+    "endTime": {
+      "S": ""
+    },
+    "openCheckType": {
+      "S": "DNIS"
+    },
+    "timezone": {
+      "S": "US/Central"
+    },
+    "prompt": {
+      "S": "prompt_0d5708be-d8e3-46b8-8f7d-782f11988ab5"
+    },
+    "allDay": {
+      "BOOL": true
+    },
+    "key": {
+      "S": "+14044249754"
+    },
+    "id": {
+      "S": "holiday_747121fb-169c-4803-bf88-f716f984afb3"
+    },
+    "name": {
+      "S": "New Years Day"
+    },
+    "type": {
+      "S": "holiday"
+    }
+  }
+]
