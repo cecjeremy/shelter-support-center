@@ -1,3 +1,4 @@
+import { CfnBucket } from '@aws-cdk/aws-s3';
 import { Construct } from '@aws-cdk/core';
 import { ConnectDataStorage, ConnectDataStreamingStack } from '@ttec-dig-vf/cdk-resources';
 import { ConnectStack } from '../stacks/ConnectStack';
@@ -32,6 +33,20 @@ export class ConnectCore extends Construct {
       includeAgentStream: true,
       includeAgentFirehose: true,
       connectEncryptionKeyArn: this.storageStack.keys.shared?.keyArn
+    });
+
+    // add access logging to all storage buckets
+    Object.keys(this.storageStack.buckets).forEach(key => {
+      const bucket = this.storageStack.buckets[key as keyof typeof this.storageStack.buckets];
+
+      if (!bucket) {
+        return;
+      }
+
+      (bucket.node.defaultChild as CfnBucket).loggingConfiguration = {
+        destinationBucketName: bucket.bucketName,
+        logFilePrefix: 'access-logs/'
+      };
     });
 
     this.connectInstanceAlias = connectCore?.instanceAlias ?? prefix;
