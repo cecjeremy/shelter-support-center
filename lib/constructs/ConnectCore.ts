@@ -20,7 +20,8 @@ export class ConnectCore extends Construct {
     this.storageStack = new ConnectDataStorage(this, 'ConnectStorage', {
       ...props,
       prefix,
-      stackName: `${prefix}-storage`
+      stackName: `${prefix}-storage`,
+      accessLogs: true
     });
 
     this.streamingStack = new ConnectDataStreamingStack(this, 'ConnectDataStreaming', {
@@ -36,17 +37,17 @@ export class ConnectCore extends Construct {
     });
 
     // add access logging to all storage buckets
-    Object.keys(this.storageStack.buckets).forEach(key => {
-      const bucket = this.storageStack.buckets[key as keyof typeof this.storageStack.buckets];
+    // Object.keys(this.storageStack.buckets).forEach(key => {
+    //   const bucket = this.storageStack.buckets[key as keyof typeof this.storageStack.buckets];
 
-      if (!bucket) {
-        return;
-      }
+    //   if (!bucket) {
+    //     return;
+    //   }
 
-      (bucket.node.defaultChild as CfnBucket).loggingConfiguration = {
-        logFilePrefix: 'access-logs/'
-      };
-    });
+    //   (bucket.node.defaultChild as CfnBucket).loggingConfiguration = {
+    //     logFilePrefix: 'access-logs/'
+    //   };
+    // });
 
     this.connectInstanceAlias = connectCore?.instanceAlias ?? prefix;
 
