@@ -1,4 +1,5 @@
 import { Construct, Stage } from '@aws-cdk/core';
+import { CfnTopic } from '@aws-cdk/aws-sns';
 import { AdminStack, AdminStackProps } from '@ttec-dig-vf/vf-connect-admin';
 import { ConnectCore } from '../constructs/ConnectCore';
 import { ConnectLambdas } from '../stacks/ConnectLambdas';
@@ -68,5 +69,9 @@ export class VfApplicationStage extends Stage {
     };
 
     this.adminStack = new AdminStack(this, `ConnectAdminStack`, adminProps);
+
+    // this is a hacky fix to add encryption to the admin app SNS topic
+    const snsEventBus = this.adminStack.node.findChild('AdminAppEvents').node.defaultChild as CfnTopic;
+    snsEventBus.kmsMasterKeyId = this.connectCore.storageStack.keys.shared?.keyId;
   }
 }
