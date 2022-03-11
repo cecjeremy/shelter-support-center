@@ -65,6 +65,9 @@ export class VfApplicationStage extends Stage {
       hosting: {
         s3SecureTransport: true,
         enableCloudfrontLogs: true
+      },
+      appEventsSnsTopic: {
+        masterKey: this.connectCore.storageStack.keys.shared
       }
     };
 
