@@ -44,7 +44,6 @@ export class ConnectCore extends Construct {
       }
 
       (bucket.node.defaultChild as CfnBucket).loggingConfiguration = {
-        destinationBucketName: bucket.bucketName,
         logFilePrefix: 'access-logs/'
       };
     });
