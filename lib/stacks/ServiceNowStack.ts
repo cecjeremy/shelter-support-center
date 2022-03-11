@@ -13,7 +13,9 @@ export class ServiceNowStack extends Stack {
     this.lambdaBucket = new Bucket(this, 'ServiceNowBucket', {
       bucketName: `${config.getPrefix(stage)}-servicenow`,
       versioned: true,
-      blockPublicAccess: BlockPublicAccess.BLOCK_ALL
+      blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+      enforceSSL: true,
+      serverAccessLogsPrefix: 'access-logs/'
     });
   }
 }
