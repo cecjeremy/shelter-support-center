@@ -4,7 +4,7 @@
   "Name": "SC - Dispatching",
   "Description": "Dispatching problem tickets",
   "Type": "CUSTOM",
-  "DisplayOrder": 9,
+  "DisplayOrder": 8,
   "State": "ENABLED",
   "Tags": {}
 }

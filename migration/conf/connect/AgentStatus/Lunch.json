@@ -4,7 +4,7 @@
   "Name": "Lunch",
   "Description": "Lunch",
   "Type": "CUSTOM",
-  "DisplayOrder": 4,
+  "DisplayOrder": 6,
   "State": "ENABLED",
   "Tags": {}
 }

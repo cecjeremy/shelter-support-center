@@ -4,7 +4,7 @@
   "Name": "SC - Consulting",
   "Description": "Consulting with a peer or other resource",
   "Type": "CUSTOM",
-  "DisplayOrder": 8,
+  "DisplayOrder": 9,
   "State": "ENABLED",
   "Tags": {}
 }

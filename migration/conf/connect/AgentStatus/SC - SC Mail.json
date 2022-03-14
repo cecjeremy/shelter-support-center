@@ -4,7 +4,7 @@
   "Name": "SC - SC Mail",
   "Description": "Processing SC Mail tickets",
   "Type": "CUSTOM",
-  "DisplayOrder": 10,
+  "DisplayOrder": 7,
   "State": "ENABLED",
   "Tags": {}
 }

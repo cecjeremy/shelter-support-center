@@ -4,7 +4,7 @@
   "Name": "Meeting",
   "Description": "Meeting",
   "Type": "CUSTOM",
-  "DisplayOrder": 5,
+  "DisplayOrder": 4,
   "State": "ENABLED",
   "Tags": {}
 }

@@ -4,7 +4,7 @@
   "Name": "Training",
   "Description": "Training",
   "Type": "CUSTOM",
-  "DisplayOrder": 6,
+  "DisplayOrder": 3,
   "State": "ENABLED",
   "Tags": {}
 }

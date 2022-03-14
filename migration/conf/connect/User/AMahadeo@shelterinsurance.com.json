@@ -1,6 +1,6 @@
 {
-  "Id": "6ec9bf1d-24a4-499c-aaf3-eb0885d69cf4",
-  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent/6ec9bf1d-24a4-499c-aaf3-eb0885d69cf4",
+  "Id": "17657d20-e2b3-4778-b03a-14913d0ef930",
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent/17657d20-e2b3-4778-b03a-14913d0ef930",
   "Username": "amahadeo@shelterinsurance.com",
   "IdentityInfo": {
     "FirstName": "Anthony",
@@ -13,8 +13,10 @@
     "AfterContactWorkTimeLimit": 0,
     "DeskPhoneNumber": ""
   },
-  "DirectoryUserId": "d15e23c1-ee5a-40ce-b597-4c9348c1cec9",
-  "SecurityProfileIds": ["1f17786b-a192-40d1-8ada-8ead04e47342"],
+  "DirectoryUserId": "b2a322d1-1a89-49a0-9a21-bd209459c96c",
+  "SecurityProfileIds": [
+    "1f17786b-a192-40d1-8ada-8ead04e47342"
+  ],
   "RoutingProfileId": "60a53bec-1c4a-4915-9da9-3630102ad26f",
   "HierarchyGroupId": null,
   "Tags": {},
