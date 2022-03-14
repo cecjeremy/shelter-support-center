@@ -64,7 +64,8 @@ export class VfApplicationStage extends Stage {
       },
       hosting: {
         s3SecureTransport: true,
-        enableCloudfrontLogs: true
+        enableCloudfrontLogs: true,
+        loggingBucketName: this.connectCore.storageStack.buckets.accessLogs?.bucketName
       },
       appEventsSnsTopic: {
         masterKey: this.connectCore.storageStack.keys.shared
@@ -72,9 +73,5 @@ export class VfApplicationStage extends Stage {
     };
 
     this.adminStack = new AdminStack(this, `ConnectAdminStack`, adminProps);
-
-    // this is a hacky fix to add encryption to the admin app SNS topic
-    const snsEventBus = this.adminStack.node.findChild('AdminAppEvents').node.defaultChild as CfnTopic;
-    snsEventBus.kmsMasterKeyId = this.connectCore.storageStack.keys.shared?.keyId;
   }
 }
