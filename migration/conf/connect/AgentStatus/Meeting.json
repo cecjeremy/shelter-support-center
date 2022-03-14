@@ -1,0 +1,10 @@
+{
+  "AgentStatusARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-state/e4b68d84-c886-4f36-ac38-b7bb975e38c4",
+  "AgentStatusId": "e4b68d84-c886-4f36-ac38-b7bb975e38c4",
+  "Name": "Meeting",
+  "Description": "Meeting",
+  "Type": "CUSTOM",
+  "DisplayOrder": 5,
+  "State": "ENABLED",
+  "Tags": {}
+}

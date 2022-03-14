@@ -1,0 +1,10 @@
+{
+  "AgentStatusARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-state/6e3b6a58-a830-4798-8d2a-7e232cf09e92",
+  "AgentStatusId": "6e3b6a58-a830-4798-8d2a-7e232cf09e92",
+  "Name": "Lunch",
+  "Description": "Lunch",
+  "Type": "CUSTOM",
+  "DisplayOrder": 4,
+  "State": "ENABLED",
+  "Tags": {}
+}

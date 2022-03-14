@@ -1,0 +1,10 @@
+{
+  "AgentStatusARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-state/3c186be2-fada-42fa-abca-cbc754cdd92a",
+  "AgentStatusId": "3c186be2-fada-42fa-abca-cbc754cdd92a",
+  "Name": "Break",
+  "Description": "Break",
+  "Type": "CUSTOM",
+  "DisplayOrder": 3,
+  "State": "ENABLED",
+  "Tags": {}
+}

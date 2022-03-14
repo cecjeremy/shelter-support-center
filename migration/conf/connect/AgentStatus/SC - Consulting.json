@@ -1,0 +1,10 @@
+{
+  "AgentStatusARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-state/db3a50c0-0445-48ab-9b38-130763497707",
+  "AgentStatusId": "db3a50c0-0445-48ab-9b38-130763497707",
+  "Name": "SC - Consulting",
+  "Description": "Consulting with a peer or other resource",
+  "Type": "CUSTOM",
+  "DisplayOrder": 8,
+  "State": "ENABLED",
+  "Tags": {}
+}

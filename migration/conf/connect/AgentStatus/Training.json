@@ -1,0 +1,10 @@
+{
+  "AgentStatusARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-state/0ff15627-4003-4067-9e9a-7fd2fa69552e",
+  "AgentStatusId": "0ff15627-4003-4067-9e9a-7fd2fa69552e",
+  "Name": "Training",
+  "Description": "Training",
+  "Type": "CUSTOM",
+  "DisplayOrder": 6,
+  "State": "ENABLED",
+  "Tags": {}
+}

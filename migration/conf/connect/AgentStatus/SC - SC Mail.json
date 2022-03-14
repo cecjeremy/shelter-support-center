@@ -1,0 +1,10 @@
+{
+  "AgentStatusARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-state/a92dab7f-04d0-4bfc-8e37-01c85b891cd2",
+  "AgentStatusId": "a92dab7f-04d0-4bfc-8e37-01c85b891cd2",
+  "Name": "SC - SC Mail",
+  "Description": "Processing SC Mail tickets",
+  "Type": "CUSTOM",
+  "DisplayOrder": 10,
+  "State": "ENABLED",
+  "Tags": {}
+}

@@ -1,0 +1,10 @@
+{
+  "AgentStatusARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-state/c0f9955b-15e2-4f6b-a5a5-77f36448b4c1",
+  "AgentStatusId": "c0f9955b-15e2-4f6b-a5a5-77f36448b4c1",
+  "Name": "SC - TEAMS call",
+  "Description": "Return support call through MS Teams",
+  "Type": "CUSTOM",
+  "DisplayOrder": 11,
+  "State": "ENABLED",
+  "Tags": {}
+}

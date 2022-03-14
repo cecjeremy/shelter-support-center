@@ -1,0 +1,10 @@
+{
+  "AgentStatusARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-state/93a9b36d-35d6-4e63-ae98-0f5305b8c29a",
+  "AgentStatusId": "93a9b36d-35d6-4e63-ae98-0f5305b8c29a",
+  "Name": "SC - Assigned Project",
+  "Description": "Used when working on assigned off phone project",
+  "Type": "CUSTOM",
+  "DisplayOrder": 7,
+  "State": "ENABLED",
+  "Tags": {}
+}

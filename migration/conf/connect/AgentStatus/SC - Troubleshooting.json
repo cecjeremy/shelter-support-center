@@ -1,0 +1,10 @@
+{
+  "AgentStatusARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-state/857679bd-6f9b-4c2f-99aa-59aa906d72bd",
+  "AgentStatusId": "857679bd-6f9b-4c2f-99aa-59aa906d72bd",
+  "Name": "SC - Troubleshooting",
+  "Description": "Troubleshooting an issue with a caller",
+  "Type": "CUSTOM",
+  "DisplayOrder": 12,
+  "State": "ENABLED",
+  "Tags": {}
+}

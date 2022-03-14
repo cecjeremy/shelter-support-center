@@ -1,0 +1,10 @@
+{
+  "AgentStatusARN": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-state/07fa7416-d11d-4ffc-a0d4-7bd8f90395af",
+  "AgentStatusId": "07fa7416-d11d-4ffc-a0d4-7bd8f90395af",
+  "Name": "SC - Dispatching",
+  "Description": "Dispatching problem tickets",
+  "Type": "CUSTOM",
+  "DisplayOrder": 9,
+  "State": "ENABLED",
+  "Tags": {}
+}
