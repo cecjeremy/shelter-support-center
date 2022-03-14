@@ -66,10 +66,10 @@ export class VfApplicationStage extends Stage {
         s3SecureTransport: true,
         enableCloudfrontLogs: true,
         loggingBucketName: this.connectCore.storageStack.buckets.accessLogs?.bucketName
-      },
-      appEventsSnsTopic: {
-        masterKey: this.connectCore.storageStack.keys.shared
       }
+      // appEventsSnsTopic: {
+      //   masterKey: this.connectCore.storageStack.keys.shared
+      // }
     };
 
     this.adminStack = new AdminStack(this, `ConnectAdminStack`, adminProps);
