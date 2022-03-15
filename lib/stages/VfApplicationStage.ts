@@ -1,5 +1,4 @@
 import { Construct, Stage } from '@aws-cdk/core';
-import { CfnTopic } from '@aws-cdk/aws-sns';
 import { AdminStack, AdminStackProps } from '@ttec-dig-vf/vf-connect-admin';
 import { ConnectCore } from '../constructs/ConnectCore';
 import { ConnectLambdas } from '../stacks/ConnectLambdas';
@@ -34,10 +33,9 @@ export class VfApplicationStage extends Stage {
 
     this.serviceNowStack = new ServiceNowStack(this, 'ServiceNowStack', {
       ...props,
-      stackName: `${prefix}-servicenow`
+      stackName: `${prefix}-servicenow`,
+      bucketEncryptionKey: this.connectCore.storageStack.keys.shared!
     });
-
-    this.serviceNowStack.addDependency(this.connectCore.storageStack);
 
     const adminProps: Omit<AdminStackProps, 'assets'> = {
       stackName: `${prefix}-admin`,
