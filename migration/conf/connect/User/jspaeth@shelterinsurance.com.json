@@ -1,10 +1,10 @@
 {
-  "Id": "34e98841-06b5-4020-a348-ccfc8a2b8e8e",
-  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent/34e98841-06b5-4020-a348-ccfc8a2b8e8e",
-  "Username": "mgriffin@shelterinsurance.com",
+  "Id": "66475fbd-a943-4ed8-a520-6abeec6bee7d",
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent/66475fbd-a943-4ed8-a520-6abeec6bee7d",
+  "Username": "jspaeth@shelterinsurance.com",
   "IdentityInfo": {
-    "FirstName": "Michael",
-    "LastName": "Griffin",
+    "FirstName": "Jon",
+    "LastName": "Spaeth",
     "Email": null
   },
   "PhoneConfig": {
@@ -13,11 +13,11 @@
     "AfterContactWorkTimeLimit": 0,
     "DeskPhoneNumber": ""
   },
-  "DirectoryUserId": "62710160-e717-46ac-806b-b5b4693b6ed0",
+  "DirectoryUserId": null,
   "SecurityProfileIds": [
     "1f17786b-a192-40d1-8ada-8ead04e47342"
   ],
-  "RoutingProfileId": "81d1166d-51f3-4f0f-b112-0fe5c06f03ab",
+  "RoutingProfileId": "60a53bec-1c4a-4915-9da9-3630102ad26f",
   "HierarchyGroupId": null,
   "Tags": {},
   "Supplemental": {
@@ -32,9 +32,9 @@
       }
     ],
     "RoutingProfile": {
-      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/routing-profile/81d1166d-51f3-4f0f-b112-0fe5c06f03ab",
-      "Id": "81d1166d-51f3-4f0f-b112-0fe5c06f03ab",
-      "Name": "SC - Analyst"
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/routing-profile/60a53bec-1c4a-4915-9da9-3630102ad26f",
+      "Id": "60a53bec-1c4a-4915-9da9-3630102ad26f",
+      "Name": "Basic Routing Profile"
     }
   }
 }

@@ -42,7 +42,8 @@
           "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group/96a27a09-2c3b-4b08-b244-927aec002b3c",
           "Name": "Home Office"
         }
-      }
+      },
+      "Tags": {}
     },
     "SecurityProfiles": [
       {

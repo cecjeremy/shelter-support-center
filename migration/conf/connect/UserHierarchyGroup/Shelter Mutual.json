@@ -9,5 +9,6 @@
       "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group/896a3dc7-0cb0-492e-8321-e86160501314",
       "Name": "Shelter Mutual"
     }
-  }
+  },
+  "Tags": {}
 }

@@ -14,5 +14,6 @@
       "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group/471b4091-8a40-478f-95be-643491de752a",
       "Name": "Support Center"
     }
-  }
+  },
+  "Tags": {}
 }

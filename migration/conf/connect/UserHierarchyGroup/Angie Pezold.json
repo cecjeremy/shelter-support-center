@@ -24,5 +24,6 @@
       "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group/85e94892-e5e1-4d64-8d2d-10227b39e8f6",
       "Name": "Angie Pezold"
     }
-  }
+  },
+  "Tags": {}
 }

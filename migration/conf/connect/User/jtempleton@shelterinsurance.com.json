@@ -1,0 +1,54 @@
+{
+  "Id": "05486977-019d-4cdf-9779-6b5e4f3879bd",
+  "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent/05486977-019d-4cdf-9779-6b5e4f3879bd",
+  "Username": "jtempleton@shelterinsurance.com",
+  "IdentityInfo": {
+    "FirstName": "John",
+    "LastName": "Templeton",
+    "Email": null
+  },
+  "PhoneConfig": {
+    "PhoneType": "SOFT_PHONE",
+    "AutoAccept": false,
+    "AfterContactWorkTimeLimit": 0,
+    "DeskPhoneNumber": ""
+  },
+  "DirectoryUserId": "4f940a96-f5ad-4d27-be6c-da9d57a2f04b",
+  "SecurityProfileIds": [
+    "1f17786b-a192-40d1-8ada-8ead04e47342"
+  ],
+  "RoutingProfileId": "60a53bec-1c4a-4915-9da9-3630102ad26f",
+  "HierarchyGroupId": "896a3dc7-0cb0-492e-8321-e86160501314",
+  "Tags": {},
+  "Supplemental": {
+    "HierarchyGroup": {
+      "Id": "896a3dc7-0cb0-492e-8321-e86160501314",
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group/896a3dc7-0cb0-492e-8321-e86160501314",
+      "Name": "Shelter Mutual",
+      "LevelId": "1",
+      "HierarchyPath": {
+        "LevelOne": {
+          "Id": "896a3dc7-0cb0-492e-8321-e86160501314",
+          "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/agent-group/896a3dc7-0cb0-492e-8321-e86160501314",
+          "Name": "Shelter Mutual"
+        }
+      },
+      "Tags": {}
+    },
+    "SecurityProfiles": [
+      {
+        "Id": "1f17786b-a192-40d1-8ada-8ead04e47342",
+        "OrganizationResourceId": "e2391d8c-3f63-431d-bb9c-53a8c4a0838a",
+        "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/security-profile/1f17786b-a192-40d1-8ada-8ead04e47342",
+        "SecurityProfileName": "Admin",
+        "Description": "An administrator can perform all actions available.",
+        "Tags": {}
+      }
+    ],
+    "RoutingProfile": {
+      "Arn": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/routing-profile/60a53bec-1c4a-4915-9da9-3630102ad26f",
+      "Id": "60a53bec-1c4a-4915-9da9-3630102ad26f",
+      "Name": "Basic Routing Profile"
+    }
+  }
+}

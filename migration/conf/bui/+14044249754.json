@@ -243,5 +243,88 @@
     "type": {
       "S": "holiday"
     }
+  },
+  {
+    "wednesdayEnd": {
+      "S": "18:30"
+    },
+    "sundayStart": {
+      "S": "0:0"
+    },
+    "name": {
+      "S": "Support Center"
+    },
+    "thursdayObserved": {
+      "BOOL": true
+    },
+    "thursdayStart": {
+      "S": "6:30"
+    },
+    "mondayStart": {
+      "S": "6:30"
+    },
+    "thursdayEnd": {
+      "S": "18:30"
+    },
+    "saturdayObserved": {
+      "BOOL": true
+    },
+    "wednesdayStart": {
+      "S": "6:30"
+    },
+    "sundayEnd": {
+      "S": "0:0"
+    },
+    "fridayObserved": {
+      "BOOL": true
+    },
+    "id": {
+      "S": "hour_97c43b8d-0544-4307-81a1-ad5f665f2d0f"
+    },
+    "saturdayStart": {
+      "S": "8:0"
+    },
+    "wednesdayObserved": {
+      "BOOL": true
+    },
+    "tuesdayStart": {
+      "S": "6:30"
+    },
+    "tuesdayEnd": {
+      "S": "18:30"
+    },
+    "saturdayEnd": {
+      "S": "12:0"
+    },
+    "fridayStart": {
+      "S": "6:30"
+    },
+    "tuesdayObserved": {
+      "BOOL": true
+    },
+    "mondayObserved": {
+      "BOOL": true
+    },
+    "sundayObserved": {
+      "BOOL": false
+    },
+    "fridayEnd": {
+      "S": "18:30"
+    },
+    "openCheckType": {
+      "S": "DNIS"
+    },
+    "timezone": {
+      "S": "US/Central"
+    },
+    "mondayEnd": {
+      "S": "18:30"
+    },
+    "key": {
+      "S": "+14044249754"
+    },
+    "type": {
+      "S": "hours"
+    }
   }
 ]
