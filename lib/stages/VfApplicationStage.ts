@@ -71,5 +71,7 @@ export class VfApplicationStage extends Stage {
     };
 
     this.adminStack = new AdminStack(this, `ConnectAdminStack`, adminProps);
+
+    this.adminStack.addDependency(this.connectCore.connectStack);
   }
 }
