@@ -36,19 +36,6 @@ export class ConnectCore extends Construct {
       connectEncryptionKeyArn: this.storageStack.keys.shared?.keyArn
     });
 
-    // add access logging to all storage buckets
-    // Object.keys(this.storageStack.buckets).forEach(key => {
-    //   const bucket = this.storageStack.buckets[key as keyof typeof this.storageStack.buckets];
-
-    //   if (!bucket) {
-    //     return;
-    //   }
-
-    //   (bucket.node.defaultChild as CfnBucket).loggingConfiguration = {
-    //     logFilePrefix: 'access-logs/'
-    //   };
-    // });
-
     this.connectInstanceAlias = connectCore?.instanceAlias ?? prefix;
 
     this.connectStack = new ConnectStack(this, 'ConnectInstance', {
@@ -60,6 +47,7 @@ export class ConnectCore extends Construct {
       outboundCallsEnabled: connectCore?.outboundCallsEnabled ?? true,
       agentStream: this.streamingStack.agentStream?.streamArn,
       ctrStream: this.streamingStack.ctrStream?.streamArn,
+      contactFlowLogsEnabled: true,
       callRecordingsStorage: {
         bucket: this.storageStack.buckets.storage!,
         key: this.storageStack.keys.shared,

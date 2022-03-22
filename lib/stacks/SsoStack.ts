@@ -56,7 +56,8 @@ export class SsoStack extends Stack {
           <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://dummydomain.okta.com/app/xxxxxxxxxxxxxxxxxxxx/sso/saml"/>
           </md:IDPSSODescriptor>
           </md:EntityDescriptor>
-        `)
+        `
+      )
     });
 
     const samlConnectRole = new Role(this, 'SamlAmazonConnectRole', {
@@ -72,8 +73,11 @@ export class SsoStack extends Stack {
 
     samlConnectRole.addManagedPolicy(samlFederationPolicy);
 
-    new CfnOutput(this, 'RoleSessionName', {description: 'RoleSessionName', value: 'emailaddress or user.mail'});
-    new CfnOutput(this, 'SessionDuration', {description: 'SessionDuration', value: '43200'});
-    new CfnOutput(this, 'Role', {description: 'Role', value: samlProvider.samlProviderArn + ',' + samlConnectRole.roleArn});
+    new CfnOutput(this, 'RoleSessionName', { description: 'RoleSessionName', value: 'emailaddress or user.mail' });
+    new CfnOutput(this, 'SessionDuration', { description: 'SessionDuration', value: '43200' });
+    new CfnOutput(this, 'Role', {
+      description: 'Role',
+      value: samlProvider.samlProviderArn + ',' + samlConnectRole.roleArn
+    });
   }
 }
