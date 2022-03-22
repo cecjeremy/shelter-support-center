@@ -52,7 +52,7 @@ export const config: Configuration = {
       region: 'us-east-1',
       id: '824188805183',
       approval: true,
-      connectInstanceId: ''
+      connectInstanceId: '833b6bf1-0b04-4494-a03e-8924081ca422'
     },
     prod: {
       profile: 'shelter-prod',
