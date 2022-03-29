@@ -1,0 +1,185 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "ServiceNow Cloud Call Center Default Stack",
+  "Parameters": {
+    "LambdaS3BucketName": {
+      "Type": "String",
+      "Default": "",
+      "Description": "S3 Bucket Name where Lambda.zip is uploaded"
+    },
+    "LambdaFileKey": {
+      "Type": "String",
+      "Default": "",
+      "Description": "Provide S3 file Key for Lambda Zip artifact"
+    },
+    "CallRecordingBucketName": {
+      "Type": "String",
+      "Default": "",
+      "Description": "Provide the call recording Bucket Name"
+    }
+  },
+  "Resources": {
+    "snKTPRQRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        }
+      }
+    },
+    "snKTPRQPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "DependsOn": ["snKTPRQLambdaLogGroup", "snKTPRQKinesisStream"],
+      "Properties": {
+        "PolicyName": "snKTPRQLambdaCloudWatchPolicy",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "InlinePolicy0",
+              "Effect": "Allow",
+              "Action": ["kms:Decrypt", "kinesis:ListStreams"],
+              "Resource": "*"
+            },
+            {
+              "Sid": "InlinePolicy1",
+              "Effect": "Allow",
+              "Action": ["s3:GetObject", "logs:CreateLogStream", "logs:PutLogEvents", "ssm:GetParametersByPath"],
+              "Resource": [
+                { "Fn::Sub": ["arn:aws:s3:::${callBucket}/*", { "callBucket": { "Ref": "CallRecordingBucketName" } }] },
+                {
+                  "Fn::Sub": [
+                    "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:${loggroup}:log-stream:*",
+                    { "loggroup": { "Ref": "snKTPRQLambdaLogGroup" } }
+                  ]
+                },
+                {
+                  "Fn::Sub": [
+                    "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${defaultParam}",
+                    { "defaultParam": "com.servicenow.cti/b10c01f8db2e03802ffa7236bf96191c/KTPRQ/default" }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sid": "InlinePolicy2",
+              "Effect": "Allow",
+              "Action": ["kinesis:GetRecords", "kinesis:GetShardIterator", "kinesis:DescribeStream"],
+              "Resource": [
+                {
+                  "Fn::GetAtt": ["snKTPRQKinesisStream", "Arn"]
+                }
+              ]
+            }
+          ]
+        },
+        "Roles": [
+          {
+            "Ref": "snKTPRQRole"
+          }
+        ]
+      }
+    },
+    "snKTPRQLambda": {
+      "Type": "AWS::Lambda::Function",
+      "DependsOn": "snKTPRQRole",
+      "Properties": {
+        "Handler": "index.handler",
+        "FunctionName": "snKTPRQLambda",
+        "Role": {
+          "Fn::GetAtt": ["snKTPRQRole", "Arn"]
+        },
+        "Code": {
+          "S3Bucket": { "Ref": "LambdaS3BucketName" },
+          "S3Key": { "Ref": "LambdaFileKey" }
+        },
+        "Environment": {
+          "Variables": {
+            "ssm_configuration_path": "/com.servicenow.cti/b10c01f8db2e03802ffa7236bf96191c/KTPRQ/default",
+            "provider_id": "c4b12aa6e700001034b36584c2f6a9bc"
+          }
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": "30"
+      }
+    },
+    "snKTPRQLambdaLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "snKTPRQLambda"
+              }
+            ]
+          ]
+        },
+        "RetentionInDays": 30
+      }
+    },
+    "snKTPRQKinesisStream": {
+      "Type": "AWS::Kinesis::Stream",
+      "Properties": {
+        "Name": "snKTPRQKinesisStream",
+        "ShardCount": "1"
+      }
+    },
+    "snKTPRQLambdaLexPermissions": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": ["snKTPRQLambda", "Arn"]
+        },
+        "Principal": "lex.amazonaws.com",
+        "SourceArn": { "Fn::Sub": "arn:aws:lex:${AWS::Region}:${AWS::AccountId}:intent:*" }
+      }
+    },
+    "snKTPRQDefaultConfigurationProfile": {
+      "Type": "AWS::SSM::Parameter",
+      "Properties": {
+        "Description": "The ServiceNow settings for the CTI REST endpoint.",
+        "Name": "/com.servicenow.cti/b10c01f8db2e03802ffa7236bf96191c/KTPRQ/default",
+        "Type": "String",
+        "Value": "{\r\n required: {\r\n host: {\r\n description: \"The ServiceNow host that connect proxy will talk to\"\r\n value: \"instance.service-now.com\",\r\n },\r\n service_account_user: {\r\n description: \"Service account username for CTI REST Endpoint\"\r\n },\r\n service_account_password: {\r\n description: \"Service account password for CTI REST Endpoint\"\r\n }\r\n },\r\n optional: {\r\n provider_id: {\r\n description: \"CTI REST endpoint provider id\",\r\n value: \"c4b12aa6e700001034b36584c2f6a9bc\"\r\n }\r\n }\r\n}"
+      }
+    },
+    "snKTPRQCtiRestHost": {
+      "Type": "AWS::SSM::Parameter",
+      "Properties": {
+        "Description": "The ServiceNow instance that contains your CTI REST endpoint",
+        "Name": "/com.servicenow.cti/b10c01f8db2e03802ffa7236bf96191c/KTPRQ/default/host",
+        "Type": "String",
+        "Value": "sheltertest.service-now.com"
+      }
+    },
+    "snKTPRQEventSourceMapping": {
+      "Type": "AWS::Lambda::EventSourceMapping",
+      "DependsOn": ["snKTPRQLambda", "snKTPRQPolicy"],
+      "Properties": {
+        "EventSourceArn": {
+          "Fn::Sub": [
+            "arn:aws:kinesis:${AWS::Region}:${AWS::AccountId}:stream/${kinesisstream}",
+            { "kinesisstream": { "Ref": "snKTPRQKinesisStream" } }
+          ]
+        },
+        "FunctionName": {
+          "Fn::GetAtt": ["snKTPRQLambda", "Arn"]
+        },
+        "StartingPosition": "TRIM_HORIZON"
+      }
+    }
+  }
+}
