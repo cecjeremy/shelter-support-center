@@ -38,23 +38,6 @@
             "Outbound_001"
           ]
         },
-        "d4d054c5-9d70-46e6-8fcc-03127e67c351": {
-          "position": {
-            "x": 66,
-            "y": 534
-          }
-        },
-        "ff443147-bd97-468f-afa9-6ad780ac7266": {
-          "position": {
-            "x": 370.0078125,
-            "y": 27.015626907348633
-          },
-          "dynamicMetadata": {
-            "name": false,
-            "lang": false
-          },
-          "useDynamic": false
-        },
         "7e89227a-8e96-459d-b243-379815f05ecc": {
           "position": {
             "x": 861,
@@ -73,6 +56,35 @@
           "position": {
             "x": 1130,
             "y": 237
+          }
+        },
+        "ff443147-bd97-468f-afa9-6ad780ac7266": {
+          "position": {
+            "x": 370.0078125,
+            "y": 27.015626907348633
+          },
+          "dynamicMetadata": {
+            "name": false,
+            "lang": false
+          },
+          "useDynamic": false
+        },
+        "d4d054c5-9d70-46e6-8fcc-03127e67c351": {
+          "position": {
+            "x": 66,
+            "y": 534
+          }
+        },
+        "632f2d87-5271-410b-ba00-3cadc03caf37": {
+          "position": {
+            "x": 286,
+            "y": 601
+          },
+          "setOptionalCallerId": true,
+          "callerIdSource": "claimed",
+          "claimedPhoneNumber": {
+            "id": "626e3c49-7f23-4688-bbf0-819fea1a1018",
+            "text": "+13467662440"
           }
         }
       }
@@ -122,46 +134,6 @@
         "Type": "UpdateContactAttributes"
       },
       {
-        "Identifier": "d4d054c5-9d70-46e6-8fcc-03127e67c351",
-        "Parameters": {
-          "RecordingBehavior": {
-            "RecordedParticipants": [
-              "Agent",
-              "Customer"
-            ]
-          }
-        },
-        "Transitions": {
-          "NextAction": "ff443147-bd97-468f-afa9-6ad780ac7266",
-          "Errors": [],
-          "Conditions": []
-        },
-        "Type": "UpdateContactRecordingBehavior"
-      },
-      {
-        "Identifier": "ff443147-bd97-468f-afa9-6ad780ac7266",
-        "Parameters": {
-          "LambdaFunctionARN": "arn:aws:lambda:us-east-1:564741965342:function:getConfig-shelter-connect-admin-dev",
-          "InvocationTimeLimitSeconds": "3",
-          "LambdaInvocationAttributes": {
-            "name": "Shelter Support Center - Outbound",
-            "lang": "en-US"
-          },
-          "LambdaFunctionName": "getConfig-shelter-connect-admin"
-        },
-        "Transitions": {
-          "NextAction": "f9b25ba7-927c-441d-a314-cee0a31bbafa",
-          "Errors": [
-            {
-              "NextAction": "8e150f9f-fab4-48c5-9808-e49ba5e6dff5",
-              "ErrorType": "NoMatchingError"
-            }
-          ],
-          "Conditions": []
-        },
-        "Type": "InvokeLambdaFunction"
-      },
-      {
         "Identifier": "7e89227a-8e96-459d-b243-379815f05ecc",
         "Parameters": {
           "SSML": "$.Attributes.Outbound_001"
@@ -190,6 +162,60 @@
         "Parameters": {},
         "Transitions": {},
         "Type": "EndFlowExecution"
+      },
+      {
+        "Identifier": "ff443147-bd97-468f-afa9-6ad780ac7266",
+        "Parameters": {
+          "LambdaFunctionARN": "arn:aws:lambda:us-east-1:564741965342:function:getConfig-shelter-connect-admin-dev",
+          "InvocationTimeLimitSeconds": "3",
+          "LambdaInvocationAttributes": {
+            "name": "Shelter Support Center - Outbound",
+            "lang": "en-US"
+          },
+          "LambdaFunctionName": "getConfig-shelter-connect-admin"
+        },
+        "Transitions": {
+          "NextAction": "f9b25ba7-927c-441d-a314-cee0a31bbafa",
+          "Errors": [
+            {
+              "NextAction": "8e150f9f-fab4-48c5-9808-e49ba5e6dff5",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "InvokeLambdaFunction"
+      },
+      {
+        "Identifier": "d4d054c5-9d70-46e6-8fcc-03127e67c351",
+        "Parameters": {
+          "RecordingBehavior": {
+            "RecordedParticipants": [
+              "Agent",
+              "Customer"
+            ]
+          }
+        },
+        "Transitions": {
+          "NextAction": "632f2d87-5271-410b-ba00-3cadc03caf37",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "UpdateContactRecordingBehavior"
+      },
+      {
+        "Identifier": "632f2d87-5271-410b-ba00-3cadc03caf37",
+        "Parameters": {
+          "CallerId": {
+            "Number": "+13467662440"
+          }
+        },
+        "Transitions": {
+          "NextAction": "ff443147-bd97-468f-afa9-6ad780ac7266",
+          "Errors": [],
+          "Conditions": []
+        },
+        "Type": "CompleteOutboundCall"
       }
     ]
   },
