@@ -42,13 +42,6 @@
           },
           "useDynamic": true
         },
-        "2f5875dc-75fd-4392-a733-9e521cb3b1db": {
-          "position": {
-            "x": 897,
-            "y": 50
-          },
-          "useDynamic": false
-        },
         "06df65cc-4844-4d73-a697-b5274d8e1e1d": {
           "position": {
             "x": 1637,
@@ -62,6 +55,24 @@
           },
           "CountryCode": "us"
         },
+        "1ae39fa4-81d3-4c56-98b5-e2370c72ba84": {
+          "position": {
+            "x": 1412,
+            "y": 485
+          },
+          "useDynamic": false,
+          "ContactFlow": {
+            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/b67723ff-fcf6-4420-911b-a8339398e206",
+            "text": "SC - Error"
+          }
+        },
+        "2f5875dc-75fd-4392-a733-9e521cb3b1db": {
+          "position": {
+            "x": 897,
+            "y": 50
+          },
+          "useDynamic": false
+        },
         "839ce02a-c906-44ae-bb0d-87be819f56e5": {
           "position": {
             "x": 900,
@@ -69,11 +80,11 @@
           },
           "conditionMetadata": [
             {
-              "id": "f6ac7504-b267-4b21-a83a-db65fad9839d",
+              "id": "a56253f6-cbf0-47cf-9b45-52720a3829bd",
               "value": "1"
             },
             {
-              "id": "b0d70e46-57b4-4f68-a2ce-95a26eaa43b7",
+              "id": "165b1583-cfa4-4fa2-9924-5a16114e33a5",
               "value": "2"
             }
           ],
@@ -87,17 +98,6 @@
             "y": 154
           },
           "CountryCode": "us"
-        },
-        "1ae39fa4-81d3-4c56-98b5-e2370c72ba84": {
-          "position": {
-            "x": 1412,
-            "y": 485
-          },
-          "useDynamic": false,
-          "ContactFlow": {
-            "id": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/b67723ff-fcf6-4420-911b-a8339398e206",
-            "text": "SC - Error"
-          }
         }
       }
     },
@@ -157,6 +157,49 @@
         "Type": "MessageParticipant"
       },
       {
+        "Identifier": "06df65cc-4844-4d73-a697-b5274d8e1e1d",
+        "Type": "DisconnectParticipant",
+        "Parameters": {},
+        "Transitions": {}
+      },
+      {
+        "Identifier": "54d112ef-5ae8-4a72-9ceb-4699d0ad30ca",
+        "Parameters": {
+          "ThirdPartyPhoneNumber": "+15738187211",
+          "ThirdPartyConnectionTimeLimitSeconds": "30",
+          "ContinueFlowExecution": "False"
+        },
+        "Transitions": {
+          "NextAction": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
+          "Errors": [
+            {
+              "NextAction": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "TransferParticipantToThirdParty"
+      },
+      {
+        "Identifier": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
+        "Parameters": {
+          "ContactFlowId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/b67723ff-fcf6-4420-911b-a8339398e206",
+          "ContactFlowName": "SC - Error"
+        },
+        "Transitions": {
+          "NextAction": "06df65cc-4844-4d73-a697-b5274d8e1e1d",
+          "Errors": [
+            {
+              "NextAction": "06df65cc-4844-4d73-a697-b5274d8e1e1d",
+              "ErrorType": "NoMatchingError"
+            }
+          ],
+          "Conditions": []
+        },
+        "Type": "TransferToFlow"
+      },
+      {
         "Identifier": "2f5875dc-75fd-4392-a733-9e521cb3b1db",
         "Parameters": {
           "LoopCount": "3"
@@ -186,31 +229,6 @@
           ]
         },
         "Type": "Loop"
-      },
-      {
-        "Identifier": "06df65cc-4844-4d73-a697-b5274d8e1e1d",
-        "Type": "DisconnectParticipant",
-        "Parameters": {},
-        "Transitions": {}
-      },
-      {
-        "Identifier": "54d112ef-5ae8-4a72-9ceb-4699d0ad30ca",
-        "Parameters": {
-          "ThirdPartyPhoneNumber": "+15738187211",
-          "ThirdPartyConnectionTimeLimitSeconds": "30",
-          "ContinueFlowExecution": "False"
-        },
-        "Transitions": {
-          "NextAction": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
-          "Errors": [
-            {
-              "NextAction": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
-              "ErrorType": "NoMatchingError"
-            }
-          ],
-          "Conditions": []
-        },
-        "Type": "TransferParticipantToThirdParty"
       },
       {
         "Identifier": "839ce02a-c906-44ae-bb0d-87be819f56e5",
@@ -261,7 +279,7 @@
       {
         "Identifier": "aeb8db71-04b0-4b0e-9fdc-10770274cfa5",
         "Parameters": {
-          "ThirdPartyPhoneNumber": "+18444069729",
+          "ThirdPartyPhoneNumber": "+15738187224",
           "ThirdPartyConnectionTimeLimitSeconds": "30",
           "ContinueFlowExecution": "False"
         },
@@ -276,24 +294,6 @@
           "Conditions": []
         },
         "Type": "TransferParticipantToThirdParty"
-      },
-      {
-        "Identifier": "1ae39fa4-81d3-4c56-98b5-e2370c72ba84",
-        "Parameters": {
-          "ContactFlowId": "arn:aws:connect:us-east-1:564741965342:instance/e2391d8c-3f63-431d-bb9c-53a8c4a0838a/contact-flow/b67723ff-fcf6-4420-911b-a8339398e206",
-          "ContactFlowName": "SC - Error"
-        },
-        "Transitions": {
-          "NextAction": "06df65cc-4844-4d73-a697-b5274d8e1e1d",
-          "Errors": [
-            {
-              "NextAction": "06df65cc-4844-4d73-a697-b5274d8e1e1d",
-              "ErrorType": "NoMatchingError"
-            }
-          ],
-          "Conditions": []
-        },
-        "Type": "TransferToFlow"
       }
     ]
   },
