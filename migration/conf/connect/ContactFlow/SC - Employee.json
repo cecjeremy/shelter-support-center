@@ -194,7 +194,7 @@
             "name": "Shelter Support Center - Employee",
             "lang": "en-US"
           },
-          "LambdaFunctionName": "getConfig-shelter-connect-admin"
+          "LambdaFunctionName": "getConfig-shelter-connect-admin-<env>"
         },
         "Transitions": {
           "NextAction": "018331bf-5008-4ca5-af8d-a2986dc5c87a",

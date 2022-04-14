@@ -7,14 +7,5 @@
   "ServiceRole": "arn:aws:iam::564741965342:role/aws-service-role/connect.amazonaws.com/AWSServiceRoleForAmazonConnect_Gzvhv8NKSZZQOc2Dmuh7",
   "InstanceStatus": "ACTIVE",
   "InboundCallsEnabled": true,
-  "OutboundCallsEnabled": true,
-  "Attributes": {
-    "INBOUND_CALLS": true,
-    "OUTBOUND_CALLS": true,
-    "CONTACTFLOW_LOGS": true,
-    "CONTACT_LENS": true,
-    "AUTO_RESOLVE_BEST_VOICES": true,
-    "USE_CUSTOM_TTS_VOICES": true,
-    "EARLY_MEDIA": true
-  }
+  "OutboundCallsEnabled": true
 }

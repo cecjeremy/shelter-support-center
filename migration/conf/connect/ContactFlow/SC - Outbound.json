@@ -172,7 +172,7 @@
             "name": "Shelter Support Center - Outbound",
             "lang": "en-US"
           },
-          "LambdaFunctionName": "getConfig-shelter-connect-admin"
+          "LambdaFunctionName": "getConfig-shelter-connect-admin-<env>"
         },
         "Transitions": {
           "NextAction": "f9b25ba7-927c-441d-a314-cee0a31bbafa",

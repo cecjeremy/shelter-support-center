@@ -740,7 +740,7 @@
           "LambdaInvocationAttributes": {
             "seconds": "$.Metrics.Queue.OldestContactAge"
           },
-          "LambdaFunctionName": "secondsToMinutesConverter-shelter-support-center"
+          "LambdaFunctionName": "secondsToMinutesConverter-shelter-support-center-<env>"
         },
         "Transitions": {
           "NextAction": "11ff2b9c-f515-4874-b489-92da1c96c88b",
@@ -783,7 +783,7 @@
             "name": "Shelter Support Center - StandardQueueTreatment",
             "lang": "en-US"
           },
-          "LambdaFunctionName": "getConfig-shelter-connect-admin"
+          "LambdaFunctionName": "getConfig-shelter-connect-admin-<env>"
         },
         "Transitions": {
           "NextAction": "a087f678-41b5-4305-843b-9df53db9877f",
@@ -928,7 +928,7 @@
             "name": "Shelter Support Center - Callback",
             "lang": "en-US"
           },
-          "LambdaFunctionName": "getConfig-shelter-connect-admin"
+          "LambdaFunctionName": "getConfig-shelter-connect-admin-<env>"
         },
         "Transitions": {
           "NextAction": "f52c9f6e-83a4-41e7-8526-f13acb39e740",

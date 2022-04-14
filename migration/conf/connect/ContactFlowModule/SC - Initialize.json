@@ -79,6 +79,13 @@
               "Agent",
               "Customer"
             ]
+          },
+          "AnalyticsBehavior": {
+            "Enabled": "True",
+            "AnalyticsMode": "RealTime",
+            "AnalyticsLanguage": "en-US",
+            "AnalyticsRedactionBehavior": "Disabled",
+            "AnalyticsRedactionResults": "None"
           }
         },
         "Transitions": {

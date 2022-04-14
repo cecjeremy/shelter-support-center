@@ -111,7 +111,7 @@
             "name": "Shelter Support Center - AfterHours",
             "lang": "en-US"
           },
-          "LambdaFunctionName": "getConfig-shelter-connect-admin"
+          "LambdaFunctionName": "getConfig-shelter-connect-admin-<env>"
         },
         "Transitions": {
           "NextAction": "24a92e03-2e49-4b5d-8dd9-66ffbfb7dbac",

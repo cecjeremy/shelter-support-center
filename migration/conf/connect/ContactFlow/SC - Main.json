@@ -298,7 +298,7 @@
             "name": "Shelter Support Center - Main",
             "lang": "en-US"
           },
-          "LambdaFunctionName": "getConfig-shelter-connect-admin"
+          "LambdaFunctionName": "getConfig-shelter-connect-admin-<env>"
         },
         "Transitions": {
           "NextAction": "fdee3514-a27f-4025-8b79-2fb2b63930bc",
@@ -321,7 +321,7 @@
             "lang": "en-US",
             "key": "$.SystemEndpoint.Address"
           },
-          "LambdaFunctionName": "openCheck-shelter-connect-admin"
+          "LambdaFunctionName": "openCheck-shelter-connect-admin-<env>"
         },
         "Transitions": {
           "NextAction": "e2e39174-c949-407d-9720-fc6e811176e0",
