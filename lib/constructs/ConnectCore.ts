@@ -1,4 +1,3 @@
-import { CfnBucket } from '@aws-cdk/aws-s3';
 import { Construct } from '@aws-cdk/core';
 import { ConnectDataStorage, ConnectDataStreamingStack } from '@ttec-dig-vf/cdk-resources';
 import { ConnectStack } from '../stacks/ConnectStack';
@@ -48,6 +47,7 @@ export class ConnectCore extends Construct {
       agentStream: this.streamingStack.agentStream?.streamArn,
       ctrStream: this.streamingStack.ctrStream?.streamArn,
       contactFlowLogsEnabled: true,
+      contactLensEnabled: true,
       callRecordingsStorage: {
         bucket: this.storageStack.buckets.storage!,
         key: this.storageStack.keys.shared,
