@@ -88,10 +88,6 @@ export class PipelineStack extends Stack {
       },
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.codeCommit(repository, 'master'),
-        // env: {
-        //   buildImage: LinuxBuildImage.STANDARD_5_0,
-        //   computeType: ComputeType.MEDIUM
-        // },
         commands: [
           'node --version',
           'npm --version',
