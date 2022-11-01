@@ -1,5 +1,6 @@
-import { Construct, Stage } from '@aws-cdk/core';
-import { AdminStack, AdminStackProps } from '@ttec-dig-vf/vf-connect-admin';
+import { Stage } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import { AdminStack, AdminStackProps } from '@voicefoundry-cloud/vf-omp';
 import { ConnectCore } from '../constructs/ConnectCore';
 import { ConnectLambdas } from '../stacks/ConnectLambdas';
 import { ServiceNowStack } from '../stacks/ServiceNowStack';
@@ -46,9 +47,6 @@ export class VfApplicationStage extends Stage {
       adminUserEmail: props.config.packages.admin?.adminUserEmail || 'test@adminemail.com',
       retain: props.config.packages.admin.retain ?? false,
       useLayer: props.config.packages.admin.useLayer ?? true,
-      aggregatedAgentMetricsTableName: 'agent-metrics',
-      concurrency: 0,
-      metricsLambdaTimeout: '',
       features: {
         configSetManagement: true,
         permissionsManagementEnabled: true,
@@ -56,9 +54,7 @@ export class VfApplicationStage extends Stage {
         connectUserManagementEnabled: true,
         calendarManagementEnabled: true,
         tenancyEnabled: false,
-        flowEngineManagementEnabled: false,
-        metricsEnabled: false,
-        contactSearchEnabled: false
+        flowEngineManagementEnabled: false
       },
       hosting: {
         s3SecureTransport: true,

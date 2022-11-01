@@ -1,4 +1,4 @@
-import { Environment, StageProps } from '@aws-cdk/core';
+import { Environment, StageProps } from 'aws-cdk-lib';
 import { Configuration } from '../../config';
 
 export interface VfStageProps extends StageProps {

@@ -1,6 +1,7 @@
 import { Callback, ConnectContactFlowEvent, Context } from 'aws-lambda';
+import { Logger } from '@voicefoundry-cloud/vf-logger';
 
-import logger from '../../services/logger';
+const logger = new Logger();
 
 export class SecondsToMinutesConverter {
   public handler(event: ConnectContactFlowEvent, _ctx: Context, cb: Callback) {

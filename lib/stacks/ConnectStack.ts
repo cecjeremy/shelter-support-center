@@ -1,5 +1,6 @@
-import { Construct, Stack } from '@aws-cdk/core';
-import { ConnectProvider, ConnectInstance } from '@ttec-dig-vf/cdk-resources';
+import { Stack } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import { ConnectProvider, ConnectInstance } from '@voicefoundry-cloud/cdk-resources';
 import { ConnectStackProps } from './VfStackProps';
 
 export class ConnectStack extends Stack {
@@ -8,7 +9,7 @@ export class ConnectStack extends Stack {
 
     const prefix = props.config.getPrefix(props.stage);
 
-    const connectProvider = new ConnectProvider(this, 'ConnectProvider', {
+    const connectProvider = new ConnectProvider(this, {
       env: props.env,
       prefix
     });

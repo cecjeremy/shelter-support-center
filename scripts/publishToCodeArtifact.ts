@@ -79,7 +79,7 @@ async function publishAllModules({
   for (const { packageDir, moduleName } of publishList) {
     publishPromises.push(
       publishModule({
-        moduleDir: resolve(packageDir, 'node_modules', '@ttec-dig-vf', moduleName),
+        moduleDir: resolve(packageDir, 'node_modules', '@voicefoundry-cloud', moduleName),
         account,
         region,
         authToken,
@@ -91,7 +91,7 @@ async function publishAllModules({
 }
 
 async function listPrivateModules(packageDir: string) {
-  const modulesDir = resolve(packageDir, 'node_modules', '@ttec-dig-vf');
+  const modulesDir = resolve(packageDir, 'node_modules', '@voicefoundry-cloud');
   const moduleVersions: ModuleDefinition[] = [];
 
   if (existsSync(modulesDir)) {
@@ -132,7 +132,7 @@ async function filterPackages({
         repository: TTEC_REPOSITORY_NAME,
         package: `${PACKAGE}`,
         format: 'npm',
-        namespace: 'ttec-dig-vf'
+        namespace: 'voicefoundry-cloud'
       })
       .promise();
     for (const { version } of versions) {
@@ -187,12 +187,12 @@ export async function publishToCodeArtifact() {
 
   /**
    *
-   * recursively look in node_modules folders for all private @ttec-dig-vf modules
+   * recursively look in node_modules folders for all private @voicefoundry-cloud modules
    * within the repo root an in all packages in packages/
    *
    * example: package.json requires cdk-resources@4.0.14 and connect-voicemail has
    * dependency for cdk-resources@4.0.7, the lower version will be inside of the
-   * node_modules/connect-voicemail/node_modules/@ttec-dig-vf folder
+   * node_modules/connect-voicemail/node_modules/@voicefoundry-cloud folder
    *
    */
   const modulesList: ModuleDefinition[] = await listPrivateModules(ROOT_DIR);

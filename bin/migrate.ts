@@ -1,6 +1,6 @@
 #!ts-node
 import { CLI, CLIBuilder, EnvironmentNameTransformer, INameTransformer } from '@voicefoundry-cloud/vf-deploy';
-import { config } from './config';
+import { migrationConfig as config } from '../config';
 
 // Builder class to support customization.
 export class Builder implements CLIBuilder {

@@ -1,4 +1,4 @@
-import { App } from '@aws-cdk/core';
+import { App } from 'aws-cdk-lib';
 import { PipelineStack } from '../lib/stacks/PipelineStack';
 import { config } from '../config';
 

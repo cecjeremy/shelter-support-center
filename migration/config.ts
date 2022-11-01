@@ -1,4 +1,4 @@
-import { MigrationConfig } from '@ttec-dig-vf/vf-deploy';
+import { MigrationConfig } from '@voicefoundry-cloud/vf-deploy';
 
 export const config: MigrationConfig = {
   environments: [

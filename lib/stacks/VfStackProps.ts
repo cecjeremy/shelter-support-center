@@ -1,5 +1,9 @@
-import { Environment, StackProps } from '@aws-cdk/core';
-import { ConnectDataStorageProps, ConnectDataStreamingProps, ConnectInstanceProps } from '@ttec-dig-vf/cdk-resources';
+import { Environment, StackProps } from 'aws-cdk-lib';
+import {
+  ConnectDataStorageProps,
+  ConnectDataStreamingProps,
+  ConnectInstanceProps
+} from '@voicefoundry-cloud/cdk-resources';
 import { Configuration } from '../../config';
 
 export interface BaseStackProps extends StackProps {

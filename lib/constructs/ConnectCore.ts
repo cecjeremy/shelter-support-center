@@ -1,5 +1,5 @@
-import { Construct } from '@aws-cdk/core';
-import { ConnectDataStorage, ConnectDataStreamingStack } from '@ttec-dig-vf/cdk-resources';
+import { Construct } from 'constructs';
+import { ConnectDataStorage, ConnectDataStreamingStack } from '@voicefoundry-cloud/cdk-resources';
 import { ConnectStack } from '../stacks/ConnectStack';
 import { BaseStackProps } from '../stacks/VfStackProps';
 
@@ -19,14 +19,12 @@ export class ConnectCore extends Construct {
     this.storageStack = new ConnectDataStorage(this, 'ConnectStorage', {
       ...props,
       prefix,
-      stackName: `${prefix}-storage`,
       accessLogs: true
     });
 
     this.streamingStack = new ConnectDataStreamingStack(this, 'ConnectDataStreaming', {
       ...props,
       prefix,
-      stackName: `${prefix}-streaming`,
       streamDataBucket: this.storageStack.buckets.streaming,
       includeCtrStream: true,
       includeCtrFirehose: true,

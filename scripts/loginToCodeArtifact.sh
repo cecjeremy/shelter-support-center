@@ -47,7 +47,7 @@ then
   exit 0
 fi
 
-COMMAND="aws codeartifact get-authorization-token${withProfile} --domain ttec-dig-vf --domain-owner $ACCOUNT --query authorizationToken --output text --region $REGION"
+COMMAND="aws codeartifact get-authorization-token${withProfile} --domain voicefoundry-cloud --domain-owner $ACCOUNT --query authorizationToken --output text --region $REGION"
 TOKEN=$(eval $COMMAND)
 CURRENT_DIR=$(pwd)
 
@@ -55,9 +55,9 @@ function makeNpmrc () {
   TARGET_DIR="$CURRENT_DIR/$1"
   cd $TARGET_DIR
   echo "registry=https://registry.npmjs.org 
-  @ttec-dig-vf:registry=https://ttec-dig-vf-$ACCOUNT.d.codeartifact.$REGION.amazonaws.com/npm/vf/
-  //ttec-dig-vf-$ACCOUNT.d.codeartifact.$REGION.amazonaws.com/npm/vf/:always-auth=true
-  //ttec-dig-vf-$ACCOUNT.d.codeartifact.$REGION.amazonaws.com/npm/vf/:_authToken="$TOKEN > .npmrc
+  @voicefoundry-cloud:registry=https://voicefoundry-cloud-$ACCOUNT.d.codeartifact.$REGION.amazonaws.com/npm/vf/
+  //voicefoundry-cloud-$ACCOUNT.d.codeartifact.$REGION.amazonaws.com/npm/vf/:always-auth=true
+  //voicefoundry-cloud-$ACCOUNT.d.codeartifact.$REGION.amazonaws.com/npm/vf/:_authToken="$TOKEN > .npmrc
 }
 
 DIRS=("./ ")

@@ -1,8 +1,8 @@
-import { ConnectContactFlowEvent } from 'aws-lambda';
-
-import logger from '../../services/logger';
-
+import { ConnectContactFlowEvent, Context } from 'aws-lambda';
 import { handler } from './handler';
+import { Logger } from '@voicefoundry-cloud/vf-logger';
+
+const logger = new Logger();
 
 const connectEvent: ConnectContactFlowEvent = {
   Name: 'ContactFlowEvent',
@@ -45,8 +45,11 @@ test('handler is is a function', () => {
 
 test('gets time back', async () => {
   try {
-    const res = await handler(connectEvent);
-    expect(res.minutes).toBe(3);
+    const context = {} as Context;
+    const res = await handler(connectEvent, context, err => {
+      logger.error(err);
+    });
+    expect(res?.minutes).toBe(3);
   } catch (err) {
     logger.error('error in time math', { err });
   }
