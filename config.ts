@@ -80,62 +80,73 @@ export const config: Configuration = {
 export const migrationConfig: MigrationConfig = {
   environments: [
     {
-      name: 'dev',
       account: '564741965342',
       region: 'us-east-1',
       profile: 'shelter-dev',
-      connectInstanceAlias: 'shelter-life-dev',
-      ompTableName: 'shelter-support-center-admin-dev-admin-table', //!needs verification
+      name: 'dev',
+      connectInstanceAlias: 'shelter-support-center-dev',
+      ompTableName: 'shelter-connect-admin-dev-admin-table',
       allowedActions: ['extract', 'publish'],
       phoneNumbers: {
-        '+15126612358': 'did1-test', //!needs verification
-        '+15126612374': 'did2-test' //!needs verification
+        '+13467662440': 'main-inbound',
+        '+14044249754': 'secondary-inbound'
       }
-    },
-    {
-      name: 'test',
-      account: '824188805183',
-      region: 'us-east-1',
-      profile: 'shelter-test',
-      connectInstanceAlias: 'shelter-support-center-test',
-      ompTableName: 'shelter-support-center-admin-test-admin-table', //!needs verification
-      allowedActions: ['extract', 'publish']
     }
+    // {
+    //   account: '824188805183',
+    //   region: 'us-east-1',
+    //   profile: 'shelter-test',
+    //   name: 'test',
+    //   connectInstanceAlias: 'shelter-support-center-test',
+    //   ompTableName: 'shelter-connect-admin-test-admin-table',
+    //   allowedActions: ['extract', 'publish'],
+    //   phoneNumbers: {
+    //     '+12135241781': 'main-inbound',
+    //     '+14158395301': 'secondary-inbound'
+    //   }
+    // },
+    // {
+    //   account: '110716305825',
+    //   region: 'us-east-1',
+    //   profile: 'shelter-prod',
+    //   name: 'prod',
+    //   connectInstanceAlias: 'shelter-support-center-prod',
+    //   ompTableName: 'shelter-connect-admin-prod-admin-table',
+    //   allowedActions: ['extract', 'publish'],
+    //   phoneNumbers: {
+    //     '+12816525081': 'main-inbound',
+    //     '+13239246181': 'secondary-inbound'
+    //   }
+    // }
   ],
   resources: {
     connect: {
-      HoursOfOperation: {
-        extract: { enabled: true, filter: { exclude: ['^zzz.+'] } },
+      ContactFlow: {
+        extract: { enabled: true, filter: { include: ['SC.+', 'AmShield.+'] } },
         publish: { enabled: true }
       },
-      Prompt: { extract: { enabled: true, filter: { exclude: ['^zzz.+'] } }, publish: { enabled: true } },
-      SecurityProfile: { extract: { enabled: true }, publish: { enabled: true } },
       AgentStatus: {
         extract: { enabled: true, filter: { exclude: ['Available', 'Offline'] } },
         publish: { enabled: true }
       },
       ContactFlowModule: {
-        extract: { enabled: true, filter: { exclude: ['^zzz.+'] } },
-        publish: { enabled: true }
-      },
-      ContactFlow: {
-        extract: { enabled: true, filter: { exclude: ['^zzz.+'] } },
+        extract: { enabled: true, filter: { include: ['SC.+'] } },
         publish: { enabled: true }
       },
       Queue: {
-        extract: { enabled: true, filter: { exclude: ['^zzz.+'] } },
-        publish: { enabled: false }
-      },
-      UserHierarchy: { extract: { enabled: true }, publish: { enabled: true }, delete: { enabled: true } },
-      User: { extract: { enabled: true }, publish: { enabled: true }, delete: { enabled: true } },
-      QuickConnect: {
-        extract: { enabled: true, filter: { exclude: ['^zzz.+'] } },
-        publish: { enabled: false }
-      },
-      RoutingProfile: {
-        extract: { enabled: true, filter: { exclude: ['^zzz.+'] } },
+        extract: { enabled: true, filter: { include: ['SC.+', 'AmShield.+'] } },
         publish: { enabled: true }
-      }
+      },
+      HoursOfOperation: { extract: { enabled: false } },
+      Prompt: { extract: { enabled: false } },
+      QuickConnect: { extract: { enabled: true }, publish: { enabled: true }, delete: { enabled: true } },
+      RoutingProfile: {
+        extract: { enabled: true, filter: { include: ['SC.+'] } },
+        publish: { enabled: true }
+      },
+      SecurityProfile: { extract: { enabled: false } },
+      User: { extract: { enabled: true }, publish: { enabled: true }, delete: { enabled: true } },
+      UserHierarchy: { extract: { enabled: true }, publish: { enabled: true }, delete: { enabled: true } }
     },
     omp: {
       OmpAttributes: { extract: { enabled: true }, publish: { enabled: true } },
