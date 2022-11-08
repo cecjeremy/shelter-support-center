@@ -77,6 +77,7 @@ export const config: Configuration = {
     return `${this.client}-${this.project}${stage ? `-${stage}` : ''}`;
   }
 };
+
 export const migrationConfig: MigrationConfig = {
   environments: [
     {
