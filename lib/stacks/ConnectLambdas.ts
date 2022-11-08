@@ -55,7 +55,6 @@ export class ConnectLambdas extends Stack {
         SERVICE_NAME: `secondsToMinutesConverter-${prefix}`
       }
     });
-
     this.lambdas = [secondsToMinutesLambda];
 
     const addConnectPermission = (lambdaFunction: NodejsFunction): void => {
