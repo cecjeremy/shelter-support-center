@@ -88,8 +88,8 @@ export class PipelineStack extends Stack {
           'node --version',
           'npm --version',
           `aws codeartifact login --tool npm --domain voicefoundry-cloud --domain-owner ${cicd.id} --repository vf --namespace @voicefoundry-cloud`,
-          'rm -f package-lock.json',
-          'npm install'
+          'npm install',
+          'npx cdk synth'
         ]
       })
     });
