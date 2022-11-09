@@ -80,11 +80,7 @@ export class PipelineStack extends Stack {
       crossAccountKeys: true,
       selfMutation: true,
       codeBuildDefaults: {
-        rolePolicy: buildRolePolicies,
-        buildEnvironment: {
-          computeType: ComputeType.MEDIUM,
-          buildImage: LinuxBuildImage.STANDARD_5_0
-        }
+        rolePolicy: buildRolePolicies
       },
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.codeCommit(repository, 'master'),
