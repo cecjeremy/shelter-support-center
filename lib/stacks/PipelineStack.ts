@@ -6,7 +6,6 @@ import { toPascal } from '../../util';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { VfApplicationStage } from '../stages/VfApplicationStage';
 import { config } from '../../config';
-import { ComputeType, LinuxBuildImage } from 'aws-cdk-lib/aws-codebuild';
 
 export class PipelineStack extends Stack {
   constructor(scope: Construct, id: string, props: StackProps) {
@@ -88,7 +87,7 @@ export class PipelineStack extends Stack {
           'node --version',
           'npm --version',
           `aws codeartifact login --tool npm --domain voicefoundry-cloud --domain-owner ${cicd.id} --repository vf --namespace @voicefoundry-cloud`,
-          'npm install',
+          'npm install --legacy-peer-deps',
           'npx cdk synth'
         ]
       })
