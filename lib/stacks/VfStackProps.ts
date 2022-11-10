@@ -1,7 +1,9 @@
 import { Environment, StackProps } from 'aws-cdk-lib';
 import {
+  ConnectDataStorage,
   ConnectDataStorageProps,
   ConnectDataStreamingProps,
+  ConnectDataStreamingStack,
   ConnectInstanceProps
 } from '@voicefoundry-cloud/cdk-resources';
 import { Configuration } from '../../config';
@@ -17,4 +19,8 @@ export interface ConnectCoreProps
     Omit<ConnectDataStorageProps, 'client' | 'stage' | 'project' | 'env' | 'prefix'>,
     Omit<ConnectDataStreamingProps, 'client' | 'stage' | 'project' | 'env' | 'prefix'> {}
 
-export interface ConnectStackProps extends ConnectCoreProps, BaseStackProps {}
+// export interface ConnectStackProps extends ConnectCoreProps, BaseStackProps {}
+export interface ConnectStackProps extends BaseStackProps {
+  storage: ConnectDataStorage;
+  streaming: ConnectDataStreamingStack;
+}

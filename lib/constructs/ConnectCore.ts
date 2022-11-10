@@ -1,7 +1,7 @@
 import { Construct } from 'constructs';
 import { ConnectDataStorage, ConnectDataStreamingStack } from '@voicefoundry-cloud/cdk-resources';
 import { ConnectStack } from '../stacks/ConnectStack';
-import { BaseStackProps } from '../stacks/VfStackProps';
+import { BaseStackProps, ConnectStackProps } from '../stacks/VfStackProps';
 
 export class ConnectCore extends Construct {
   public readonly storageStack: ConnectDataStorage;
@@ -19,6 +19,7 @@ export class ConnectCore extends Construct {
     this.storageStack = new ConnectDataStorage(this, 'ConnectStorage', {
       ...props,
       prefix,
+      stackName: `${prefix}-storage`,
       accessLogs: true
     });
 
@@ -34,38 +35,45 @@ export class ConnectCore extends Construct {
     });
 
     this.connectInstanceAlias = connectCore?.instanceAlias ?? prefix;
-
-    this.connectStack = new ConnectStack(this, 'ConnectInstance', {
+    const connectStackProps: ConnectStackProps = {
       ...props,
+      description: 'Amazon Connect Instance and associated resources',
       stackName: `${prefix}-connect`,
-      instanceAlias: this.connectInstanceAlias,
-      identityManagementType: connectCore?.identityManagementType ?? 'CONNECT_MANAGED',
-      inboundCallsEnabled: connectCore?.inboundCallsEnabled ?? true,
-      outboundCallsEnabled: connectCore?.outboundCallsEnabled ?? true,
-      agentStream: this.streamingStack.agentStream?.streamArn,
-      ctrStream: this.streamingStack.ctrStream?.streamArn,
-      contactFlowLogsEnabled: true,
-      contactLensEnabled: true,
-      callRecordingsStorage: {
-        bucket: this.storageStack.buckets.storage!,
-        key: this.storageStack.keys.shared,
-        prefix: `${prefix}-recordings`
-      },
-      chatTranscriptsStorage: {
-        bucket: this.storageStack.buckets.storage!,
-        key: this.storageStack.keys.shared,
-        prefix: `${prefix}-transcripts`
-      },
-      reportsStorage: {
-        bucket: this.storageStack.buckets.storage!,
-        key: this.storageStack.keys.shared,
-        prefix: `${prefix}-reports`
-      },
-      mediaStorage: {
-        key: this.storageStack.keys.shared!,
-        prefix: `${prefix}-media`,
-        retentionPeriodInHours: connectCore?.mediaStorage?.retentionPeriodInHours
-      }
-    });
+      storage: this.storageStack,
+      streaming: this.streamingStack
+    };
+    //  {
+    //   ...props,
+    //   stackName: `${prefix}-connect`,
+    //   instanceAlias: this.connectInstanceAlias,
+    //   identityManagementType: connectCore?.identityManagementType ?? 'CONNECT_MANAGED',
+    //   inboundCallsEnabled: connectCore?.inboundCallsEnabled ?? true,
+    //   outboundCallsEnabled: connectCore?.outboundCallsEnabled ?? true,
+    //   agentStream: this.streamingStack.agentStream?.streamArn,
+    //   ctrStream: this.streamingStack.ctrStream?.streamArn,
+    //   contactFlowLogsEnabled: true,
+    //   contactLensEnabled: true,
+    //   callRecordingsStorage: {
+    //     bucket: this.storageStack.buckets.storage!,
+    //     key: this.storageStack.keys.shared,
+    //     prefix: `${prefix}-recordings`
+    //   },
+    //   chatTranscriptsStorage: {
+    //     bucket: this.storageStack.buckets.storage!,
+    //     key: this.storageStack.keys.shared,
+    //     prefix: `${prefix}-transcripts`
+    //   },
+    //   reportsStorage: {
+    //     bucket: this.storageStack.buckets.storage!,
+    //     key: this.storageStack.keys.shared,
+    //     prefix: `${prefix}-reports`
+    //   },
+    //   mediaStorage: {
+    //     key: this.storageStack.keys.shared!,
+    //     prefix: `${prefix}-media`,
+    //     retentionPeriodInHours: connectCore?.mediaStorage?.retentionPeriodInHours
+    //   }
+    // }
+    this.connectStack = new ConnectStack(this, 'ConnectInstance', connectStackProps);
   }
 }

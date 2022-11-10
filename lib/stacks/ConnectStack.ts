@@ -10,7 +10,6 @@ export class ConnectStack extends Stack {
     const prefix = props.config.getPrefix(props.stage);
 
     const connectProvider = new ConnectProvider(this, {
-      env: props.env,
       prefix
     });
 
