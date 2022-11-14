@@ -16,8 +16,6 @@ export class ConnectStack extends Stack {
 
     const { connectCore } = props.config.packages;
 
-    props.storage.bu;
-
     const instance = new ConnectInstance(this, 'ConnectInstance', {
       ...props,
       instanceAlias: props.config.getPrefix(props.stage),
@@ -29,9 +27,24 @@ export class ConnectStack extends Stack {
       ctrStream: props.streaming.ctrStream,
       callRecordingsStorage: {
         bucket: props.storage.buckets.storage!,
-        key: prop.storage.keys.shared,
-        prefix: props.storage
+        key: props.storage.keys.shared,
+        prefix: 'recordings'
+      },
+      chatTranscriptsStorage: {
+        bucket: props.storage.buckets.storage!,
+        key: props.storage.keys.shared,
+        prefix: 'transcripts'
+      },
+      reportsStorage: {
+        bucket: props.storage.buckets.storage!,
+        key: props.storage.keys.shared,
+        prefix: 'reports'
       }
+      // mediaStorage: {
+      //   key: props.storage.keys.shared!,
+      //   prefix: props.prefix,
+      //   retentionPeriodInHours: props.mediaStorage?.retentionPeriodInHours
+      // }
     });
     instance.node.addDependency(connectProvider);
   }
