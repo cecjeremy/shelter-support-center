@@ -10,10 +10,13 @@ export class ConnectStack extends Stack {
     const prefix = props.config.getPrefix(props.stage);
 
     const connectProvider = new ConnectProvider(this, {
+      env: props.env,
       prefix
     });
 
     const { connectCore } = props.config.packages;
+
+    props.storage.bu;
 
     const instance = new ConnectInstance(this, 'ConnectInstance', {
       ...props,
@@ -21,7 +24,14 @@ export class ConnectStack extends Stack {
       identityManagementType: connectCore?.identityManagementType ?? 'CONNECT_MANAGED',
       inboundCallsEnabled: connectCore?.inboundCallsEnabled ?? true,
       outboundCallsEnabled: connectCore?.outboundCallsEnabled ?? true,
-      connectProvider
+      connectProvider,
+      agentStream: props.streaming.agentStream,
+      ctrStream: props.streaming.ctrStream,
+      callRecordingsStorage: {
+        bucket: props.storage.buckets.storage!,
+        key: prop.storage.keys.shared,
+        prefix: props.storage
+      }
     });
     instance.node.addDependency(connectProvider);
   }

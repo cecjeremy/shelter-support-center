@@ -1,4 +1,4 @@
-import { Stack, StackProps } from 'aws-cdk-lib';
+import { Stack, StackProps, Stage } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { Repository } from 'aws-cdk-lib/aws-codecommit';
 import { CodePipeline, CodePipelineSource, ManualApprovalStep, ShellStep } from 'aws-cdk-lib/pipelines';
@@ -18,6 +18,7 @@ export class PipelineStack extends Stack {
     const repository = new Repository(this, `Repository`, {
       repositoryName: prefix,
       description: 'Amazon Connect Application Code'
+      // TODO: Set removal policy to retain
     });
 
     const buildRolePolicies = [
@@ -78,6 +79,7 @@ export class PipelineStack extends Stack {
       pipelineName: `${prefix}-pipeline`,
       crossAccountKeys: true,
       selfMutation: true,
+      // publishAssetsInParallel: false,
       codeBuildDefaults: {
         rolePolicy: buildRolePolicies
       },
@@ -96,14 +98,16 @@ export class PipelineStack extends Stack {
     Object.keys(accounts).forEach(stage => {
       const { id, region, approval, connectInstanceId } = config.accounts[stage];
 
-      const application = new VfApplicationStage(this, `Application${toPascal(stage)}Stage`, {
+      const deploymentStage = new Stage(this, `Application${toPascal(stage)}Stage`);
+
+      new VfApplicationStage(deploymentStage, {
         env: { account: id, region },
         config,
         stage,
         connectInstanceId
       });
 
-      pipeline.addStage(application, {
+      pipeline.addStage(deploymentStage, {
         pre: approval ? [new ManualApprovalStep(`connect-core-${stage}-manual-approval`)] : undefined
       });
     });

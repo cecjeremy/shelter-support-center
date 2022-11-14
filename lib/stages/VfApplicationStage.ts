@@ -1,5 +1,4 @@
-import { Stage } from 'aws-cdk-lib';
-import { Construct } from 'constructs';
+import { Stage, App } from 'aws-cdk-lib';
 import { AdminStack, AdminStackProps } from '@voicefoundry-cloud/vf-omp';
 import { ConnectCore } from '../constructs/ConnectCore';
 import { ConnectLambdas } from '../stacks/ConnectLambdas';
@@ -7,24 +6,22 @@ import { ServiceNowStack } from '../stacks/ServiceNowStack';
 import { SsoStack } from '../stacks/SsoStack';
 import { VfStageProps } from './VfStageProps';
 
-export class VfApplicationStage extends Stage {
+export class VfApplicationStage {
   public readonly connectCore: ConnectCore;
   public readonly ssoStack: SsoStack;
   public readonly connectLambdasStack: ConnectLambdas;
   public readonly serviceNowStack: ServiceNowStack;
   public readonly adminStack: AdminStack;
 
-  constructor(scope: Construct, id: string, props: VfStageProps) {
-    super(scope, id, props);
-
+  constructor(private readonly scope: Stage | App, props: VfStageProps) {
     const { stage, config } = props;
     const prefix = config.getPrefix(stage);
 
-    this.connectCore = new ConnectCore(this, 'ConnectStack', props);
+    this.connectCore = new ConnectCore(this.scope, 'ConnectStack', props);
 
-    this.ssoStack = new SsoStack(this, 'SsoStack', { ...props, prefix, stackName: `${prefix}-sso` });
+    this.ssoStack = new SsoStack(this.scope, 'SsoStack', { ...props, prefix, stackName: `${prefix}-sso` });
 
-    this.connectLambdasStack = new ConnectLambdas(this, 'ConnectLambdasStack', {
+    this.connectLambdasStack = new ConnectLambdas(this.scope, 'ConnectLambdasStack', {
       ...props,
       prefix,
       client: config.client,
@@ -32,13 +29,14 @@ export class VfApplicationStage extends Stage {
       stackName: `${prefix}-connect-lambdas`
     });
 
-    this.serviceNowStack = new ServiceNowStack(this, 'ServiceNowStack', {
+    this.serviceNowStack = new ServiceNowStack(this.scope, 'ServiceNowStack', {
       ...props,
       stackName: `${prefix}-servicenow`,
       bucketEncryptionKey: this.connectCore.storageStack.keys.shared!
     });
 
     const adminProps: Omit<AdminStackProps, 'assets'> = {
+      env: props.env,
       stackName: `${prefix}-admin`,
       client: props.config.client,
       stage: props.stage,
@@ -66,7 +64,7 @@ export class VfApplicationStage extends Stage {
       }
     };
 
-    this.adminStack = new AdminStack(this, `ConnectAdminStack`, adminProps);
+    this.adminStack = new AdminStack(this.scope, `ConnectAdminStack`, adminProps);
 
     this.adminStack.addDependency(this.connectCore.connectStack);
   }
