@@ -20,7 +20,8 @@ export class ConnectCore extends Construct {
       ...props,
       prefix,
       stackName: `${prefix}-storage`,
-      accessLogs: true
+      accessLogs: true,
+      retain: props.stage === 'prod'
     });
 
     this.streamingStack = new ConnectDataStreamingStack(this, 'ConnectDataStreaming', {
