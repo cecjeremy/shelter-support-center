@@ -1,7 +1,7 @@
 import { Construct } from 'constructs';
 import { ConnectDataStorage, ConnectDataStreamingStack } from '@voicefoundry-cloud/cdk-resources';
 import { ConnectStack } from '../stacks/ConnectStack';
-import { BaseStackProps, ConnectStackProps } from '../stacks/VfStackProps';
+import { BaseStackProps } from '../stacks/VfStackProps';
 
 export class ConnectCore extends Construct {
   public readonly storageStack: ConnectDataStorage;
@@ -37,13 +37,13 @@ export class ConnectCore extends Construct {
     });
 
     this.connectInstanceAlias = connectCore?.instanceAlias ?? prefix;
-    const connectStackProps: ConnectStackProps = {
+
+    this.connectStack = new ConnectStack(this, 'ConnectInstance', {
       ...props,
       description: 'Amazon Connect Instance and associated resources',
       stackName: `${prefix}-connect`,
       storage: this.storageStack,
       streaming: this.streamingStack
-    };
-    this.connectStack = new ConnectStack(this, 'ConnectInstance', connectStackProps);
+    });
   }
 }

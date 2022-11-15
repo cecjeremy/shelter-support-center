@@ -1,19 +1,31 @@
-import { Stage, App } from 'aws-cdk-lib';
+import { App, Environment, Stage, StageProps } from 'aws-cdk-lib';
 import { AdminStack, AdminStackProps } from '@voicefoundry-cloud/vf-omp';
-import { ConnectCore } from '../constructs/ConnectCore';
-import { ConnectLambdas } from '../stacks/ConnectLambdas';
-import { ServiceNowStack } from '../stacks/ServiceNowStack';
-import { SsoStack } from '../stacks/SsoStack';
-import { VfStageProps } from './VfStageProps';
+import { ConnectCore } from './constructs/ConnectCore';
+import { ConnectLambdas } from './stacks/ConnectLambdas';
+import { ServiceNowStack } from './stacks/ServiceNowStack';
+import { SsoStack } from './stacks/SsoStack';
+import { Configuration } from '../config';
 
-export class VfApplicationStage {
+export interface StacksProps extends StageProps {
+  env: Required<Environment>;
+  stage: Required<string>;
+  connectInstanceId: Required<string>;
+  config: Configuration;
+}
+
+/**
+ * Defines the stacks used by the application.
+ * NOTE: this is not a construct, it adds the related stacks to a CDK App, or Pipeline Stage
+ *   This allows us to diff/synth/test the app without the pipeline by using bin/direct.ts
+ */
+export class Stacks {
   public readonly connectCore: ConnectCore;
   public readonly ssoStack: SsoStack;
   public readonly connectLambdasStack: ConnectLambdas;
   public readonly serviceNowStack: ServiceNowStack;
   public readonly adminStack: AdminStack;
 
-  constructor(private readonly scope: Stage | App, props: VfStageProps) {
+  constructor(private readonly scope: Stage | App, props: StacksProps) {
     const { stage, config } = props;
     const prefix = config.getPrefix(stage);
 
