@@ -1,10 +1,10 @@
-import { Stack, StackProps, Stage } from 'aws-cdk-lib';
+import { RemovalPolicy, Stack, StackProps, Stage } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { Repository } from 'aws-cdk-lib/aws-codecommit';
 import { CodePipeline, CodePipelineSource, ManualApprovalStep, ShellStep } from 'aws-cdk-lib/pipelines';
 import { toPascal } from '../../util';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { VfApplicationStage } from '../stages/VfApplicationStage';
+import { Stacks } from '../Stacks';
 import { config } from '../../config';
 
 export class PipelineStack extends Stack {
@@ -18,8 +18,8 @@ export class PipelineStack extends Stack {
     const repository = new Repository(this, `Repository`, {
       repositoryName: prefix,
       description: 'Amazon Connect Application Code'
-      // TODO: Set removal policy to retain
     });
+    repository.applyRemovalPolicy(RemovalPolicy.RETAIN);
 
     const buildRolePolicies = [
       new PolicyStatement({
@@ -79,7 +79,7 @@ export class PipelineStack extends Stack {
       pipelineName: `${prefix}-pipeline`,
       crossAccountKeys: true,
       selfMutation: true,
-      // publishAssetsInParallel: false,
+      publishAssetsInParallel: false,
       codeBuildDefaults: {
         rolePolicy: buildRolePolicies
       },
@@ -100,7 +100,7 @@ export class PipelineStack extends Stack {
 
       const deploymentStage = new Stage(this, `Application${toPascal(stage)}Stage`);
 
-      new VfApplicationStage(deploymentStage, {
+      new Stacks(deploymentStage, {
         env: { account: id, region },
         config,
         stage,

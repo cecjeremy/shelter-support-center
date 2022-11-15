@@ -1,9 +1,18 @@
 import { Stack } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { ConnectProvider, ConnectInstance } from '@voicefoundry-cloud/cdk-resources';
-import { ConnectStackProps } from './VfStackProps';
+import {
+  ConnectProvider,
+  ConnectInstance,
+  ConnectDataStorage,
+  ConnectDataStreamingStack
+} from '@voicefoundry-cloud/cdk-resources';
+import { BaseStackProps } from './VfStackProps';
 import { toPascal } from '../../util';
 
+export interface ConnectStackProps extends BaseStackProps {
+  storage: ConnectDataStorage;
+  streaming: ConnectDataStreamingStack;
+}
 export class ConnectStack extends Stack {
   constructor(scope: Construct, id: string, props: ConnectStackProps) {
     super(scope, id, props);
