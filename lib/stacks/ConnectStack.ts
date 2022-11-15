@@ -2,6 +2,7 @@ import { Stack } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { ConnectProvider, ConnectInstance } from '@voicefoundry-cloud/cdk-resources';
 import { ConnectStackProps } from './VfStackProps';
+import { toPascal } from '../../util';
 
 export class ConnectStack extends Stack {
   constructor(scope: Construct, id: string, props: ConnectStackProps) {
@@ -9,10 +10,7 @@ export class ConnectStack extends Stack {
 
     const prefix = props.config.getPrefix(props.stage);
 
-    const connectProvider = new ConnectProvider(this, {
-      env: props.env,
-      prefix
-    });
+    const connectProvider = new ConnectProvider(this, toPascal(prefix) + 'ConnectProvider');
 
     const { connectCore } = props.config.packages;
 
@@ -28,23 +26,24 @@ export class ConnectStack extends Stack {
       callRecordingsStorage: {
         bucket: props.storage.buckets.storage!,
         key: props.storage.keys.shared,
-        prefix: 'recordings'
+        prefix: `${prefix}-recordings`
       },
       chatTranscriptsStorage: {
         bucket: props.storage.buckets.storage!,
         key: props.storage.keys.shared,
-        prefix: 'transcripts'
+        prefix: `${prefix}-transcripts`
       },
       reportsStorage: {
         bucket: props.storage.buckets.storage!,
         key: props.storage.keys.shared,
-        prefix: 'reports'
-      }
-      // mediaStorage: {
-      //   key: props.storage.keys.shared!,
-      //   prefix: props.prefix,
-      //   retentionPeriodInHours: props.mediaStorage?.retentionPeriodInHours
-      // }
+        prefix: `${prefix}-reports`
+      },
+      mediaStorage: {
+        key: props.storage.keys.shared!,
+        prefix: `${prefix}-media`
+      },
+      contactFlowLogsEnabled: true,
+      contactLensEnabled: true
     });
     instance.node.addDependency(connectProvider);
   }

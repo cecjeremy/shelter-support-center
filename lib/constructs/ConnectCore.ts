@@ -21,12 +21,13 @@ export class ConnectCore extends Construct {
       prefix,
       stackName: `${prefix}-storage`,
       accessLogs: true,
-      retain: props.stage === 'prod'
+      retain: true
     });
 
     this.streamingStack = new ConnectDataStreamingStack(this, 'ConnectDataStreaming', {
       ...props,
       prefix,
+      stackName: `${prefix}-streaming`,
       streamDataBucket: this.storageStack.buckets.streaming,
       includeCtrStream: true,
       includeCtrFirehose: true,
@@ -43,38 +44,6 @@ export class ConnectCore extends Construct {
       storage: this.storageStack,
       streaming: this.streamingStack
     };
-    //  {
-    //   ...props,
-    //   stackName: `${prefix}-connect`,
-    //   instanceAlias: this.connectInstanceAlias,
-    //   identityManagementType: connectCore?.identityManagementType ?? 'CONNECT_MANAGED',
-    //   inboundCallsEnabled: connectCore?.inboundCallsEnabled ?? true,
-    //   outboundCallsEnabled: connectCore?.outboundCallsEnabled ?? true,
-    //   agentStream: this.streamingStack.agentStream?.streamArn,
-    //   ctrStream: this.streamingStack.ctrStream?.streamArn,
-    //   contactFlowLogsEnabled: true,
-    //   contactLensEnabled: true,
-    //   callRecordingsStorage: {
-    //     bucket: this.storageStack.buckets.storage!,
-    //     key: this.storageStack.keys.shared,
-    //     prefix: `${prefix}-recordings`
-    //   },
-    //   chatTranscriptsStorage: {
-    //     bucket: this.storageStack.buckets.storage!,
-    //     key: this.storageStack.keys.shared,
-    //     prefix: `${prefix}-transcripts`
-    //   },
-    //   reportsStorage: {
-    //     bucket: this.storageStack.buckets.storage!,
-    //     key: this.storageStack.keys.shared,
-    //     prefix: `${prefix}-reports`
-    //   },
-    //   mediaStorage: {
-    //     key: this.storageStack.keys.shared!,
-    //     prefix: `${prefix}-media`,
-    //     retentionPeriodInHours: connectCore?.mediaStorage?.retentionPeriodInHours
-    //   }
-    // }
     this.connectStack = new ConnectStack(this, 'ConnectInstance', connectStackProps);
   }
 }

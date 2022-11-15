@@ -29,7 +29,7 @@
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
-    "@voicefoundry-cloud/cdk-resources": "~8.1.0",
+    "@voicefoundry-cloud/cdk-resources": "~8.4.4",
     "@voicefoundry-cloud/vf-deploy": "^1.0.9",
     "@voicefoundry-cloud/vf-logger": "^0.1.8",
     "@voicefoundry-cloud/vf-omp": "5.3.1",
