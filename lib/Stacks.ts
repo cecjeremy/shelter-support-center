@@ -18,6 +18,7 @@ export interface StacksProps extends StageProps {
  * NOTE: this is not a construct, it adds the related stacks to a CDK App, or Pipeline Stage
  *   This allows us to diff/synth/test the app without the pipeline by using bin/direct.ts
  */
+
 export class Stacks {
   public readonly connectCore: ConnectCore;
   public readonly ssoStack: SsoStack;
