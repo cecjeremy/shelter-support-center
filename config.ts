@@ -47,20 +47,20 @@ export const config: Configuration = {
       region: 'us-east-1',
       id: '564741965342',
       connectInstanceId: 'e2391d8c-3f63-431d-bb9c-53a8c4a0838a'
+    },
+    test: {
+      profile: 'shelter-test',
+      region: 'us-east-1',
+      id: '824188805183',
+      connectInstanceId: '833b6bf1-0b04-4494-a03e-8924081ca422'
+    },
+    prod: {
+      profile: 'shelter-prod',
+      region: 'us-east-1',
+      id: '110716305825',
+      approval: true,
+      connectInstanceId: 'c2ec5e7f-d5b4-49e3-8b99-44359dd1ee9d'
     }
-    // test: {
-    //   profile: 'shelter-test',
-    //   region: 'us-east-1',
-    //   id: '824188805183',
-    //   connectInstanceId: '833b6bf1-0b04-4494-a03e-8924081ca422'
-    // },
-    // prod: {
-    //   profile: 'shelter-prod',
-    //   region: 'us-east-1',
-    //   id: '110716305825',
-    //   approval: true,
-    //   connectInstanceId: 'c2ec5e7f-d5b4-49e3-8b99-44359dd1ee9d'
-    // }
   },
   packages: {
     admin: {
@@ -92,33 +92,33 @@ export const migrationConfig: MigrationConfig = {
         '+13467662440': 'main-inbound',
         '+14044249754': 'secondary-inbound'
       }
+    },
+    {
+      account: '824188805183',
+      region: 'us-east-1',
+      profile: 'shelter-test',
+      name: 'test',
+      connectInstanceAlias: 'shelter-support-center-test',
+      ompTableName: 'shelter-connect-admin-test-admin-table',
+      allowedActions: ['extract', 'publish'],
+      phoneNumbers: {
+        '+12135241781': 'main-inbound',
+        '+14158395301': 'secondary-inbound'
+      }
+    },
+    {
+      account: '110716305825',
+      region: 'us-east-1',
+      profile: 'shelter-prod',
+      name: 'prod',
+      connectInstanceAlias: 'shelter-support-center-prod',
+      ompTableName: 'shelter-connect-admin-prod-admin-table',
+      allowedActions: ['extract', 'publish'],
+      phoneNumbers: {
+        '+12816525081': 'main-inbound',
+        '+13239246181': 'secondary-inbound'
+      }
     }
-    // {
-    //   account: '824188805183',
-    //   region: 'us-east-1',
-    //   profile: 'shelter-test',
-    //   name: 'test',
-    //   connectInstanceAlias: 'shelter-support-center-test',
-    //   ompTableName: 'shelter-connect-admin-test-admin-table',
-    //   allowedActions: ['extract', 'publish'],
-    //   phoneNumbers: {
-    //     '+12135241781': 'main-inbound',
-    //     '+14158395301': 'secondary-inbound'
-    //   }
-    // },
-    // {
-    //   account: '110716305825',
-    //   region: 'us-east-1',
-    //   profile: 'shelter-prod',
-    //   name: 'prod',
-    //   connectInstanceAlias: 'shelter-support-center-prod',
-    //   ompTableName: 'shelter-connect-admin-prod-admin-table',
-    //   allowedActions: ['extract', 'publish'],
-    //   phoneNumbers: {
-    //     '+12816525081': 'main-inbound',
-    //     '+13239246181': 'secondary-inbound'
-    //   }
-    // }
   ],
   resources: {
     connect: {
