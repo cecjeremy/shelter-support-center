@@ -13,7 +13,6 @@ export interface Account {
   /** Requires approval */
   approval?: boolean;
 }
-
 export interface Configuration {
   client: string;
   project: string;
