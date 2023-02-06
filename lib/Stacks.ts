@@ -84,6 +84,7 @@ export class Stacks {
     this.adminStack.addDependency(this.connectCore.connectStack);
 
     this.calabrioQmStack = new CalabrioQmStack(this.scope, 'CalabrioQmStack', {
+      env: props.env,
       stackName: `${prefix}-calabrio-qm`,
       prefix,
       stage,
