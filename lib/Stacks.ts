@@ -4,6 +4,7 @@ import { ConnectCore } from './constructs/ConnectCore';
 import { ConnectLambdas } from './stacks/ConnectLambdas';
 import { ServiceNowStack } from './stacks/ServiceNowStack';
 import { SsoStack } from './stacks/SsoStack';
+import { CalabrioQmStack } from './stacks/CalabrioQmStack';
 import { Configuration } from '../config';
 
 export interface StacksProps extends StageProps {
@@ -25,6 +26,7 @@ export class Stacks {
   public readonly connectLambdasStack: ConnectLambdas;
   public readonly serviceNowStack: ServiceNowStack;
   public readonly adminStack: AdminStack;
+  public readonly calabrioQmStack: CalabrioQmStack;
 
   constructor(private readonly scope: Stage | App, props: StacksProps) {
     const { stage, config } = props;
@@ -80,5 +82,14 @@ export class Stacks {
     this.adminStack = new AdminStack(this.scope, `ConnectAdminStack`, adminProps);
 
     this.adminStack.addDependency(this.connectCore.connectStack);
+
+    this.calabrioQmStack = new CalabrioQmStack(this.scope, 'CalabrioQmStack', {
+      stackName: `${prefix}-calabrio-qm`,
+      prefix,
+      stage,
+      ctrStream: this.connectCore.streamingStack.ctrStream!,
+      atrStream: this.connectCore.streamingStack.agentStream!,
+      encryptionKey: this.connectCore.storageStack.keys.shared!
+    });
   }
 }
