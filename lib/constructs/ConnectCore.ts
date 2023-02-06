@@ -1,5 +1,5 @@
-import { Construct } from '@aws-cdk/core';
-import { ConnectDataStorage, ConnectDataStreamingStack } from '@ttec-dig-vf/cdk-resources';
+import { Construct } from 'constructs';
+import { ConnectDataStorage, ConnectDataStreamingStack } from '@voicefoundry-cloud/cdk-resources';
 import { ConnectStack } from '../stacks/ConnectStack';
 import { BaseStackProps } from '../stacks/VfStackProps';
 
@@ -20,7 +20,8 @@ export class ConnectCore extends Construct {
       ...props,
       prefix,
       stackName: `${prefix}-storage`,
-      accessLogs: true
+      accessLogs: true,
+      retain: true
     });
 
     this.streamingStack = new ConnectDataStreamingStack(this, 'ConnectDataStreaming', {
@@ -39,35 +40,10 @@ export class ConnectCore extends Construct {
 
     this.connectStack = new ConnectStack(this, 'ConnectInstance', {
       ...props,
+      description: 'Amazon Connect Instance and associated resources',
       stackName: `${prefix}-connect`,
-      instanceAlias: this.connectInstanceAlias,
-      identityManagementType: connectCore?.identityManagementType ?? 'CONNECT_MANAGED',
-      inboundCallsEnabled: connectCore?.inboundCallsEnabled ?? true,
-      outboundCallsEnabled: connectCore?.outboundCallsEnabled ?? true,
-      agentStream: this.streamingStack.agentStream?.streamArn,
-      ctrStream: this.streamingStack.ctrStream?.streamArn,
-      contactFlowLogsEnabled: true,
-      contactLensEnabled: true,
-      callRecordingsStorage: {
-        bucket: this.storageStack.buckets.storage!,
-        key: this.storageStack.keys.shared,
-        prefix: `${prefix}-recordings`
-      },
-      chatTranscriptsStorage: {
-        bucket: this.storageStack.buckets.storage!,
-        key: this.storageStack.keys.shared,
-        prefix: `${prefix}-transcripts`
-      },
-      reportsStorage: {
-        bucket: this.storageStack.buckets.storage!,
-        key: this.storageStack.keys.shared,
-        prefix: `${prefix}-reports`
-      },
-      mediaStorage: {
-        key: this.storageStack.keys.shared!,
-        prefix: `${prefix}-media`,
-        retentionPeriodInHours: connectCore?.mediaStorage?.retentionPeriodInHours
-      }
+      storage: this.storageStack,
+      streaming: this.streamingStack
     });
   }
 }

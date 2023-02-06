@@ -5,7 +5,6 @@ OUTPUT_PROFILE=$2
 # Source: https://rizvir.com/articles/AWS-cli-tips
 # Note: Buildspec executes under SH rather than BASH so it does not support arrays. Thats why this is in a seperate file.
 
-
 echo "Assuming role $ROLE_ARN"
 sts=$(aws sts assume-role --role-arn "$ROLE_ARN" --role-session-name "$OUTPUT_PROFILE" --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text)
 

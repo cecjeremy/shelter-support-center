@@ -55,7 +55,7 @@ From this point forward, further deployment will be handled by the CodePipeline 
 
 ---
 
-_*IMPORTANT*_: If you do not need `connect-core` (because the a Connect Instance is already created/will be created manually), see [Removing connect-core](#removing-connect-core)
+__IMPORTANT__: If you do not need `connect-core` (because the a Connect Instance is already created/will be created manually), see [Removing connect-core](#removing-connect-core)
 
 ```text
     ├── bin                               # cdk apps
@@ -99,3 +99,27 @@ Connect as a service limits the number of `CreateInstance` and `DeleteInstance` 
 ### OSX quirks
 
 You need [Cmake](https://cmake.org/download/) installed due to `aws-crt`
+
+## Direct Access
+
+While troubleshooting the cdk-resources upgrade from v4 to v8 we discovered that synthing/diffing the pipeline locally does not actually output the stacks.
+
+We created a separate `VfApplication` class which can be used with a pipeline stage or CDK application.
+
+To perform operations on the individual (non-pipeline) stacks, use the `bin/direct.ts` entry point.
+
+### Direct Commands
+
+```bash
+# Synth everything
+npm run synth:direct -- --all --profile xyz
+
+# Synth specific stack
+npm run synth:direct -- ConnectStack/ConnectInstance
+
+# Diff specific stack
+npm run diff:direct -- ConnectStack/ConnectInstance
+
+# Deploy specific stack - only do this in dev.
+npm run deploy:direct -- ConnectStack/ConnectInstance
+```

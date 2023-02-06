@@ -1,12 +1,10 @@
-import { Construct, Stack, StackProps } from '@aws-cdk/core';
-import { Repository } from '@aws-cdk/aws-codecommit';
-import { CdkPipeline, SimpleSynthAction } from '@aws-cdk/pipelines';
-import { CodeCommitSourceAction } from '@aws-cdk/aws-codepipeline-actions';
-import { ComputeType, LinuxBuildImage } from '@aws-cdk/aws-codebuild';
+import { RemovalPolicy, Stack, StackProps, Stage } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import { Repository } from 'aws-cdk-lib/aws-codecommit';
+import { CodePipeline, CodePipelineSource, ManualApprovalStep, ShellStep } from 'aws-cdk-lib/pipelines';
 import { toPascal } from '../../util';
-import { Effect, PolicyStatement } from '@aws-cdk/aws-iam';
-import { Artifact } from '@aws-cdk/aws-codepipeline';
-import { VfApplicationStage } from '../stages/VfApplicationStage';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Stacks } from '../Stacks';
 import { config } from '../../config';
 
 export class PipelineStack extends Stack {
@@ -17,15 +15,16 @@ export class PipelineStack extends Stack {
 
     const prefix = config.getPrefix();
 
-    const respository = new Repository(this, `Repository`, {
+    const repository = new Repository(this, `Repository`, {
       repositoryName: prefix,
       description: 'Amazon Connect Application Code'
     });
+    repository.applyRemovalPolicy(RemovalPolicy.RETAIN);
 
     const buildRolePolicies = [
       new PolicyStatement({
         actions: ['codecommit:GetBranch', 'codecommit:GetCommit'],
-        resources: [respository.repositoryArn]
+        resources: [repository.repositoryArn]
       }),
       new PolicyStatement({
         actions: ['connect:ListInstances', 'ds:DescribeDirectories'],
@@ -76,53 +75,41 @@ export class PipelineStack extends Stack {
       })
     ];
 
-    const sourceArtifact = new Artifact('source');
-    const synthArtifact = new Artifact('synth');
-    const pipeline = new CdkPipeline(this, 'Pipeline', {
+    const pipeline = new CodePipeline(this, 'Pipeline', {
       pipelineName: `${prefix}-pipeline`,
-      cloudAssemblyArtifact: synthArtifact,
-      sourceAction: new CodeCommitSourceAction({
-        actionName: 'CodeCommit',
-        output: sourceArtifact,
-        repository: respository,
-        branch: 'master'
-      }),
-      synthAction: SimpleSynthAction.standardNpmSynth({
-        actionName: `Synth`,
-        environment: {
-          buildImage: LinuxBuildImage.STANDARD_5_0,
-          computeType: ComputeType.MEDIUM
-        },
-        sourceArtifact,
-        cloudAssemblyArtifact: synthArtifact,
-        rolePolicyStatements: buildRolePolicies,
-        installCommand: [
+      crossAccountKeys: true,
+      selfMutation: true,
+      publishAssetsInParallel: false,
+      codeBuildDefaults: {
+        rolePolicy: buildRolePolicies
+      },
+      synth: new ShellStep('Synth', {
+        input: CodePipelineSource.codeCommit(repository, 'master'),
+        commands: [
           'node --version',
           'npm --version',
-          `aws codeartifact login --tool npm --domain ttec-dig-vf --domain-owner ${cicd.id} --repository vf --namespace @ttec-dig-vf`,
-          'rm -f package-lock.json',
-          'npm install'
-        ].join(' && ')
+          `aws codeartifact login --tool npm --domain voicefoundry-cloud --domain-owner ${cicd.id} --repository vf --namespace @voicefoundry-cloud`,
+          'npm install --legacy-peer-deps',
+          'npx cdk synth'
+        ]
       })
     });
 
     Object.keys(accounts).forEach(stage => {
       const { id, region, approval, connectInstanceId } = config.accounts[stage];
 
-      if (approval) {
-        pipeline.addStage(`${toPascal(stage)}Approval`).addManualApprovalAction({
-          actionName: `connect-core-${stage}-manual-approval`
-        });
-      }
+      const deploymentStage = new Stage(this, `Application${toPascal(stage)}Stage`);
 
-      const application = new VfApplicationStage(this, `Application${toPascal(stage)}Stage`, {
+      new Stacks(deploymentStage, {
         env: { account: id, region },
         config,
         stage,
         connectInstanceId
       });
 
-      pipeline.addApplicationStage(application);
+      pipeline.addStage(deploymentStage, {
+        pre: approval ? [new ManualApprovalStep(`connect-core-${stage}-manual-approval`)] : undefined
+      });
     });
   }
 }

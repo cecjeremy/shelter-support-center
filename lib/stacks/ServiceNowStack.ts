@@ -1,6 +1,7 @@
-import { BlockPublicAccess, Bucket, BucketEncryption } from '@aws-cdk/aws-s3';
-import { IKey } from '@aws-cdk/aws-kms';
-import { Construct, Stack } from '@aws-cdk/core';
+import { BlockPublicAccess, Bucket, BucketEncryption } from 'aws-cdk-lib/aws-s3';
+import { IKey } from 'aws-cdk-lib/aws-kms';
+import { Stack } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 import { BaseStackProps } from './VfStackProps';
 
 export interface ServiceNowStackProps extends BaseStackProps {

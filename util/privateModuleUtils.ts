@@ -5,7 +5,7 @@ import { exec } from './exec';
 import { getAWSAccounts } from './getAWSAccounts';
 import { ROOT_DIR, getPackageDirectories } from './directoryUtils';
 
-export const TTEC_DOMAIN_NAME = 'ttec-dig-vf';
+export const TTEC_DOMAIN_NAME = 'voicefoundry-cloud';
 export const TTEC_REPOSITORY_NAME = 'vf';
 
 async function buildIfNoDomain({ account, codeArtifact }: { account: string; codeArtifact: CodeArtifact }) {
@@ -103,7 +103,7 @@ export async function buildNpmrc({
 }) {
   const uri = buildUri({ region, account });
   const npmrc = `registry=https://registry.npmjs.org 
-  @ttec-dig-vf:registry=https://${uri}
+  @voicefoundry-cloud:registry=https://${uri}
   //${uri}:always-auth=true
   //${uri}:_authToken=${authToken}`;
 
@@ -144,7 +144,7 @@ export async function getCAAuthToken({ account, codeArtifact }: { account: strin
 
 export async function fixPackageLock(directory: string) {
   await exec(`(cd ${directory} && rimraf package-lock.json)`);
-  await exec(`(cd ${directory} && rimraf node_modules/@ttec-dig-vf)`);
+  await exec(`(cd ${directory} && rimraf node_modules/@voicefoundry-cloud)`);
   return exec(`(cd ${directory} && npm i)`, false);
 }
 

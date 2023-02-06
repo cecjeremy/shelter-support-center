@@ -7,8 +7,9 @@ import {
   Role,
   SamlMetadataDocument,
   SamlProvider
-} from '@aws-cdk/aws-iam';
-import { Construct, Environment, Stack, StackProps, CfnOutput } from '@aws-cdk/core';
+} from 'aws-cdk-lib/aws-iam';
+import { Environment, Stack, StackProps, CfnOutput } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 
 export interface SsoStackProps extends StackProps {
   env: Required<Environment>;

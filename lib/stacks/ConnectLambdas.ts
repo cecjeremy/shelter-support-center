@@ -1,10 +1,11 @@
 import { resolve } from 'path';
 
-import { ServicePrincipal } from '@aws-cdk/aws-iam';
-import * as lambda from '@aws-cdk/aws-lambda';
-import { NodejsFunction, NodejsFunctionProps } from '@aws-cdk/aws-lambda-nodejs';
-import { RetentionDays } from '@aws-cdk/aws-logs';
-import { Construct, Duration, Stack, StackProps } from '@aws-cdk/core';
+import { ServicePrincipal } from 'aws-cdk-lib/aws-iam';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import { NodejsFunction, NodejsFunctionProps } from 'aws-cdk-lib/aws-lambda-nodejs';
+import { RetentionDays } from 'aws-cdk-lib/aws-logs';
+import { Duration, Stack, StackProps } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 
 export interface ConnectLambdasProps extends StackProps {
   client: string;
@@ -33,7 +34,7 @@ export class ConnectLambdas extends Stack {
 
     const globalFunctionProps: NodejsFunctionProps = {
       handler: 'handler',
-      runtime: lambda.Runtime.NODEJS_14_X,
+      runtime: lambda.Runtime.NODEJS_16_X,
       timeout: Duration.seconds(8),
       logRetention: RetentionDays.ONE_MONTH,
       logRetentionRetryOptions: { maxRetries: 10 },
@@ -54,7 +55,6 @@ export class ConnectLambdas extends Stack {
         SERVICE_NAME: `secondsToMinutesConverter-${prefix}`
       }
     });
-
     this.lambdas = [secondsToMinutesLambda];
 
     const addConnectPermission = (lambdaFunction: NodejsFunction): void => {
