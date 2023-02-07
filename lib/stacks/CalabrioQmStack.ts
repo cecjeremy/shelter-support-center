@@ -107,7 +107,7 @@ export class CalabrioQmStack extends Stack {
       value: this.qmBucket.bucketArn
     });
     new CfnOutput(this, 'QMAgentStreamName', {
-      description: 'Calabrio QM ATR Kinesis Stream Name',
+      description: 'Calabrio QM Agent Event Kinesis Stream Name',
       value: props.atrStream.streamName
     });
 
