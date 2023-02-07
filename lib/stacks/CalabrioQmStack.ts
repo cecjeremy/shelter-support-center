@@ -124,7 +124,7 @@ export class CalabrioQmStack extends Stack {
     transformLambda: VfNodejsFunction
   ) {
     const type = typeId.toLocaleLowerCase();
-    const deliveryStreamName = `${prefix}-${type}-firehose`;
+    const deliveryStreamName = `${prefix}-${type}-cqm-firehose`;
 
     const logGroup = new LogGroup(this, `${typeId}LogGroup`, {
       logGroupName: `/aws/firehose/${deliveryStreamName}`,

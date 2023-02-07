@@ -8,5 +8,6 @@
   "bracketSpacing": true,
   "quoteProps": "consistent",
   "bracketSameLine": true,
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "endOfLine": "auto"
 }
