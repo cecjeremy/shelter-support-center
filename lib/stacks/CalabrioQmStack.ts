@@ -126,19 +126,19 @@ export class CalabrioQmStack extends Stack {
     const type = typeId.toLocaleLowerCase();
     const deliveryStreamName = `${prefix}-${type}-cqm-firehose`;
 
-    const logGroup = new LogGroup(this, `${typeId}LogGroup`, {
+    const logGroup = new LogGroup(this, `${typeId}CqmLogGroup`, {
       logGroupName: `/aws/firehose/${deliveryStreamName}`,
       retention: RetentionDays.TWO_WEEKS,
       removalPolicy: RemovalPolicy.DESTROY
     });
 
-    const deliveryLogStream = new LogStream(this, `${typeId}DeliveryLogStream`, {
+    const deliveryLogStream = new LogStream(this, `${typeId}CqmDeliveryLogStream`, {
       logGroup: logGroup,
-      logStreamName: 'Delivery',
+      logStreamName: 'CqmDelivery',
       removalPolicy: RemovalPolicy.DESTROY
     });
 
-    const firehoseRole: Role = new Role(this, `Connect${typeId}FirehoseRole`, {
+    const firehoseRole: Role = new Role(this, `Connect${typeId}CqmFirehoseRole`, {
       roleName: deliveryStreamName,
       assumedBy: new ServicePrincipal('firehose.amazonaws.com'),
       inlinePolicies: {
@@ -171,7 +171,7 @@ export class CalabrioQmStack extends Stack {
     bucket.grantReadWrite(firehoseRole);
     stream.grantRead(firehoseRole);
 
-    new CfnDeliveryStream(this, `Connect${typeId}Firehose`, {
+    new CfnDeliveryStream(this, `Connect${typeId}CqmFirehose`, {
       deliveryStreamName,
       deliveryStreamType: 'KinesisStreamAsSource',
       kinesisStreamSourceConfiguration: {
