@@ -1,5 +1,5 @@
 import { App, Environment, Stage, StageProps } from 'aws-cdk-lib';
-import { AdminStack, AdminStackProps } from '@voicefoundry-cloud/vf-omp';
+import { OmpStack, OmpStackProps } from '@voicefoundry-cloud/vf-omp';
 import { ConnectCore } from './constructs/ConnectCore';
 import { ConnectLambdas } from './stacks/ConnectLambdas';
 import { ServiceNowStack } from './stacks/ServiceNowStack';
@@ -24,7 +24,7 @@ export class Stacks {
   public readonly ssoStack: SsoStack;
   public readonly connectLambdasStack: ConnectLambdas;
   public readonly serviceNowStack: ServiceNowStack;
-  public readonly adminStack: AdminStack;
+  public readonly adminStack: OmpStack;
 
   constructor(private readonly scope: Stage | App, props: StacksProps) {
     const { stage, config } = props;
@@ -48,7 +48,7 @@ export class Stacks {
       bucketEncryptionKey: this.connectCore.storageStack.keys.shared!
     });
 
-    const adminProps: Omit<AdminStackProps, 'assets'> = {
+    const adminProps: Omit<OmpStackProps, 'assets'> = {
       env: props.env,
       stackName: `${prefix}-admin`,
       client: props.config.client,
@@ -65,7 +65,7 @@ export class Stacks {
         connectUserManagementEnabled: true,
         calendarManagementEnabled: true,
         tenancyEnabled: false,
-        flowEngineManagementEnabled: false
+        phoneNumberTaxonomyEnabled: true
       },
       hosting: {
         s3SecureTransport: true,
@@ -77,7 +77,7 @@ export class Stacks {
       }
     };
 
-    this.adminStack = new AdminStack(this.scope, `ConnectAdminStack`, adminProps);
+    this.adminStack = new OmpStack(this.scope, `ConnectAdminStack`, adminProps);
 
     this.adminStack.addDependency(this.connectCore.connectStack);
   }
