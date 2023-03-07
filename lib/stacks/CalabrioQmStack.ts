@@ -120,7 +120,10 @@ export class CalabrioQmStack extends Stack {
       runtime: Runtime.NODEJS_16_X,
       timeout: Duration.seconds(30),
       memorySize: 1024,
-      entry: getLambdaEntry('ctrProcessor')
+      entry: getLambdaEntry('ctrProcessor'),
+      environment: {
+        PREFIX: props.prefix
+      }
     });
 
     ctrProcessorLambda.addEventSource(
