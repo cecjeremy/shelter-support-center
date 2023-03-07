@@ -7,9 +7,10 @@ import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { VfNodejsFunction } from '@voicefoundry-cloud/cdk-resources';
 import { LogGroup, LogStream, RetentionDays } from 'aws-cdk-lib/aws-logs';
-import { Bucket, IBucket, BlockPublicAccess, BucketEncryption } from 'aws-cdk-lib/aws-s3';
+import { Bucket, IBucket, BlockPublicAccess, BucketEncryption, EventType } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
 import { resolve } from 'path';
+import { S3EventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 
 export interface CalabrioQmStackProps extends StackProps {
   prefix: string;
@@ -113,6 +114,23 @@ export class CalabrioQmStack extends Stack {
 
     // Client specific tag request
     Tags.of(this.qmBucket).add('data-classification', 'Confidential');
+
+    const ctrProcessorLambda = new NodejsFunction(this, 'CTRProcessorLambda', {
+      handler: 'handler',
+      runtime: Runtime.NODEJS_16_X,
+      timeout: Duration.seconds(30),
+      memorySize: 1024,
+      entry: getLambdaEntry('ctrProcessor')
+    });
+
+    ctrProcessorLambda.addEventSource(
+      new S3EventSource(this.qmBucket, {
+        events: [EventType.OBJECT_CREATED],
+        filters: [{ prefix: 'original/ctr/' }]
+      })
+    );
+
+    this.qmBucket.grantReadWrite(ctrProcessorLambda);
   }
 
   buildDeliveryStream(
@@ -189,7 +207,7 @@ export class CalabrioQmStack extends Stack {
           logGroupName: logGroup.logGroupName,
           logStreamName: deliveryLogStream.logStreamName
         },
-        prefix: `${type}/`,
+        prefix: typeId === 'CTR' ? `original/${type}/` : `${type}`,
         errorOutputPrefix: `${type}/errors/`,
         encryptionConfiguration: {
           kmsEncryptionConfig: {
