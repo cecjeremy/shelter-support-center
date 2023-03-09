@@ -97,6 +97,8 @@ export const handler = async (event: S3CreateEvent): Promise<void> => {
         newObject += JSON.stringify(ctr) + '\n';
       }
       const newObjectKey = objectKey.replace('/original', '');
+      logger.info(newObjectKey);
+      logger.info(newObject);
       await s3.putObject(bucketName, newObjectKey, newObject);
     } catch (e) {
       logger.error(e);
