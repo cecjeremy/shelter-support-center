@@ -41,7 +41,7 @@ export class CalabrioQmStack extends Stack {
       environment: {
         LOG_LEVEL: 'debug',
         ENVIRONMENT: props.stage as string,
-        SERVICE_NAME: `newlineDelimiterTransform-${props.prefix}`
+        SERVICE_NAME: `newlineDelimiterTransform-${props.prefix}` //should be tags
       }
     });
 
@@ -122,7 +122,7 @@ export class CalabrioQmStack extends Stack {
       memorySize: 1024,
       entry: getLambdaEntry('ctrProcessor'),
       environment: {
-        PREFIX: props.prefix
+        CDK_STACK_PREFIX: props.prefix
       }
     });
 
