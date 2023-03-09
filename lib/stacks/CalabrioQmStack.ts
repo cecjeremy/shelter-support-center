@@ -126,12 +126,12 @@ export class CalabrioQmStack extends Stack {
       }
     });
 
-    ctrProcessorLambda.addEventSource(
-      new S3EventSource(this.qmBucket, {
-        events: [EventType.OBJECT_CREATED],
-        filters: [{ prefix: 'original/ctr/' }]
-      })
-    );
+    // ctrProcessorLambda.addEventSource(
+    //   new S3EventSource(this.qmBucket, {
+    //     events: [EventType.OBJECT_CREATED],
+    //     filters: [{ prefix: 'original/ctr/' }]
+    //   })
+    // );
 
     this.qmBucket.grantReadWrite(ctrProcessorLambda);
   }
