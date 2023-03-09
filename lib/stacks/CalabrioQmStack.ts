@@ -123,7 +123,8 @@ export class CalabrioQmStack extends Stack {
       entry: getLambdaEntry('ctrProcessor'),
       environment: {
         CDK_STACK_PREFIX: props.prefix
-      }
+      },
+      tracing: undefined
     });
 
     ctrProcessorLambda.addEventSource(

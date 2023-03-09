@@ -96,8 +96,8 @@ export const handler = async (event: S3CreateEvent): Promise<void> => {
       newObject += JSON.stringify(ctr) + '\n';
     }
     const newObjectKey = objectKey.replace('/original', '');
-    logger.info(newObjectKey);
-    logger.info(newObject);
+    logger.info(`newObjectKey: ${newObjectKey}`);
+    logger.info(`newObject: ${newObject}`);
     const response = await s3.putObject(bucketName, newObjectKey, newObject);
     if (response.$metadata.httpStatusCode !== 200) {
       logger.error(response.$metadata.httpStatusCode);
