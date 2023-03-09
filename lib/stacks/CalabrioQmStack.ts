@@ -115,7 +115,7 @@ export class CalabrioQmStack extends Stack {
     // Client specific tag request
     Tags.of(this.qmBucket).add('data-classification', 'Confidential');
 
-    const ctrProcessorLambda = new NodejsFunction(this, 'CTRProcessorLambda', {
+    const ctrProcessorLambda = new NodejsFunction(this, 'CtrProcessorLambda', {
       handler: 'handler',
       runtime: Runtime.NODEJS_16_X,
       timeout: Duration.seconds(30),
@@ -123,8 +123,7 @@ export class CalabrioQmStack extends Stack {
       entry: getLambdaEntry('ctrProcessor'),
       environment: {
         CDK_STACK_PREFIX: props.prefix
-      },
-      tracing: undefined
+      }
     });
 
     ctrProcessorLambda.addEventSource(
