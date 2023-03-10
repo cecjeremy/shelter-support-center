@@ -132,6 +132,7 @@ export class CalabrioQmStack extends Stack {
         filters: [{ prefix: 'original/ctr/' }]
       })
     );
+    props.encryptionKey.grantEncryptDecrypt(ctrProcessorLambda);
 
     this.qmBucket.grantReadWrite(ctrProcessorLambda);
   }
