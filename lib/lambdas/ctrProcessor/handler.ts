@@ -76,26 +76,28 @@ export const handler = async (event: S3CreateEvent): Promise<void> => {
       logger.info(line);
 
       let ctr = JSON.parse(line) as IContactTraceRecord;
-      if (ctr.Agent.ConnectedToAgentTimestamp) {
+      if (ctr.Agent?.ConnectedToAgentTimestamp) {
         ctr = updateRecordingLocation(
           ctr,
           `connect/${cdkStackPrefix}/${cdkStackPrefix}-recordings`,
           'Analysis/Voice/Redacted'
         );
-        const wavFileName = ctr.Recording.Location.split('/')[1];
+
+        //split string on / and get last item in array
+        const wavFileName = ctr.Recording.Location.split('/')[ctr.Recording.Location.split('/').length - 1];
 
         ctr = updateRecordingLocation(ctr, 'connect', 'Analysis/Voice/Redacted');
         ctr = updateRecordingLocation(
           ctr,
           wavFileName,
-          `${ctr.ContactId}_call_recording_redacted${ctr.Agent.ConnectedToAgentTimestamp}.wav`
+          `${ctr.ContactId}_call_recording_redacted_${ctr.Agent.ConnectedToAgentTimestamp}.wav`
         );
 
         logger.info(JSON.stringify(ctr));
       }
       newObject += JSON.stringify(ctr) + '\n';
     }
-    const newObjectKey = objectKey.replace('/original', '');
+    const newObjectKey = objectKey.replace('original/', '');
     logger.info(`newObjectKey: ${newObjectKey}`);
     logger.info(`newObject: ${newObject}`);
     const response = await s3.putObject(bucketName, newObjectKey, newObject);

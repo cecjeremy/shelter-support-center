@@ -8,18 +8,18 @@ export interface RoutingProfile {
 }
 
 export interface Agent {
-  ARN: string;
-  AfterContactWorkDuration: number;
-  AfterContactWorkEndTimestamp: Date;
-  AfterContactWorkStartTimestamp: Date;
-  AgentInteractionDuration: number;
-  ConnectedToAgentTimestamp: Date;
-  CustomerHoldDuration: number;
+  ARN?: string;
+  AfterContactWorkDuration?: number;
+  AfterContactWorkEndTimestamp?: Date;
+  AfterContactWorkStartTimestamp?: Date;
+  AgentInteractionDuration?: number;
+  ConnectedToAgentTimestamp?: Date;
+  CustomerHoldDuration?: number;
   HierarchyGroups?: any;
-  LongestHoldDuration: number;
-  NumberOfHolds: number;
-  RoutingProfile: RoutingProfile;
-  Username: string;
+  LongestHoldDuration?: number;
+  NumberOfHolds?: number;
+  RoutingProfile?: RoutingProfile;
+  Username?: string;
 }
 
 export interface Endpoint {
