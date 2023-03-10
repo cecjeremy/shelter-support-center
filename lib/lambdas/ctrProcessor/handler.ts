@@ -77,16 +77,15 @@ export const handler = async (event: S3CreateEvent): Promise<void> => {
 
       let ctr = JSON.parse(line) as IContactTraceRecord;
       if (ctr.Agent?.ConnectedToAgentTimestamp) {
-        ctr = updateRecordingLocation(
-          ctr,
-          `connect/${cdkStackPrefix}/${cdkStackPrefix}-recordings`,
-          'Analysis/Voice/Redacted'
-        );
-
         //split string on / and get last item in array
         const wavFileName = ctr.Recording.Location.split('/')[ctr.Recording.Location.split('/').length - 1];
 
-        ctr = updateRecordingLocation(ctr, 'connect', 'Analysis/Voice/Redacted');
+        ctr = updateRecordingLocation(
+          ctr,
+          `/connect/${cdkStackPrefix}/${cdkStackPrefix}-recordings/`,
+          '/Analysis/Voice/Redacted/'
+        );
+
         ctr = updateRecordingLocation(
           ctr,
           wavFileName,
