@@ -90,7 +90,8 @@ export class Stacks {
       stage,
       ctrStream: this.connectCore.streamingStack.ctrStream!,
       atrStream: this.connectCore.streamingStack.agentStream!,
-      encryptionKey: this.connectCore.storageStack.keys.shared!
+      encryptionKey: this.connectCore.storageStack.keys.shared!,
+      recordingBucket: this.connectCore.storageStack.buckets.storage!
     });
   }
 }

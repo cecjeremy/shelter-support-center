@@ -18,6 +18,7 @@ export interface CalabrioQmStackProps extends StackProps {
   ctrStream: Stream;
   atrStream: Stream;
   encryptionKey: Key;
+  recordingBucket: IBucket;
 }
 
 const getLambdaEntry = (lambdaName: string) => {
@@ -122,7 +123,8 @@ export class CalabrioQmStack extends Stack {
       memorySize: 1024,
       entry: getLambdaEntry('ctrProcessor'),
       environment: {
-        CDK_STACK_PREFIX: props.prefix
+        CDK_STACK_PREFIX: props.prefix,
+        RECORDING_BUCKET_NAME: props.recordingBucket.bucketName
       }
     });
 

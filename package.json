@@ -26,6 +26,7 @@
     "@aws-cdk/pipelines": "1.180.0",
     "@aws-sdk/client-connect": "^3.200.0",
     "@aws-sdk/client-dynamodb": "^3.200.0",
+    "@aws-sdk/types": "^3.257.0",
     "@types/jest": "^29.2.1",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
