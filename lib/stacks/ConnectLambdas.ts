@@ -4,7 +4,7 @@ import { ServicePrincipal } from 'aws-cdk-lib/aws-iam';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction, NodejsFunctionProps } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
-import { Duration, Stack, StackProps } from 'aws-cdk-lib';
+import { Duration, Stack, StackProps, Tags } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
 export interface ConnectLambdasProps extends StackProps {
@@ -69,5 +69,8 @@ export class ConnectLambdas extends Stack {
     this.lambdas.forEach(lambda => {
       addConnectPermission(lambda);
     });
+
+    //MAP tags
+    Tags.of(scope).add('map-migrated', 'd-server-02w639x33oia5k');
   }
 }

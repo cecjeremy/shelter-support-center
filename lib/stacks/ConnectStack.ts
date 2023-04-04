@@ -1,4 +1,4 @@
-import { Stack } from 'aws-cdk-lib';
+import { Stack, Tags } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import {
   ConnectInstance,
@@ -55,5 +55,8 @@ export class ConnectStack extends Stack {
       contactLensEnabled: true
     });
     instance.node.addDependency(connectProvider);
+
+    //MAP tags
+    Tags.of(scope).add('map-migrated', 'd-server-02w639x33oia5k');
   }
 }

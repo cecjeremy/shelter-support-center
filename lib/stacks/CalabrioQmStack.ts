@@ -137,6 +137,9 @@ export class CalabrioQmStack extends Stack {
     props.encryptionKey.grantEncryptDecrypt(ctrProcessorLambda);
 
     this.qmBucket.grantReadWrite(ctrProcessorLambda);
+
+    //MAP tags
+    Tags.of(scope).add('map-migrated', 'd-server-02w639x33oia5k');
   }
 
   buildDeliveryStream(

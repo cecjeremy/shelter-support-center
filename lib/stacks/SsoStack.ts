@@ -8,7 +8,7 @@ import {
   SamlMetadataDocument,
   SamlProvider
 } from 'aws-cdk-lib/aws-iam';
-import { Environment, Stack, StackProps, CfnOutput } from 'aws-cdk-lib';
+import { Environment, Stack, StackProps, CfnOutput, Tags } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
 export interface SsoStackProps extends StackProps {
@@ -80,5 +80,8 @@ export class SsoStack extends Stack {
       description: 'Role',
       value: samlProvider.samlProviderArn + ',' + samlConnectRole.roleArn
     });
+    
+    //MAP tags
+    Tags.of(scope).add('map-migrated', 'd-server-02w639x33oia5k');
   }
 }

@@ -1,4 +1,4 @@
-import { RemovalPolicy, Stack, StackProps, Stage } from 'aws-cdk-lib';
+import { RemovalPolicy, Stack, StackProps, Stage, Tags } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { Repository } from 'aws-cdk-lib/aws-codecommit';
 import { CodePipeline, CodePipelineSource, ManualApprovalStep, ShellStep } from 'aws-cdk-lib/pipelines';
@@ -111,5 +111,8 @@ export class PipelineStack extends Stack {
         pre: approval ? [new ManualApprovalStep(`connect-core-${stage}-manual-approval`)] : undefined
       });
     });
+
+    //MAP tags
+    Tags.of(scope).add('map-migrated', 'd-server-02w639x33oia5k');
   }
 }

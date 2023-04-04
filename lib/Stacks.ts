@@ -1,4 +1,4 @@
-import { App, Environment, Stage, StageProps } from 'aws-cdk-lib';
+import { App, Environment, Stage, StageProps, Tags } from 'aws-cdk-lib';
 import { OmpStack, OmpStackProps } from '@voicefoundry-cloud/vf-omp';
 import { ConnectCore } from './constructs/ConnectCore';
 import { ConnectLambdas } from './stacks/ConnectLambdas';
@@ -93,5 +93,8 @@ export class Stacks {
       encryptionKey: this.connectCore.storageStack.keys.shared!,
       recordingBucket: this.connectCore.storageStack.buckets.storage!
     });
+
+    //MAP tags
+    Tags.of(scope).add('map-migrated', 'd-server-02w639x33oia5k');
   }
 }

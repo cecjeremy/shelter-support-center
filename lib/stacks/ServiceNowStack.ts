@@ -1,6 +1,6 @@
 import { BlockPublicAccess, Bucket, BucketEncryption } from 'aws-cdk-lib/aws-s3';
 import { IKey } from 'aws-cdk-lib/aws-kms';
-import { Stack } from 'aws-cdk-lib';
+import { Stack, Tags } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { BaseStackProps } from './VfStackProps';
 
@@ -25,5 +25,8 @@ export class ServiceNowStack extends Stack {
       encryption: BucketEncryption.KMS,
       encryptionKey: bucketEncryptionKey
     });
+
+    //MAP tags
+    Tags.of(scope).add('map-migrated', 'd-server-02w639x33oia5k');
   }
 }
