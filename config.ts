@@ -14,6 +14,14 @@ export interface Account {
   approval?: boolean;
 }
 
+export interface ShelterAnalytics {
+  account: string;
+  dataBucket: string;
+  dataBucketEncryptKey: string;
+  streamingBucket: string;
+  streamingBucketEncryptKey: string;
+}
+
 export interface Configuration {
   client: string;
   project: string;
@@ -28,6 +36,9 @@ export interface Configuration {
       loggingLevel?: 'trace' | 'debug' | 'info' | 'warn' | 'error';
       retain?: boolean;
       useLayer?: boolean;
+    };
+    shelterAnalytics: {
+      [key: string]: ShelterAnalytics;
     };
   };
   getPrefix(stage?: string): string;
@@ -72,6 +83,29 @@ export const config: Configuration = {
     },
     connectCore: {
       identityManagementType: 'SAML'
+    },
+    shelterAnalytics: {
+      dev: {
+        account: '183014481998',
+        dataBucket: 'dev-connect-support-datastorage-bucket83908e77-1ww0pksnvva5s',
+        dataBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024',
+        streamingBucket: 'dev-connect-support-datastreaming-bucket83908e77-2hwquppvp1qv',
+        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024'
+      },
+      test: {
+        account: '',
+        dataBucket: '',
+        dataBucketEncryptKey: '',
+        streamingBucket: '',
+        streamingBucketEncryptKey: ''
+      },
+      prod: {
+        account: '',
+        dataBucket: '',
+        dataBucketEncryptKey: '',
+        streamingBucket: '',
+        streamingBucketEncryptKey: ''
+      }
     }
   },
   getPrefix(stage) {

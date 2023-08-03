@@ -1,11 +1,13 @@
-import { App, Environment, Stage, StageProps, Tags } from 'aws-cdk-lib';
+import { App, Environment, Fn, Stage, StageProps, Tags } from 'aws-cdk-lib';
 import { OmpStack, OmpStackProps } from '@voicefoundry-cloud/vf-omp';
 import { ConnectCore } from './constructs/ConnectCore';
 import { ConnectLambdas } from './stacks/ConnectLambdas';
 import { ServiceNowStack } from './stacks/ServiceNowStack';
 import { SsoStack } from './stacks/SsoStack';
 import { CalabrioQmStack } from './stacks/CalabrioQmStack';
+import { DaReplicationStack } from './stacks/DaReplicationStack';
 import { Configuration } from '../config';
+import { CfnBucket } from 'aws-cdk-lib/aws-s3';
 
 export interface StacksProps extends StageProps {
   env: Required<Environment>;
@@ -27,6 +29,7 @@ export class Stacks {
   public readonly serviceNowStack: ServiceNowStack;
   public readonly adminStack: OmpStack;
   public readonly calabrioQmStack: CalabrioQmStack;
+  public readonly daReplicationStack: DaReplicationStack;
 
   constructor(private readonly scope: Stage | App, props: StacksProps) {
     const { stage, config } = props;
@@ -92,6 +95,23 @@ export class Stacks {
       atrStream: this.connectCore.streamingStack.agentStream!,
       encryptionKey: this.connectCore.storageStack.keys.shared!,
       recordingBucket: this.connectCore.storageStack.buckets.storage!
+    });
+
+    this.daReplicationStack = new DaReplicationStack(this.scope, 'DaReplicationStack', {
+      stage: props.stage,
+      stackName: `${prefix}-da-replication`,
+      dataBucket: this.connectCore.storageStack.buckets.storage!.node.defaultChild as CfnBucket,
+      dataBucketPrefix: 'Analysis/Voice/Redacted/',
+      dataBucketKeyArn: Fn.importValue(`${prefix}:ConnectSharedKeyId`),
+      dataBucketDestAcct: props.config.packages.shelterAnalytics[props.stage].account,
+      dataBucketDestinationBucket: props.config.packages.shelterAnalytics[props.stage].dataBucket,
+      dataBucketDestKeyArn: props.config.packages.shelterAnalytics[props.stage].dataBucketEncryptKey,
+      streamBucket: this.connectCore.streamingStack.streamDataBucket.node.defaultChild as CfnBucket,
+      streamBucketPrefix: '/',
+      streamBucketKeyArn: Fn.importValue(`${prefix}:ConnectSharedKeyId`),
+      streamBucketDestAcct: props.config.packages.shelterAnalytics[props.stage].account,
+      streamBucketDestinationBucket: props.config.packages.shelterAnalytics[props.stage].streamingBucket,
+      streamBucketDestKeyArn: props.config.packages.shelterAnalytics[props.stage].streamingBucketEncryptKey
     });
 
     //MAP tags

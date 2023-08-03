@@ -2,6 +2,7 @@ import { Construct } from 'constructs';
 import { ConnectDataStorage, ConnectDataStreamingStack } from '@voicefoundry-cloud/cdk-resources';
 import { ConnectStack } from '../stacks/ConnectStack';
 import { BaseStackProps } from '../stacks/VfStackProps';
+import { Duration } from 'aws-cdk-lib';
 
 export class ConnectCore extends Construct {
   public readonly storageStack: ConnectDataStorage;
@@ -22,6 +23,10 @@ export class ConnectCore extends Construct {
       stackName: `${prefix}-storage`,
       accessLogs: true,
       retain: true
+    });
+    this.storageStack.buckets.storage?.addLifecycleRule({
+      expiration: Duration.days(5 * 365),
+      enabled: true
     });
 
     this.streamingStack = new ConnectDataStreamingStack(this, 'ConnectDataStreaming', {
