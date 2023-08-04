@@ -107,7 +107,6 @@ export class Stacks {
       dataBucketDestinationBucket: props.config.packages.shelterAnalytics[props.stage].dataBucket,
       dataBucketDestKeyArn: props.config.packages.shelterAnalytics[props.stage].dataBucketEncryptKey,
       streamBucket: this.connectCore.streamingStack.streamDataBucket.node.defaultChild as CfnBucket,
-      streamBucketPrefix: '/',
       streamBucketKeyArn: Fn.importValue(`${prefix}:ConnectSharedKeyId`),
       streamBucketDestAcct: props.config.packages.shelterAnalytics[props.stage].account,
       streamBucketDestinationBucket: props.config.packages.shelterAnalytics[props.stage].streamingBucket,

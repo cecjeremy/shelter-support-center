@@ -12,7 +12,6 @@ export interface DAReplicationStackProps extends StackProps {
   dataBucketDestinationBucket: string;
   dataBucketDestKeyArn: string;
   streamBucket: CfnBucket;
-  streamBucketPrefix: string;
   streamBucketKeyArn: string;
   streamBucketDestAcct: string;
   streamBucketDestinationBucket: string;
@@ -38,7 +37,6 @@ export class DaReplicationStack extends Stack {
     new S3BucketReplication(this, 'StreamingBucketReplication', {
       ruleId: `data-analytics-connect-streaming-replication-rule-${props.stage}`,
       sourceBucket: props.streamBucket,
-      filterPrefix: props.streamBucketPrefix,
       sourceDecryptKeyArn: props.streamBucketKeyArn,
       destAcct: props.streamBucketDestAcct,
       destBucketName: props.streamBucketDestinationBucket,

@@ -117,7 +117,7 @@ type SourceSelectionCriteria = {
 type ReplicationRule = {
   id: string;
   status: string;
-  filter: ReplicationRuleFilter;
+  filter?: ReplicationRuleFilter;
   priority: number;
   deleteMarkerReplication: DeleteMarkerReplication;
   destination: ReplicationDestination;
@@ -233,7 +233,7 @@ export class S3BucketReplication extends Construct {
     replicationRules.push({
       id: ruleId,
       status: 'Enabled',
-      filter: { prefix: props.filterPrefix || '/' },
+      filter: { prefix: props.filterPrefix || '' },
       priority: lowestPriority + 1,
       deleteMarkerReplication: { status: 'Enabled' },
       destination: {

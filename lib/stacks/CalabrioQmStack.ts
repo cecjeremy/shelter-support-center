@@ -57,6 +57,13 @@ export class CalabrioQmStack extends Stack {
       serverAccessLogsPrefix: 'access-logs/',
       encryption: BucketEncryption.S3_MANAGED
     });
+    this.qmBucket.addLifecycleRule({
+      expiration: Duration.days(5 * 365),
+      noncurrentVersionExpiration: Duration.days(1),
+      enabled: true
+    });
+    // Client specific tag request
+    Tags.of(this.qmBucket).add('data-classification', 'Confidential');
 
     //Both CTR and ATR streams are new line delineated, this are processed and delivered to
     //vf streaming bucket. A manually created replication rule from the streaming bucket copies
