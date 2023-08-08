@@ -90,14 +90,16 @@ export const config: Configuration = {
         dataBucket: 'dev-connect-support-datastorage-bucket83908e77-7zs0dw4kcgi2',
         dataBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024',
         streamingBucket: 'dev-connect-support-datastreaming-bucket83908e77-11ufluybw42bp',
-        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024'
+        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024',
+        // this S3 managed key is used for the Calabrio QM replication rules
+        s3ManagedKmsKey: ''
       },
       test: {
-        account: '',
-        dataBucket: '',
-        dataBucketEncryptKey: '',
-        streamingBucket: '',
-        streamingBucketEncryptKey: ''
+        account: '183014481998',
+        dataBucket: 'dev-connect-support-datastorage-bucket83908e77-7zs0dw4kcgi2',
+        dataBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024',
+        streamingBucket: 'dev-connect-support-datastreaming-bucket83908e77-11ufluybw42bp',
+        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024'
       },
       prod: {
         account: '',

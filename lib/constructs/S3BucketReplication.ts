@@ -145,7 +145,7 @@ export class S3BucketReplication extends Construct {
       this.role = props.role;
     } else {
       this.role = new Role(this, 'ReplicationRole', {
-        roleName: `${this.bucket.bucketName}-replication-role`,
+        roleName: `${this.bucket.bucketName}-rep-role`,
         assumedBy: new ServicePrincipal('s3.amazonaws.com')
       });
     }
