@@ -87,9 +87,9 @@ export const config: Configuration = {
     shelterAnalytics: {
       dev: {
         account: '183014481998',
-        dataBucket: 'dev-connect-support-datastorage-bucket83908e77-1ww0pksnvva5s',
+        dataBucket: 'dev-connect-support-datastorage-bucket83908e77-7zs0dw4kcgi2',
         dataBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024',
-        streamingBucket: 'dev-connect-support-datastreaming-bucket83908e77-2hwquppvp1qv',
+        streamingBucket: 'dev-connect-support-datastreaming-bucket83908e77-11ufluybw42bp',
         streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024'
       },
       test: {
