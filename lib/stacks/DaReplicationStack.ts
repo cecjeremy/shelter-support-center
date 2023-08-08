@@ -27,12 +27,12 @@ export class DaReplicationStack extends Stack {
     const dataReplicationRole = Role.fromRoleName(
       this,
       'DaDataReplicationRole',
-      `${props.dataBucket.bucketName}-replication-role`
+      `${props.dataBucket.bucketName}-rep-role`
     );
     const streamingReplicationRole = Role.fromRoleName(
       this,
       'DaStreamingReplicationRole',
-      `${props.streamBucket.bucketName}-replication-role`
+      `${props.streamBucket.bucketName}-rep-role`
     );
 
     // Replicate Connect Data Bucket Recording to Data Analytics
