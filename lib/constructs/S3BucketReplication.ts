@@ -145,6 +145,7 @@ export class S3BucketReplication extends Construct {
       this.role = props.role;
     } else {
       this.role = new Role(this, 'ReplicationRole', {
+        // this role name is limited to 64 characters. choose wisely.
         roleName: `${this.bucket.bucketName}-rep-role`,
         assumedBy: new ServicePrincipal('s3.amazonaws.com')
       });

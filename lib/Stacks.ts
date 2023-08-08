@@ -101,13 +101,13 @@ export class Stacks {
       dataBucketReportsPrefix: `connect/${prefix}/${prefix}-reports/`,
       dataBucketKeyArn: this.connectCore.storageStack.keys.shared?.keyArn!,
       // AWS S3 Managed Key aws/s3
-      dataBucketDestKeyArn: 'arn:aws:kms:us-east-1:564741965342:key/0c04023d-26e5-40a3-9e27-82f28e8b6b02',
+      dataBucketDestKeyArn: props.config.packages.shelterAnalytics[props.stage].s3ManagedKmsKey,
       // let S3 Replication Construct create the Role
       dataBucketReplicationRole: undefined,
       streamingBucket: this.connectCore.storageStack.buckets.streaming!.node.defaultChild as CfnBucket,
       streamBucketKeyArn: this.connectCore.storageStack.keys.shared?.keyArn!,
       // AWS S3 Managed Key aws/s3
-      streamBucketDestKeyArn: 'arn:aws:kms:us-east-1:564741965342:key/0c04023d-26e5-40a3-9e27-82f28e8b6b02',
+      streamBucketDestKeyArn: props.config.packages.shelterAnalytics[props.stage].s3ManagedKmsKey,
       // let S3 Replication Construct create the Role
       streamBucketReplicationRole: undefined
     });
