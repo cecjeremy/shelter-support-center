@@ -1,16 +1,26 @@
+import { resolve } from 'path';
+import { Construct } from 'constructs';
 import { Aws, Duration, RemovalPolicy, Stack, StackProps, Tags, CfnOutput } from 'aws-cdk-lib';
-import { Effect, PolicyDocument, PolicyStatement, Role, Policy, User, ServicePrincipal } from 'aws-cdk-lib/aws-iam';
+import {
+  Effect,
+  PolicyDocument,
+  PolicyStatement,
+  Role,
+  Policy,
+  User,
+  ServicePrincipal,
+  IRole
+} from 'aws-cdk-lib/aws-iam';
+import { Bucket, IBucket, BlockPublicAccess, BucketEncryption, EventType, CfnBucket } from 'aws-cdk-lib/aws-s3';
 import { Stream } from 'aws-cdk-lib/aws-kinesis';
 import { CfnDeliveryStream } from 'aws-cdk-lib/aws-kinesisfirehose';
 import { IKey, Key } from 'aws-cdk-lib/aws-kms';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
-import { VfNodejsFunction } from '@voicefoundry-cloud/cdk-resources';
-import { LogGroup, LogStream, RetentionDays } from 'aws-cdk-lib/aws-logs';
-import { Bucket, IBucket, BlockPublicAccess, BucketEncryption, EventType } from 'aws-cdk-lib/aws-s3';
-import { Construct } from 'constructs';
-import { resolve } from 'path';
 import { S3EventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
+import { LogGroup, LogStream, RetentionDays } from 'aws-cdk-lib/aws-logs';
+import { VfNodejsFunction } from '@voicefoundry-cloud/cdk-resources';
+import { S3BucketReplication } from '../constructs/S3BucketReplication';
 
 export interface CalabrioQmStackProps extends StackProps {
   prefix: string;
@@ -19,6 +29,17 @@ export interface CalabrioQmStackProps extends StackProps {
   atrStream: Stream;
   encryptionKey: Key;
   recordingBucket: IBucket;
+  // Bucket Replication Props
+  dataBucket: CfnBucket;
+  dataBucketRecordingsPrefix: string;
+  dataBucketReportsPrefix: string;
+  dataBucketKeyArn: string;
+  dataBucketDestKeyArn: string;
+  dataBucketReplicationRole?: IRole | undefined;
+  streamingBucket: CfnBucket;
+  streamBucketKeyArn: string;
+  streamBucketDestKeyArn: string;
+  streamBucketReplicationRole?: IRole | undefined;
 }
 
 const getLambdaEntry = (lambdaName: string) => {
@@ -27,6 +48,9 @@ const getLambdaEntry = (lambdaName: string) => {
 
 export class CalabrioQmStack extends Stack {
   public readonly qmBucket: Bucket;
+  public readonly dataReplicationRole: IRole;
+  public readonly streamReplicationRole: IRole;
+
   constructor(scope: Construct, id: string, props: CalabrioQmStackProps) {
     super(scope, id, props);
 
@@ -49,8 +73,9 @@ export class CalabrioQmStack extends Stack {
     props.encryptionKey.grantEncryptDecrypt(transformLambda);
 
     // Create QM Data Bucket
+    const qmBucketName = `cqm-cip-${props.prefix}-bucket`;
     this.qmBucket = new Bucket(this, 'CQMDataBucket', {
-      bucketName: `cqm-cip-${props.prefix}-bucket`,
+      bucketName: qmBucketName,
       versioned: true,
       blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
       enforceSSL: true,
@@ -64,6 +89,45 @@ export class CalabrioQmStack extends Stack {
     });
     // Client specific tag request
     Tags.of(this.qmBucket).add('data-classification', 'Confidential');
+
+    // Replicate Connect Data Bucket Recordings
+    const dataRepRule = new S3BucketReplication(this, 'CQMDataRecordingsReplication', {
+      ruleId: `cqm-redacted-recordings-data-sync-${props.stage}`,
+      sourceBucket: props.dataBucket,
+      filterPrefix: props.dataBucketRecordingsPrefix,
+      sourceDecryptKeyArn: props.dataBucketKeyArn,
+      destAcct: Stack.of(this).account,
+      destBucketName: qmBucketName,
+      destEncryptKeyArn: props.dataBucketDestKeyArn,
+      // role will be created since prop is undefined
+      role: props.dataBucketReplicationRole
+    });
+    this.dataReplicationRole = dataRepRule.role;
+
+    // Replicate Connect Data Bucket Reports
+    new S3BucketReplication(this, 'CQMDataReportsReplication', {
+      ruleId: `cqm-reports-data-sync-${props.stage}`,
+      sourceBucket: props.dataBucket,
+      filterPrefix: props.dataBucketReportsPrefix,
+      sourceDecryptKeyArn: props.dataBucketKeyArn,
+      destAcct: Stack.of(this).account,
+      destBucketName: qmBucketName,
+      destEncryptKeyArn: props.dataBucketDestKeyArn,
+      // use singleton role from recordings replication
+      role: dataRepRule.role
+    });
+
+    // Replicate Connect Streaming Bucket
+    const streamRepRule = new S3BucketReplication(this, 'CQMStreamingBucketReplication', {
+      ruleId: `cqm-cip-connect-streaming-replication-rule-${props.stage}`,
+      sourceBucket: props.streamingBucket,
+      sourceDecryptKeyArn: props.streamBucketKeyArn,
+      destAcct: Stack.of(this).account,
+      destBucketName: qmBucketName,
+      destEncryptKeyArn: props.streamBucketDestKeyArn,
+      role: props.streamBucketReplicationRole
+    });
+    this.streamReplicationRole = streamRepRule.role;
 
     //Both CTR and ATR streams are new line delineated, this are processed and delivered to
     //vf streaming bucket. A manually created replication rule from the streaming bucket copies

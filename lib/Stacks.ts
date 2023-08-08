@@ -94,14 +94,30 @@ export class Stacks {
       ctrStream: this.connectCore.streamingStack.ctrStream!,
       atrStream: this.connectCore.streamingStack.agentStream!,
       encryptionKey: this.connectCore.storageStack.keys.shared!,
-      recordingBucket: this.connectCore.storageStack.buckets.storage!
+      recordingBucket: this.connectCore.storageStack.buckets.storage!,
+      dataBucket: this.connectCore.storageStack.buckets.storage!.node.defaultChild as CfnBucket,
+      dataBucketRecordingsPrefix: 'Analysis/Voice/Redacted/',
+      // the prefix is the same as the instance alias for this project
+      dataBucketReportsPrefix: `connect/${prefix}/${prefix}-reports/`,
+      dataBucketKeyArn: this.connectCore.storageStack.keys.shared?.keyArn!,
+      // AWS S3 Managed Key aws/s3
+      dataBucketDestKeyArn: 'arn:aws:kms:us-east-1:564741965342:key/0c04023d-26e5-40a3-9e27-82f28e8b6b02',
+      // let S3 Replication Construct create the Role
+      dataBucketReplicationRole: undefined,
+      streamingBucket: this.connectCore.storageStack.buckets.streaming!.node.defaultChild as CfnBucket,
+      streamBucketKeyArn: this.connectCore.storageStack.keys.shared?.keyArn!,
+      // AWS S3 Managed Key aws/s3
+      streamBucketDestKeyArn: 'arn:aws:kms:us-east-1:564741965342:key/0c04023d-26e5-40a3-9e27-82f28e8b6b02',
+      // let S3 Replication Construct create the Role
+      streamBucketReplicationRole: undefined
     });
 
     this.daReplicationStack = new DaReplicationStack(this.scope, 'DaReplicationStack', {
       stage: props.stage,
       stackName: `${prefix}-da-replication`,
       dataBucket: this.connectCore.storageStack.buckets.storage!.node.defaultChild as CfnBucket,
-      dataBucketPrefix: 'Analysis/Voice/Redacted/',
+      dataBucketRecordingsPrefix: 'Analysis/Voice/Redacted/',
+      dataBucketReportsPrefix: `connect/${prefix}/${prefix}-reports/`,
       dataBucketKeyArn: Fn.importValue(`${prefix}:ConnectSharedKeyId`),
       dataBucketDestAcct: props.config.packages.shelterAnalytics[props.stage].account,
       dataBucketDestinationBucket: props.config.packages.shelterAnalytics[props.stage].dataBucket,
@@ -112,6 +128,7 @@ export class Stacks {
       streamBucketDestinationBucket: props.config.packages.shelterAnalytics[props.stage].streamingBucket,
       streamBucketDestKeyArn: props.config.packages.shelterAnalytics[props.stage].streamingBucketEncryptKey
     });
+    this.daReplicationStack.addDependency(this.calabrioQmStack);
 
     //MAP tags
     Tags.of(scope).add('map-migrated', 'd-server-02w639x33oia5k');
