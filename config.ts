@@ -20,7 +20,6 @@ export interface ShelterAnalytics {
   dataBucketEncryptKey: string;
   streamingBucket: string;
   streamingBucketEncryptKey: string;
-  s3ManagedKmsKey: string;
 }
 
 export interface Configuration {
@@ -91,27 +90,21 @@ export const config: Configuration = {
         dataBucket: 'dev-connect-support-datastorage-bucket83908e77-7zs0dw4kcgi2',
         dataBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024',
         streamingBucket: 'dev-connect-support-datastreaming-bucket83908e77-11ufluybw42bp',
-        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024',
-        // this S3 managed key is used for the Calabrio QM replication rules
-        s3ManagedKmsKey: 'arn:aws:kms:us-east-1:564741965342:key/0c04023d-26e5-40a3-9e27-82f28e8b6b02'
+        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024'
       },
       test: {
         account: '183014481998',
         dataBucket: 'dev-connect-support-datastorage-bucket83908e77-7zs0dw4kcgi2',
         dataBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024',
         streamingBucket: 'dev-connect-support-datastreaming-bucket83908e77-11ufluybw42bp',
-        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024',
-        // this S3 managed key is used for the Calabrio QM replication rules
-        s3ManagedKmsKey: 'arn:aws:kms:us-east-1:824188805183:key/922bba9e-f7bd-40d2-a64d-fee2b42004b1'
+        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024'
       },
       prod: {
         account: '',
         dataBucket: '',
         dataBucketEncryptKey: '',
         streamingBucket: '',
-        streamingBucketEncryptKey: '',
-        // this S3 managed key is used for the Calabrio QM replication rules
-        s3ManagedKmsKey: 'arn:aws:kms:us-east-1:110716305825:key/5aa93f92-dab3-4d76-b6c2-79f239e5ee47'
+        streamingBucketEncryptKey: ''
       }
     }
   },
