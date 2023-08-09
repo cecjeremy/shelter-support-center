@@ -88,16 +88,16 @@ export const config: Configuration = {
       dev: {
         account: '183014481998',
         dataBucket: 'dev-connect-support-datastorage-bucket83908e77-7zs0dw4kcgi2',
-        dataBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024',
+        dataBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/b189d989-99f3-4fa0-bc1e-c48a1438305c',
         streamingBucket: 'dev-connect-support-datastreaming-bucket83908e77-11ufluybw42bp',
-        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024'
+        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/b189d989-99f3-4fa0-bc1e-c48a1438305c'
       },
       test: {
-        account: '183014481998',
-        dataBucket: 'dev-connect-support-datastorage-bucket83908e77-7zs0dw4kcgi2',
-        dataBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024',
-        streamingBucket: 'dev-connect-support-datastreaming-bucket83908e77-11ufluybw42bp',
-        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/ae592584-8ce6-4942-a40c-bacc107ad024'
+        account: '',
+        dataBucket: '',
+        dataBucketEncryptKey: '',
+        streamingBucket: '',
+        streamingBucketEncryptKey: ''
       },
       prod: {
         account: '',

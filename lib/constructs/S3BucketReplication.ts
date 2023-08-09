@@ -218,14 +218,14 @@ export class S3BucketReplication extends Construct {
     // Get other replication rules for this bucket
     const currentConfiguration = this.bucket.replicationConfiguration as unknown as ReplicationConfiguration;
     let replicationRules: ReplicationRule[] = [];
-    let lowestPriority = 0;
+    let highestPriority = 0;
     if (currentConfiguration && currentConfiguration.rules) {
       replicationRules = currentConfiguration.rules;
-      // get lowest priority of existing rules
+      // get highest priority of existing rules
       // priorities must be unique
       replicationRules.map(rule => {
-        if (rule.priority > lowestPriority) {
-          lowestPriority = rule.priority;
+        if (rule.priority > highestPriority) {
+          highestPriority = rule.priority;
         }
       });
     }
@@ -235,7 +235,7 @@ export class S3BucketReplication extends Construct {
       id: ruleId,
       status: 'Enabled',
       filter: { prefix: props.filterPrefix || '' },
-      priority: lowestPriority + 1,
+      priority: highestPriority + 1,
       deleteMarkerReplication: { status: 'Enabled' },
       destination: {
         account: destAcct,
