@@ -93,11 +93,11 @@ export const config: Configuration = {
         streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/b189d989-99f3-4fa0-bc1e-c48a1438305c'
       },
       test: {
-        account: '',
-        dataBucket: '',
-        dataBucketEncryptKey: '',
-        streamingBucket: '',
-        streamingBucketEncryptKey: ''
+        account: '183014481998',
+        dataBucket: 'uat-connect-support-datastorage-bucket83908e77-p5dvrbgq3fku',
+        dataBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/c23ea55a-a4b9-4ed6-9d47-4d30ded251cd',
+        streamingBucket: 'uat-connect-support-datastreaming-bucket83908e77-ibyi7qif6bde',
+        streamingBucketEncryptKey: 'arn:aws:kms:us-east-2:183014481998:key/c23ea55a-a4b9-4ed6-9d47-4d30ded251cd'
       },
       prod: {
         account: '',
