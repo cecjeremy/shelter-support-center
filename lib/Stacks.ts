@@ -111,6 +111,7 @@ export class Stacks {
     });
 
     this.daReplicationStack = new DaReplicationStack(this.scope, 'DaReplicationStack', {
+      env: props.env,
       stage: props.stage,
       stackName: `${prefix}-da-replication`,
       dataBucket: this.connectCore.storageStack.buckets.storage!.node.defaultChild as CfnBucket,
